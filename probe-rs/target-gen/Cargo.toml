@@ -1,0 +1,38 @@
+[package]
+name = "target-gen"
+version.workspace = true
+authors = ["Noah Huesser <yatekii@yatekii.ch>"]
+edition.workspace = true
+description = "A cli tool to create new target files for probe-rs ot of CMSIS-Packs."
+documentation.workspace = true
+homepage.workspace = true
+repository.workspace = true
+readme = "README.md"
+categories = ["embedded", "hardware-support", "development-tools::debugging"]
+keywords = ["embedded"]
+license.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+probe-rs = { path = "../probe-rs", version = "0.14.2", default-features = true }
+probe-rs-target = { path = "../probe-rs-target", version = "0.14.2", default-features = false }
+cmsis-pack = { version = "0.6.1" }
+goblin = "0.6.0"
+scroll = "0.11.0"
+serde_yaml = "^0.9"
+log = "0.4.16"
+zip = "0.6.2"
+clap = { version = "4.0", features = ["derive"] }
+base64 = "0.21.0"
+simplelog = "0.12.0"
+anyhow = "1.0.57"
+reqwest = { version = "0.11.10", features = ["json", "blocking"] }
+serde = { version = "1", features = ["derive"] }
+futures = "0.3.21"
+tokio = { version = "1.18.0", features = ["macros", "rt", "rt-multi-thread"] }
+
+[dev-dependencies]
+assert_cmd = "2.0.4"
+predicates = "2.1.1"
+assert_fs = "1.0.7"
