@@ -1,9 +1,43 @@
-#[doc = "Reader of register PMC_PCK[%s]"]
-pub type R = crate::R<u32, super::PMC_PCK>;
-#[doc = "Writer for register PMC_PCK[%s]"]
-pub type W = crate::W<u32, super::PMC_PCK>;
+#[doc = "Register `PMC_PCK[%s]` reader"]
+pub struct R(crate::R<PMC_PCK_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PMC_PCK_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl From<crate::R<PMC_PCK_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<PMC_PCK_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `PMC_PCK[%s]` writer"]
+pub struct W(crate::W<PMC_PCK_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PMC_PCK_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<PMC_PCK_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<PMC_PCK_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CSS` reader - Master Clock Source Selection"]
+pub type CSS_R = crate::FieldReader<u8, CSS_A>;
 #[doc = "Master Clock Source Selection"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum CSS_A {
     #[doc = "0: Slow Clock is selected"]
@@ -23,20 +57,17 @@ impl From<CSS_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `CSS`"]
-pub type CSS_R = crate::R<u8, CSS_A>;
 impl CSS_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, CSS_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<CSS_A> {
         match self.bits {
-            0 => Val(CSS_A::SLOW_CLK),
-            1 => Val(CSS_A::MAIN_CLK),
-            2 => Val(CSS_A::PLLA_CLK),
-            3 => Val(CSS_A::UPLL_CLK),
-            4 => Val(CSS_A::MCK),
-            i => Res(i),
+            0 => Some(CSS_A::SLOW_CLK),
+            1 => Some(CSS_A::MAIN_CLK),
+            2 => Some(CSS_A::PLLA_CLK),
+            3 => Some(CSS_A::UPLL_CLK),
+            4 => Some(CSS_A::MCK),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `SLOW_CLK`"]
@@ -65,16 +96,9 @@ impl CSS_R {
         *self == CSS_A::MCK
     }
 }
-#[doc = "Write proxy for field `CSS`"]
-pub struct CSS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CSS_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `CSS` writer - Master Clock Source Selection"]
+pub type CSS_W<'a, const O: u8> = crate::FieldWriter<'a, u32, PMC_PCK_SPEC, u8, CSS_A, 3, O>;
+impl<'a, const O: u8> CSS_W<'a, O> {
     #[doc = "Slow Clock is selected"]
     #[inline(always)]
     pub fn slow_clk(self) -> &'a mut W {
@@ -100,15 +124,11 @@ impl<'a> CSS_W<'a> {
     pub fn mck(self) -> &'a mut W {
         self.variant(CSS_A::MCK)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x07) | ((value as u32) & 0x07);
-        self.w
-    }
 }
+#[doc = "Field `PRES` reader - Programmable Clock Prescaler"]
+pub type PRES_R = crate::FieldReader<u8, PRES_A>;
 #[doc = "Programmable Clock Prescaler"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum PRES_A {
     #[doc = "0: Selected clock"]
@@ -132,22 +152,19 @@ impl From<PRES_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `PRES`"]
-pub type PRES_R = crate::R<u8, PRES_A>;
 impl PRES_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, PRES_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<PRES_A> {
         match self.bits {
-            0 => Val(PRES_A::CLK_1),
-            1 => Val(PRES_A::CLK_2),
-            2 => Val(PRES_A::CLK_4),
-            3 => Val(PRES_A::CLK_8),
-            4 => Val(PRES_A::CLK_16),
-            5 => Val(PRES_A::CLK_32),
-            6 => Val(PRES_A::CLK_64),
-            i => Res(i),
+            0 => Some(PRES_A::CLK_1),
+            1 => Some(PRES_A::CLK_2),
+            2 => Some(PRES_A::CLK_4),
+            3 => Some(PRES_A::CLK_8),
+            4 => Some(PRES_A::CLK_16),
+            5 => Some(PRES_A::CLK_32),
+            6 => Some(PRES_A::CLK_64),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `CLK_1`"]
@@ -186,16 +203,9 @@ impl PRES_R {
         *self == PRES_A::CLK_64
     }
 }
-#[doc = "Write proxy for field `PRES`"]
-pub struct PRES_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PRES_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PRES_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `PRES` writer - Programmable Clock Prescaler"]
+pub type PRES_W<'a, const O: u8> = crate::FieldWriter<'a, u32, PMC_PCK_SPEC, u8, PRES_A, 3, O>;
+impl<'a, const O: u8> PRES_W<'a, O> {
     #[doc = "Selected clock"]
     #[inline(always)]
     pub fn clk_1(self) -> &'a mut W {
@@ -231,34 +241,51 @@ impl<'a> PRES_W<'a> {
     pub fn clk_64(self) -> &'a mut W {
         self.variant(PRES_A::CLK_64)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 4)) | (((value as u32) & 0x07) << 4);
-        self.w
-    }
 }
 impl R {
     #[doc = "Bits 0:2 - Master Clock Source Selection"]
     #[inline(always)]
     pub fn css(&self) -> CSS_R {
-        CSS_R::new((self.bits & 0x07) as u8)
+        CSS_R::new((self.bits & 7) as u8)
     }
     #[doc = "Bits 4:6 - Programmable Clock Prescaler"]
     #[inline(always)]
     pub fn pres(&self) -> PRES_R {
-        PRES_R::new(((self.bits >> 4) & 0x07) as u8)
+        PRES_R::new(((self.bits >> 4) & 7) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:2 - Master Clock Source Selection"]
     #[inline(always)]
-    pub fn css(&mut self) -> CSS_W {
-        CSS_W { w: self }
+    #[must_use]
+    pub fn css(&mut self) -> CSS_W<0> {
+        CSS_W::new(self)
     }
     #[doc = "Bits 4:6 - Programmable Clock Prescaler"]
     #[inline(always)]
-    pub fn pres(&mut self) -> PRES_W {
-        PRES_W { w: self }
+    #[must_use]
+    pub fn pres(&mut self) -> PRES_W<4> {
+        PRES_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Programmable Clock 0 Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pmc_pck](index.html) module"]
+pub struct PMC_PCK_SPEC;
+impl crate::RegisterSpec for PMC_PCK_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [pmc_pck::R](R) reader structure"]
+impl crate::Readable for PMC_PCK_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [pmc_pck::W](W) writer structure"]
+impl crate::Writable for PMC_PCK_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

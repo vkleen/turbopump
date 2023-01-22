@@ -1,65 +1,51 @@
-#[doc = "Reader of register CR"]
-pub type R = crate::R<u32, super::CR>;
-#[doc = "Writer for register CR"]
-pub type W = crate::W<u32, super::CR>;
-#[doc = "Register CR `reset()`'s with value 0"]
-impl crate::ResetValue for super::CR {
-    type Type = u32;
+#[doc = "Register `CR` reader"]
+pub struct R(crate::R<CR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `UPDTIM`"]
-pub type UPDTIM_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `UPDTIM`"]
-pub struct UPDTIM_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> UPDTIM_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::R<CR_SPEC>> for R {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn from(reader: crate::R<CR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `UPDCAL`"]
-pub type UPDCAL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `UPDCAL`"]
-pub struct UPDCAL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> UPDCAL_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `CR` writer"]
+pub struct W(crate::W<CR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<CR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<CR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `UPDTIM` reader - Update Request Time Register"]
+pub type UPDTIM_R = crate::BitReader<bool>;
+#[doc = "Field `UPDTIM` writer - Update Request Time Register"]
+pub type UPDTIM_W<'a, const O: u8> = crate::BitWriter<'a, u32, CR_SPEC, bool, O>;
+#[doc = "Field `UPDCAL` reader - Update Request Calendar Register"]
+pub type UPDCAL_R = crate::BitReader<bool>;
+#[doc = "Field `UPDCAL` writer - Update Request Calendar Register"]
+pub type UPDCAL_W<'a, const O: u8> = crate::BitWriter<'a, u32, CR_SPEC, bool, O>;
+#[doc = "Field `TIMEVSEL` reader - Time Event Selection"]
+pub type TIMEVSEL_R = crate::FieldReader<u8, TIMEVSEL_A>;
 #[doc = "Time Event Selection\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum TIMEVSEL_A {
     #[doc = "0: Minute change"]
@@ -77,10 +63,8 @@ impl From<TIMEVSEL_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `TIMEVSEL`"]
-pub type TIMEVSEL_R = crate::R<u8, TIMEVSEL_A>;
 impl TIMEVSEL_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TIMEVSEL_A {
         match self.bits {
@@ -112,18 +96,10 @@ impl TIMEVSEL_R {
         *self == TIMEVSEL_A::NOON
     }
 }
-#[doc = "Write proxy for field `TIMEVSEL`"]
-pub struct TIMEVSEL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TIMEVSEL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TIMEVSEL_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
-    }
+#[doc = "Field `TIMEVSEL` writer - Time Event Selection"]
+pub type TIMEVSEL_W<'a, const O: u8> =
+    crate::FieldWriterSafe<'a, u32, CR_SPEC, u8, TIMEVSEL_A, 2, O>;
+impl<'a, const O: u8> TIMEVSEL_W<'a, O> {
     #[doc = "Minute change"]
     #[inline(always)]
     pub fn minute(self) -> &'a mut W {
@@ -144,15 +120,11 @@ impl<'a> TIMEVSEL_W<'a> {
     pub fn noon(self) -> &'a mut W {
         self.variant(TIMEVSEL_A::NOON)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 8)) | (((value as u32) & 0x03) << 8);
-        self.w
-    }
 }
+#[doc = "Field `CALEVSEL` reader - Calendar Event Selection"]
+pub type CALEVSEL_R = crate::FieldReader<u8, CALEVSEL_A>;
 #[doc = "Calendar Event Selection\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum CALEVSEL_A {
     #[doc = "0: Week change (every Monday at time 00:00:00)"]
@@ -168,18 +140,15 @@ impl From<CALEVSEL_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `CALEVSEL`"]
-pub type CALEVSEL_R = crate::R<u8, CALEVSEL_A>;
 impl CALEVSEL_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, CALEVSEL_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<CALEVSEL_A> {
         match self.bits {
-            0 => Val(CALEVSEL_A::WEEK),
-            1 => Val(CALEVSEL_A::MONTH),
-            2 => Val(CALEVSEL_A::YEAR),
-            i => Res(i),
+            0 => Some(CALEVSEL_A::WEEK),
+            1 => Some(CALEVSEL_A::MONTH),
+            2 => Some(CALEVSEL_A::YEAR),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `WEEK`"]
@@ -198,16 +167,9 @@ impl CALEVSEL_R {
         *self == CALEVSEL_A::YEAR
     }
 }
-#[doc = "Write proxy for field `CALEVSEL`"]
-pub struct CALEVSEL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CALEVSEL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CALEVSEL_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `CALEVSEL` writer - Calendar Event Selection"]
+pub type CALEVSEL_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CR_SPEC, u8, CALEVSEL_A, 2, O>;
+impl<'a, const O: u8> CALEVSEL_W<'a, O> {
     #[doc = "Week change (every Monday at time 00:00:00)"]
     #[inline(always)]
     pub fn week(self) -> &'a mut W {
@@ -223,54 +185,77 @@ impl<'a> CALEVSEL_W<'a> {
     pub fn year(self) -> &'a mut W {
         self.variant(CALEVSEL_A::YEAR)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | (((value as u32) & 0x03) << 16);
-        self.w
-    }
 }
 impl R {
     #[doc = "Bit 0 - Update Request Time Register"]
     #[inline(always)]
     pub fn updtim(&self) -> UPDTIM_R {
-        UPDTIM_R::new((self.bits & 0x01) != 0)
+        UPDTIM_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Update Request Calendar Register"]
     #[inline(always)]
     pub fn updcal(&self) -> UPDCAL_R {
-        UPDCAL_R::new(((self.bits >> 1) & 0x01) != 0)
+        UPDCAL_R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bits 8:9 - Time Event Selection"]
     #[inline(always)]
     pub fn timevsel(&self) -> TIMEVSEL_R {
-        TIMEVSEL_R::new(((self.bits >> 8) & 0x03) as u8)
+        TIMEVSEL_R::new(((self.bits >> 8) & 3) as u8)
     }
     #[doc = "Bits 16:17 - Calendar Event Selection"]
     #[inline(always)]
     pub fn calevsel(&self) -> CALEVSEL_R {
-        CALEVSEL_R::new(((self.bits >> 16) & 0x03) as u8)
+        CALEVSEL_R::new(((self.bits >> 16) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bit 0 - Update Request Time Register"]
     #[inline(always)]
-    pub fn updtim(&mut self) -> UPDTIM_W {
-        UPDTIM_W { w: self }
+    #[must_use]
+    pub fn updtim(&mut self) -> UPDTIM_W<0> {
+        UPDTIM_W::new(self)
     }
     #[doc = "Bit 1 - Update Request Calendar Register"]
     #[inline(always)]
-    pub fn updcal(&mut self) -> UPDCAL_W {
-        UPDCAL_W { w: self }
+    #[must_use]
+    pub fn updcal(&mut self) -> UPDCAL_W<1> {
+        UPDCAL_W::new(self)
     }
     #[doc = "Bits 8:9 - Time Event Selection"]
     #[inline(always)]
-    pub fn timevsel(&mut self) -> TIMEVSEL_W {
-        TIMEVSEL_W { w: self }
+    #[must_use]
+    pub fn timevsel(&mut self) -> TIMEVSEL_W<8> {
+        TIMEVSEL_W::new(self)
     }
     #[doc = "Bits 16:17 - Calendar Event Selection"]
     #[inline(always)]
-    pub fn calevsel(&mut self) -> CALEVSEL_W {
-        CALEVSEL_W { w: self }
+    #[must_use]
+    pub fn calevsel(&mut self) -> CALEVSEL_W<16> {
+        CALEVSEL_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Control Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cr](index.html) module"]
+pub struct CR_SPEC;
+impl crate::RegisterSpec for CR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cr::R](R) reader structure"]
+impl crate::Readable for CR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cr::W](W) writer structure"]
+impl crate::Writable for CR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets CR to value 0"]
+impl crate::Resettable for CR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

@@ -1,43 +1,47 @@
-#[doc = "Reader of register CWR"]
-pub type R = crate::R<u32, super::CWR>;
-#[doc = "Writer for register CWR"]
-pub type W = crate::W<u32, super::CWR>;
-#[doc = "Register CWR `reset()`'s with value 0"]
-impl crate::ResetValue for super::CWR {
-    type Type = u32;
+#[doc = "Register `CWR` reader"]
+pub struct R(crate::R<CWR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CWR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `LOWTHRES`"]
-pub type LOWTHRES_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `LOWTHRES`"]
-pub struct LOWTHRES_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOWTHRES_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<CWR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x0fff) | ((value as u32) & 0x0fff);
-        self.w
+    fn from(reader: crate::R<CWR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `HIGHTHRES`"]
-pub type HIGHTHRES_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `HIGHTHRES`"]
-pub struct HIGHTHRES_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HIGHTHRES_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Register `CWR` writer"]
+pub struct W(crate::W<CWR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CWR_SPEC>;
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0fff << 16)) | (((value as u32) & 0x0fff) << 16);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<CWR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<CWR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `LOWTHRES` reader - Low Threshold"]
+pub type LOWTHRES_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `LOWTHRES` writer - Low Threshold"]
+pub type LOWTHRES_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CWR_SPEC, u16, u16, 12, O>;
+#[doc = "Field `HIGHTHRES` reader - High Threshold"]
+pub type HIGHTHRES_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `HIGHTHRES` writer - High Threshold"]
+pub type HIGHTHRES_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CWR_SPEC, u16, u16, 12, O>;
 impl R {
     #[doc = "Bits 0:11 - Low Threshold"]
     #[inline(always)]
@@ -53,12 +57,39 @@ impl R {
 impl W {
     #[doc = "Bits 0:11 - Low Threshold"]
     #[inline(always)]
-    pub fn lowthres(&mut self) -> LOWTHRES_W {
-        LOWTHRES_W { w: self }
+    #[must_use]
+    pub fn lowthres(&mut self) -> LOWTHRES_W<0> {
+        LOWTHRES_W::new(self)
     }
     #[doc = "Bits 16:27 - High Threshold"]
     #[inline(always)]
-    pub fn highthres(&mut self) -> HIGHTHRES_W {
-        HIGHTHRES_W { w: self }
+    #[must_use]
+    pub fn highthres(&mut self) -> HIGHTHRES_W<16> {
+        HIGHTHRES_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Compare Window Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cwr](index.html) module"]
+pub struct CWR_SPEC;
+impl crate::RegisterSpec for CWR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cwr::R](R) reader structure"]
+impl crate::Readable for CWR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cwr::W](W) writer structure"]
+impl crate::Writable for CWR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets CWR to value 0"]
+impl crate::Resettable for CWR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

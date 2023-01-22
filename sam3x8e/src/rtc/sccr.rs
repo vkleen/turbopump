@@ -1,139 +1,80 @@
-#[doc = "Writer for register SCCR"]
-pub type W = crate::W<u32, super::SCCR>;
-#[doc = "Write proxy for field `ACKCLR`"]
-pub struct ACKCLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ACKCLR_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `SCCR` writer"]
+pub struct W(crate::W<SCCR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SCCR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Write proxy for field `ALRCLR`"]
-pub struct ALRCLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ALRCLR_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Write proxy for field `SECCLR`"]
-pub struct SECCLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SECCLR_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<SCCR_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
-        self.w
+    fn from(writer: crate::W<SCCR_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Write proxy for field `TIMCLR`"]
-pub struct TIMCLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TIMCLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `CALCLR`"]
-pub struct CALCLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CALCLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
-    }
-}
+#[doc = "Field `ACKCLR` writer - Acknowledge Clear"]
+pub type ACKCLR_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCCR_SPEC, bool, O>;
+#[doc = "Field `ALRCLR` writer - Alarm Clear"]
+pub type ALRCLR_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCCR_SPEC, bool, O>;
+#[doc = "Field `SECCLR` writer - Second Clear"]
+pub type SECCLR_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCCR_SPEC, bool, O>;
+#[doc = "Field `TIMCLR` writer - Time Clear"]
+pub type TIMCLR_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCCR_SPEC, bool, O>;
+#[doc = "Field `CALCLR` writer - Calendar Clear"]
+pub type CALCLR_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCCR_SPEC, bool, O>;
 impl W {
     #[doc = "Bit 0 - Acknowledge Clear"]
     #[inline(always)]
-    pub fn ackclr(&mut self) -> ACKCLR_W {
-        ACKCLR_W { w: self }
+    #[must_use]
+    pub fn ackclr(&mut self) -> ACKCLR_W<0> {
+        ACKCLR_W::new(self)
     }
     #[doc = "Bit 1 - Alarm Clear"]
     #[inline(always)]
-    pub fn alrclr(&mut self) -> ALRCLR_W {
-        ALRCLR_W { w: self }
+    #[must_use]
+    pub fn alrclr(&mut self) -> ALRCLR_W<1> {
+        ALRCLR_W::new(self)
     }
     #[doc = "Bit 2 - Second Clear"]
     #[inline(always)]
-    pub fn secclr(&mut self) -> SECCLR_W {
-        SECCLR_W { w: self }
+    #[must_use]
+    pub fn secclr(&mut self) -> SECCLR_W<2> {
+        SECCLR_W::new(self)
     }
     #[doc = "Bit 3 - Time Clear"]
     #[inline(always)]
-    pub fn timclr(&mut self) -> TIMCLR_W {
-        TIMCLR_W { w: self }
+    #[must_use]
+    pub fn timclr(&mut self) -> TIMCLR_W<3> {
+        TIMCLR_W::new(self)
     }
     #[doc = "Bit 4 - Calendar Clear"]
     #[inline(always)]
-    pub fn calclr(&mut self) -> CALCLR_W {
-        CALCLR_W { w: self }
+    #[must_use]
+    pub fn calclr(&mut self) -> CALCLR_W<4> {
+        CALCLR_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Status Clear Command Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sccr](index.html) module"]
+pub struct SCCR_SPEC;
+impl crate::RegisterSpec for SCCR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [sccr::W](W) writer structure"]
+impl crate::Writable for SCCR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

@@ -1,17 +1,43 @@
-#[doc = "Reader of register CFG"]
-pub type R = crate::R<u32, super::CFG>;
-#[doc = "Writer for register CFG"]
-pub type W = crate::W<u32, super::CFG>;
-#[doc = "Register CFG `reset()`'s with value 0"]
-impl crate::ResetValue for super::CFG {
-    type Type = u32;
+#[doc = "Register `CFG` reader"]
+pub struct R(crate::R<CFG_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CFG_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl From<crate::R<CFG_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<CFG_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CFG` writer"]
+pub struct W(crate::W<CFG_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CFG_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<CFG_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<CFG_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `PAGESIZE` reader - Page Size of the NAND Flash Device"]
+pub type PAGESIZE_R = crate::FieldReader<u8, PAGESIZE_A>;
 #[doc = "Page Size of the NAND Flash Device\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum PAGESIZE_A {
     #[doc = "0: Main area 512 Bytes"]
@@ -29,10 +55,8 @@ impl From<PAGESIZE_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `PAGESIZE`"]
-pub type PAGESIZE_R = crate::R<u8, PAGESIZE_A>;
 impl PAGESIZE_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> PAGESIZE_A {
         match self.bits {
@@ -64,18 +88,10 @@ impl PAGESIZE_R {
         *self == PAGESIZE_A::PS4096
     }
 }
-#[doc = "Write proxy for field `PAGESIZE`"]
-pub struct PAGESIZE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PAGESIZE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PAGESIZE_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
-    }
+#[doc = "Field `PAGESIZE` writer - Page Size of the NAND Flash Device"]
+pub type PAGESIZE_W<'a, const O: u8> =
+    crate::FieldWriterSafe<'a, u32, CFG_SPEC, u8, PAGESIZE_A, 2, O>;
+impl<'a, const O: u8> PAGESIZE_W<'a, O> {
     #[doc = "Main area 512 Bytes"]
     #[inline(always)]
     pub fn ps512(self) -> &'a mut W {
@@ -96,125 +112,31 @@ impl<'a> PAGESIZE_W<'a> {
     pub fn ps4096(self) -> &'a mut W {
         self.variant(PAGESIZE_A::PS4096)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | ((value as u32) & 0x03);
-        self.w
-    }
 }
-#[doc = "Reader of field `WSPARE`"]
-pub type WSPARE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `WSPARE`"]
-pub struct WSPARE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WSPARE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | (((value as u32) & 0x01) << 8);
-        self.w
-    }
-}
-#[doc = "Reader of field `RSPARE`"]
-pub type RSPARE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RSPARE`"]
-pub struct RSPARE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RSPARE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | (((value as u32) & 0x01) << 9);
-        self.w
-    }
-}
-#[doc = "Reader of field `EDGECTRL`"]
-pub type EDGECTRL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `EDGECTRL`"]
-pub struct EDGECTRL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> EDGECTRL_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 12)) | (((value as u32) & 0x01) << 12);
-        self.w
-    }
-}
-#[doc = "Reader of field `RBEDGE`"]
-pub type RBEDGE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RBEDGE`"]
-pub struct RBEDGE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RBEDGE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 13)) | (((value as u32) & 0x01) << 13);
-        self.w
-    }
-}
-#[doc = "Reader of field `DTOCYC`"]
-pub type DTOCYC_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `DTOCYC`"]
-pub struct DTOCYC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DTOCYC_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
-        self.w
-    }
-}
+#[doc = "Field `WSPARE` reader - Write Spare Area"]
+pub type WSPARE_R = crate::BitReader<bool>;
+#[doc = "Field `WSPARE` writer - Write Spare Area"]
+pub type WSPARE_W<'a, const O: u8> = crate::BitWriter<'a, u32, CFG_SPEC, bool, O>;
+#[doc = "Field `RSPARE` reader - Read Spare Area"]
+pub type RSPARE_R = crate::BitReader<bool>;
+#[doc = "Field `RSPARE` writer - Read Spare Area"]
+pub type RSPARE_W<'a, const O: u8> = crate::BitWriter<'a, u32, CFG_SPEC, bool, O>;
+#[doc = "Field `EDGECTRL` reader - Rising/Falling Edge Detection Control"]
+pub type EDGECTRL_R = crate::BitReader<bool>;
+#[doc = "Field `EDGECTRL` writer - Rising/Falling Edge Detection Control"]
+pub type EDGECTRL_W<'a, const O: u8> = crate::BitWriter<'a, u32, CFG_SPEC, bool, O>;
+#[doc = "Field `RBEDGE` reader - Ready/Busy Signal Edge Detection"]
+pub type RBEDGE_R = crate::BitReader<bool>;
+#[doc = "Field `RBEDGE` writer - Ready/Busy Signal Edge Detection"]
+pub type RBEDGE_W<'a, const O: u8> = crate::BitWriter<'a, u32, CFG_SPEC, bool, O>;
+#[doc = "Field `DTOCYC` reader - Data Timeout Cycle Number"]
+pub type DTOCYC_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `DTOCYC` writer - Data Timeout Cycle Number"]
+pub type DTOCYC_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CFG_SPEC, u8, u8, 4, O>;
+#[doc = "Field `DTOMUL` reader - Data Timeout Multiplier"]
+pub type DTOMUL_R = crate::FieldReader<u8, DTOMUL_A>;
 #[doc = "Data Timeout Multiplier\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum DTOMUL_A {
     #[doc = "0: DTOCYC"]
@@ -240,10 +162,8 @@ impl From<DTOMUL_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `DTOMUL`"]
-pub type DTOMUL_R = crate::R<u8, DTOMUL_A>;
 impl DTOMUL_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DTOMUL_A {
         match self.bits {
@@ -299,18 +219,9 @@ impl DTOMUL_R {
         *self == DTOMUL_A::X1048576
     }
 }
-#[doc = "Write proxy for field `DTOMUL`"]
-pub struct DTOMUL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DTOMUL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DTOMUL_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
-    }
+#[doc = "Field `DTOMUL` writer - Data Timeout Multiplier"]
+pub type DTOMUL_W<'a, const O: u8> = crate::FieldWriterSafe<'a, u32, CFG_SPEC, u8, DTOMUL_A, 3, O>;
+impl<'a, const O: u8> DTOMUL_W<'a, O> {
     #[doc = "DTOCYC"]
     #[inline(always)]
     pub fn x1(self) -> &'a mut W {
@@ -351,38 +262,32 @@ impl<'a> DTOMUL_W<'a> {
     pub fn x1048576(self) -> &'a mut W {
         self.variant(DTOMUL_A::X1048576)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 20)) | (((value as u32) & 0x07) << 20);
-        self.w
-    }
 }
 impl R {
     #[doc = "Bits 0:1 - Page Size of the NAND Flash Device"]
     #[inline(always)]
     pub fn pagesize(&self) -> PAGESIZE_R {
-        PAGESIZE_R::new((self.bits & 0x03) as u8)
+        PAGESIZE_R::new((self.bits & 3) as u8)
     }
     #[doc = "Bit 8 - Write Spare Area"]
     #[inline(always)]
     pub fn wspare(&self) -> WSPARE_R {
-        WSPARE_R::new(((self.bits >> 8) & 0x01) != 0)
+        WSPARE_R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Read Spare Area"]
     #[inline(always)]
     pub fn rspare(&self) -> RSPARE_R {
-        RSPARE_R::new(((self.bits >> 9) & 0x01) != 0)
+        RSPARE_R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 12 - Rising/Falling Edge Detection Control"]
     #[inline(always)]
     pub fn edgectrl(&self) -> EDGECTRL_R {
-        EDGECTRL_R::new(((self.bits >> 12) & 0x01) != 0)
+        EDGECTRL_R::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 13 - Ready/Busy Signal Edge Detection"]
     #[inline(always)]
     pub fn rbedge(&self) -> RBEDGE_R {
-        RBEDGE_R::new(((self.bits >> 13) & 0x01) != 0)
+        RBEDGE_R::new(((self.bits >> 13) & 1) != 0)
     }
     #[doc = "Bits 16:19 - Data Timeout Cycle Number"]
     #[inline(always)]
@@ -392,43 +297,75 @@ impl R {
     #[doc = "Bits 20:22 - Data Timeout Multiplier"]
     #[inline(always)]
     pub fn dtomul(&self) -> DTOMUL_R {
-        DTOMUL_R::new(((self.bits >> 20) & 0x07) as u8)
+        DTOMUL_R::new(((self.bits >> 20) & 7) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Page Size of the NAND Flash Device"]
     #[inline(always)]
-    pub fn pagesize(&mut self) -> PAGESIZE_W {
-        PAGESIZE_W { w: self }
+    #[must_use]
+    pub fn pagesize(&mut self) -> PAGESIZE_W<0> {
+        PAGESIZE_W::new(self)
     }
     #[doc = "Bit 8 - Write Spare Area"]
     #[inline(always)]
-    pub fn wspare(&mut self) -> WSPARE_W {
-        WSPARE_W { w: self }
+    #[must_use]
+    pub fn wspare(&mut self) -> WSPARE_W<8> {
+        WSPARE_W::new(self)
     }
     #[doc = "Bit 9 - Read Spare Area"]
     #[inline(always)]
-    pub fn rspare(&mut self) -> RSPARE_W {
-        RSPARE_W { w: self }
+    #[must_use]
+    pub fn rspare(&mut self) -> RSPARE_W<9> {
+        RSPARE_W::new(self)
     }
     #[doc = "Bit 12 - Rising/Falling Edge Detection Control"]
     #[inline(always)]
-    pub fn edgectrl(&mut self) -> EDGECTRL_W {
-        EDGECTRL_W { w: self }
+    #[must_use]
+    pub fn edgectrl(&mut self) -> EDGECTRL_W<12> {
+        EDGECTRL_W::new(self)
     }
     #[doc = "Bit 13 - Ready/Busy Signal Edge Detection"]
     #[inline(always)]
-    pub fn rbedge(&mut self) -> RBEDGE_W {
-        RBEDGE_W { w: self }
+    #[must_use]
+    pub fn rbedge(&mut self) -> RBEDGE_W<13> {
+        RBEDGE_W::new(self)
     }
     #[doc = "Bits 16:19 - Data Timeout Cycle Number"]
     #[inline(always)]
-    pub fn dtocyc(&mut self) -> DTOCYC_W {
-        DTOCYC_W { w: self }
+    #[must_use]
+    pub fn dtocyc(&mut self) -> DTOCYC_W<16> {
+        DTOCYC_W::new(self)
     }
     #[doc = "Bits 20:22 - Data Timeout Multiplier"]
     #[inline(always)]
-    pub fn dtomul(&mut self) -> DTOMUL_W {
-        DTOMUL_W { w: self }
+    #[must_use]
+    pub fn dtomul(&mut self) -> DTOMUL_W<20> {
+        DTOMUL_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "SMC NFC Configuration Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CFG_SPEC;
+impl crate::RegisterSpec for CFG_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cfg::R](R) reader structure"]
+impl crate::Readable for CFG_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cfg::W](W) writer structure"]
+impl crate::Writable for CFG_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets CFG to value 0"]
+impl crate::Resettable for CFG_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

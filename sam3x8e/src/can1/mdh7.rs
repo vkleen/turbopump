@@ -1,40 +1,80 @@
-#[doc = "Reader of register MDH7"]
-pub type R = crate::R<u32, super::MDH7>;
-#[doc = "Writer for register MDH7"]
-pub type W = crate::W<u32, super::MDH7>;
-#[doc = "Register MDH7 `reset()`'s with value 0"]
-impl crate::ResetValue for super::MDH7 {
-    type Type = u32;
+#[doc = "Register `MDH7` reader"]
+pub struct R(crate::R<MDH7_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MDH7_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MDH`"]
-pub type MDH_R = crate::R<u32, u32>;
-#[doc = "Write proxy for field `MDH`"]
-pub struct MDH_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MDH_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<MDH7_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xffff_ffff) | ((value as u32) & 0xffff_ffff);
-        self.w
+    fn from(reader: crate::R<MDH7_SPEC>) -> Self {
+        R(reader)
     }
 }
+#[doc = "Register `MDH7` writer"]
+pub struct W(crate::W<MDH7_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MDH7_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<MDH7_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<MDH7_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `MDH` reader - Message Data High Value"]
+pub type MDH_R = crate::FieldReader<u32, u32>;
+#[doc = "Field `MDH` writer - Message Data High Value"]
+pub type MDH_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MDH7_SPEC, u32, u32, 32, O>;
 impl R {
     #[doc = "Bits 0:31 - Message Data High Value"]
     #[inline(always)]
     pub fn mdh(&self) -> MDH_R {
-        MDH_R::new((self.bits & 0xffff_ffff) as u32)
+        MDH_R::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Message Data High Value"]
     #[inline(always)]
-    pub fn mdh(&mut self) -> MDH_W {
-        MDH_W { w: self }
+    #[must_use]
+    pub fn mdh(&mut self) -> MDH_W<0> {
+        MDH_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Mailbox Data High Register (MB = 7)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mdh7](index.html) module"]
+pub struct MDH7_SPEC;
+impl crate::RegisterSpec for MDH7_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mdh7::R](R) reader structure"]
+impl crate::Readable for MDH7_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mdh7::W](W) writer structure"]
+impl crate::Writable for MDH7_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets MDH7 to value 0"]
+impl crate::Resettable for MDH7_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

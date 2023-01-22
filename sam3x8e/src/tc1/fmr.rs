@@ -1,84 +1,95 @@
-#[doc = "Reader of register FMR"]
-pub type R = crate::R<u32, super::FMR>;
-#[doc = "Writer for register FMR"]
-pub type W = crate::W<u32, super::FMR>;
-#[doc = "Register FMR `reset()`'s with value 0"]
-impl crate::ResetValue for super::FMR {
-    type Type = u32;
+#[doc = "Register `FMR` reader"]
+pub struct R(crate::R<FMR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<FMR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `ENCF0`"]
-pub type ENCF0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `ENCF0`"]
-pub struct ENCF0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ENCF0_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::R<FMR_SPEC>> for R {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn from(reader: crate::R<FMR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `ENCF1`"]
-pub type ENCF1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `ENCF1`"]
-pub struct ENCF1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ENCF1_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `FMR` writer"]
+pub struct W(crate::W<FMR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<FMR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<FMR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<FMR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `ENCF0` reader - ENable Compare Fault Channel 0"]
+pub type ENCF0_R = crate::BitReader<bool>;
+#[doc = "Field `ENCF0` writer - ENable Compare Fault Channel 0"]
+pub type ENCF0_W<'a, const O: u8> = crate::BitWriter<'a, u32, FMR_SPEC, bool, O>;
+#[doc = "Field `ENCF1` reader - ENable Compare Fault Channel 1"]
+pub type ENCF1_R = crate::BitReader<bool>;
+#[doc = "Field `ENCF1` writer - ENable Compare Fault Channel 1"]
+pub type ENCF1_W<'a, const O: u8> = crate::BitWriter<'a, u32, FMR_SPEC, bool, O>;
 impl R {
     #[doc = "Bit 0 - ENable Compare Fault Channel 0"]
     #[inline(always)]
     pub fn encf0(&self) -> ENCF0_R {
-        ENCF0_R::new((self.bits & 0x01) != 0)
+        ENCF0_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - ENable Compare Fault Channel 1"]
     #[inline(always)]
     pub fn encf1(&self) -> ENCF1_R {
-        ENCF1_R::new(((self.bits >> 1) & 0x01) != 0)
+        ENCF1_R::new(((self.bits >> 1) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - ENable Compare Fault Channel 0"]
     #[inline(always)]
-    pub fn encf0(&mut self) -> ENCF0_W {
-        ENCF0_W { w: self }
+    #[must_use]
+    pub fn encf0(&mut self) -> ENCF0_W<0> {
+        ENCF0_W::new(self)
     }
     #[doc = "Bit 1 - ENable Compare Fault Channel 1"]
     #[inline(always)]
-    pub fn encf1(&mut self) -> ENCF1_W {
-        ENCF1_W { w: self }
+    #[must_use]
+    pub fn encf1(&mut self) -> ENCF1_W<1> {
+        ENCF1_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Fault Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fmr](index.html) module"]
+pub struct FMR_SPEC;
+impl crate::RegisterSpec for FMR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [fmr::R](R) reader structure"]
+impl crate::Readable for FMR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [fmr::W](W) writer structure"]
+impl crate::Writable for FMR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets FMR to value 0"]
+impl crate::Resettable for FMR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

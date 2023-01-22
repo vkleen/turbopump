@@ -1,193 +1,96 @@
-#[doc = "Writer for register HSTPIPICR[%s]"]
-pub type W = crate::W<u32, super::HSTPIPICR>;
-#[doc = "Write proxy for field `RXINIC`"]
-pub struct RXINIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXINIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `HSTPIPICR[%s]` writer"]
+pub struct W(crate::W<HSTPIPICR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<HSTPIPICR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Write proxy for field `TXOUTIC`"]
-pub struct TXOUTIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TXOUTIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Write proxy for field `TXSTPIC`"]
-pub struct TXSTPIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TXSTPIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<HSTPIPICR_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
-        self.w
+    fn from(writer: crate::W<HSTPIPICR_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Write proxy for field `NAKEDIC`"]
-pub struct NAKEDIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NAKEDIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `OVERFIC`"]
-pub struct OVERFIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OVERFIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `RXSTALLDIC`"]
-pub struct RXSTALLDIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXSTALLDIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `SHORTPACKETIC`"]
-pub struct SHORTPACKETIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SHORTPACKETIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
-        self.w
-    }
-}
+#[doc = "Field `RXINIC` writer - Received IN Data Interrupt Clear"]
+pub type RXINIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTPIPICR_SPEC, bool, O>;
+#[doc = "Field `TXOUTIC` writer - Transmitted OUT Data Interrupt Clear"]
+pub type TXOUTIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTPIPICR_SPEC, bool, O>;
+#[doc = "Field `TXSTPIC` writer - Transmitted SETUP Interrupt Clear"]
+pub type TXSTPIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTPIPICR_SPEC, bool, O>;
+#[doc = "Field `NAKEDIC` writer - NAKed Interrupt Clear"]
+pub type NAKEDIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTPIPICR_SPEC, bool, O>;
+#[doc = "Field `OVERFIC` writer - Overflow Interrupt Clear"]
+pub type OVERFIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTPIPICR_SPEC, bool, O>;
+#[doc = "Field `RXSTALLDIC` writer - Received STALLed Interrupt Clear"]
+pub type RXSTALLDIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTPIPICR_SPEC, bool, O>;
+#[doc = "Field `SHORTPACKETIC` writer - Short Packet Interrupt Clear"]
+pub type SHORTPACKETIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTPIPICR_SPEC, bool, O>;
 impl W {
     #[doc = "Bit 0 - Received IN Data Interrupt Clear"]
     #[inline(always)]
-    pub fn rxinic(&mut self) -> RXINIC_W {
-        RXINIC_W { w: self }
+    #[must_use]
+    pub fn rxinic(&mut self) -> RXINIC_W<0> {
+        RXINIC_W::new(self)
     }
     #[doc = "Bit 1 - Transmitted OUT Data Interrupt Clear"]
     #[inline(always)]
-    pub fn txoutic(&mut self) -> TXOUTIC_W {
-        TXOUTIC_W { w: self }
+    #[must_use]
+    pub fn txoutic(&mut self) -> TXOUTIC_W<1> {
+        TXOUTIC_W::new(self)
     }
     #[doc = "Bit 2 - Transmitted SETUP Interrupt Clear"]
     #[inline(always)]
-    pub fn txstpic(&mut self) -> TXSTPIC_W {
-        TXSTPIC_W { w: self }
+    #[must_use]
+    pub fn txstpic(&mut self) -> TXSTPIC_W<2> {
+        TXSTPIC_W::new(self)
     }
     #[doc = "Bit 4 - NAKed Interrupt Clear"]
     #[inline(always)]
-    pub fn nakedic(&mut self) -> NAKEDIC_W {
-        NAKEDIC_W { w: self }
+    #[must_use]
+    pub fn nakedic(&mut self) -> NAKEDIC_W<4> {
+        NAKEDIC_W::new(self)
     }
     #[doc = "Bit 5 - Overflow Interrupt Clear"]
     #[inline(always)]
-    pub fn overfic(&mut self) -> OVERFIC_W {
-        OVERFIC_W { w: self }
+    #[must_use]
+    pub fn overfic(&mut self) -> OVERFIC_W<5> {
+        OVERFIC_W::new(self)
     }
     #[doc = "Bit 6 - Received STALLed Interrupt Clear"]
     #[inline(always)]
-    pub fn rxstalldic(&mut self) -> RXSTALLDIC_W {
-        RXSTALLDIC_W { w: self }
+    #[must_use]
+    pub fn rxstalldic(&mut self) -> RXSTALLDIC_W<6> {
+        RXSTALLDIC_W::new(self)
     }
     #[doc = "Bit 7 - Short Packet Interrupt Clear"]
     #[inline(always)]
-    pub fn shortpacketic(&mut self) -> SHORTPACKETIC_W {
-        SHORTPACKETIC_W { w: self }
+    #[must_use]
+    pub fn shortpacketic(&mut self) -> SHORTPACKETIC_W<7> {
+        SHORTPACKETIC_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Host Pipe Clear Register (n = 0)\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hstpipicr](index.html) module"]
+pub struct HSTPIPICR_SPEC;
+impl crate::RegisterSpec for HSTPIPICR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [hstpipicr::W](W) writer structure"]
+impl crate::Writable for HSTPIPICR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

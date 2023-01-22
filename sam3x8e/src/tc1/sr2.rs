@@ -1,81 +1,107 @@
-#[doc = "Reader of register SR2"]
-pub type R = crate::R<u32, super::SR2>;
-#[doc = "Reader of field `COVFS`"]
-pub type COVFS_R = crate::R<bool, bool>;
-#[doc = "Reader of field `LOVRS`"]
-pub type LOVRS_R = crate::R<bool, bool>;
-#[doc = "Reader of field `CPAS`"]
-pub type CPAS_R = crate::R<bool, bool>;
-#[doc = "Reader of field `CPBS`"]
-pub type CPBS_R = crate::R<bool, bool>;
-#[doc = "Reader of field `CPCS`"]
-pub type CPCS_R = crate::R<bool, bool>;
-#[doc = "Reader of field `LDRAS`"]
-pub type LDRAS_R = crate::R<bool, bool>;
-#[doc = "Reader of field `LDRBS`"]
-pub type LDRBS_R = crate::R<bool, bool>;
-#[doc = "Reader of field `ETRGS`"]
-pub type ETRGS_R = crate::R<bool, bool>;
-#[doc = "Reader of field `CLKSTA`"]
-pub type CLKSTA_R = crate::R<bool, bool>;
-#[doc = "Reader of field `MTIOA`"]
-pub type MTIOA_R = crate::R<bool, bool>;
-#[doc = "Reader of field `MTIOB`"]
-pub type MTIOB_R = crate::R<bool, bool>;
+#[doc = "Register `SR2` reader"]
+pub struct R(crate::R<SR2_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SR2_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl From<crate::R<SR2_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<SR2_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Field `COVFS` reader - Counter Overflow Status"]
+pub type COVFS_R = crate::BitReader<bool>;
+#[doc = "Field `LOVRS` reader - Load Overrun Status"]
+pub type LOVRS_R = crate::BitReader<bool>;
+#[doc = "Field `CPAS` reader - RA Compare Status"]
+pub type CPAS_R = crate::BitReader<bool>;
+#[doc = "Field `CPBS` reader - RB Compare Status"]
+pub type CPBS_R = crate::BitReader<bool>;
+#[doc = "Field `CPCS` reader - RC Compare Status"]
+pub type CPCS_R = crate::BitReader<bool>;
+#[doc = "Field `LDRAS` reader - RA Loading Status"]
+pub type LDRAS_R = crate::BitReader<bool>;
+#[doc = "Field `LDRBS` reader - RB Loading Status"]
+pub type LDRBS_R = crate::BitReader<bool>;
+#[doc = "Field `ETRGS` reader - External Trigger Status"]
+pub type ETRGS_R = crate::BitReader<bool>;
+#[doc = "Field `CLKSTA` reader - Clock Enabling Status"]
+pub type CLKSTA_R = crate::BitReader<bool>;
+#[doc = "Field `MTIOA` reader - TIOA Mirror"]
+pub type MTIOA_R = crate::BitReader<bool>;
+#[doc = "Field `MTIOB` reader - TIOB Mirror"]
+pub type MTIOB_R = crate::BitReader<bool>;
 impl R {
     #[doc = "Bit 0 - Counter Overflow Status"]
     #[inline(always)]
     pub fn covfs(&self) -> COVFS_R {
-        COVFS_R::new((self.bits & 0x01) != 0)
+        COVFS_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Load Overrun Status"]
     #[inline(always)]
     pub fn lovrs(&self) -> LOVRS_R {
-        LOVRS_R::new(((self.bits >> 1) & 0x01) != 0)
+        LOVRS_R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - RA Compare Status"]
     #[inline(always)]
     pub fn cpas(&self) -> CPAS_R {
-        CPAS_R::new(((self.bits >> 2) & 0x01) != 0)
+        CPAS_R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - RB Compare Status"]
     #[inline(always)]
     pub fn cpbs(&self) -> CPBS_R {
-        CPBS_R::new(((self.bits >> 3) & 0x01) != 0)
+        CPBS_R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - RC Compare Status"]
     #[inline(always)]
     pub fn cpcs(&self) -> CPCS_R {
-        CPCS_R::new(((self.bits >> 4) & 0x01) != 0)
+        CPCS_R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - RA Loading Status"]
     #[inline(always)]
     pub fn ldras(&self) -> LDRAS_R {
-        LDRAS_R::new(((self.bits >> 5) & 0x01) != 0)
+        LDRAS_R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - RB Loading Status"]
     #[inline(always)]
     pub fn ldrbs(&self) -> LDRBS_R {
-        LDRBS_R::new(((self.bits >> 6) & 0x01) != 0)
+        LDRBS_R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - External Trigger Status"]
     #[inline(always)]
     pub fn etrgs(&self) -> ETRGS_R {
-        ETRGS_R::new(((self.bits >> 7) & 0x01) != 0)
+        ETRGS_R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 16 - Clock Enabling Status"]
     #[inline(always)]
     pub fn clksta(&self) -> CLKSTA_R {
-        CLKSTA_R::new(((self.bits >> 16) & 0x01) != 0)
+        CLKSTA_R::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bit 17 - TIOA Mirror"]
     #[inline(always)]
     pub fn mtioa(&self) -> MTIOA_R {
-        MTIOA_R::new(((self.bits >> 17) & 0x01) != 0)
+        MTIOA_R::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 18 - TIOB Mirror"]
     #[inline(always)]
     pub fn mtiob(&self) -> MTIOB_R {
-        MTIOB_R::new(((self.bits >> 18) & 0x01) != 0)
+        MTIOB_R::new(((self.bits >> 18) & 1) != 0)
     }
+}
+#[doc = "Status Register (channel = 2)\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sr2](index.html) module"]
+pub struct SR2_SPEC;
+impl crate::RegisterSpec for SR2_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [sr2::R](R) reader structure"]
+impl crate::Readable for SR2_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets SR2 to value 0"]
+impl crate::Resettable for SR2_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

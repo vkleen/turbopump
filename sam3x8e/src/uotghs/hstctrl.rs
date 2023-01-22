@@ -1,89 +1,55 @@
-#[doc = "Reader of register HSTCTRL"]
-pub type R = crate::R<u32, super::HSTCTRL>;
-#[doc = "Writer for register HSTCTRL"]
-pub type W = crate::W<u32, super::HSTCTRL>;
-#[doc = "Register HSTCTRL `reset()`'s with value 0"]
-impl crate::ResetValue for super::HSTCTRL {
-    type Type = u32;
+#[doc = "Register `HSTCTRL` reader"]
+pub struct R(crate::R<HSTCTRL_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<HSTCTRL_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `SOFE`"]
-pub type SOFE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SOFE`"]
-pub struct SOFE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SOFE_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::R<HSTCTRL_SPEC>> for R {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | (((value as u32) & 0x01) << 8);
-        self.w
+    fn from(reader: crate::R<HSTCTRL_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `RESET`"]
-pub type RESET_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RESET`"]
-pub struct RESET_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RESET_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `HSTCTRL` writer"]
+pub struct W(crate::W<HSTCTRL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<HSTCTRL_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | (((value as u32) & 0x01) << 9);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `RESUME`"]
-pub type RESUME_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RESUME`"]
-pub struct RESUME_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RESUME_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | (((value as u32) & 0x01) << 10);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
+impl From<crate::W<HSTCTRL_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<HSTCTRL_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `SOFE` reader - Start of Frame Generation Enable"]
+pub type SOFE_R = crate::BitReader<bool>;
+#[doc = "Field `SOFE` writer - Start of Frame Generation Enable"]
+pub type SOFE_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTCTRL_SPEC, bool, O>;
+#[doc = "Field `RESET` reader - Send USB Reset"]
+pub type RESET_R = crate::BitReader<bool>;
+#[doc = "Field `RESET` writer - Send USB Reset"]
+pub type RESET_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTCTRL_SPEC, bool, O>;
+#[doc = "Field `RESUME` reader - Send USB Resume"]
+pub type RESUME_R = crate::BitReader<bool>;
+#[doc = "Field `RESUME` writer - Send USB Resume"]
+pub type RESUME_W<'a, const O: u8> = crate::BitWriter<'a, u32, HSTCTRL_SPEC, bool, O>;
+#[doc = "Field `SPDCONF` reader - Mode Configuration"]
+pub type SPDCONF_R = crate::FieldReader<u8, SPDCONF_A>;
 #[doc = "Mode Configuration\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum SPDCONF_A {
     #[doc = "0: The host starts in full-speed mode and performs a high-speed reset to switch to the high-speed mode if the downstream peripheral is high-speed capable."]
@@ -101,10 +67,8 @@ impl From<SPDCONF_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `SPDCONF`"]
-pub type SPDCONF_R = crate::R<u8, SPDCONF_A>;
 impl SPDCONF_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SPDCONF_A {
         match self.bits {
@@ -136,18 +100,10 @@ impl SPDCONF_R {
         *self == SPDCONF_A::FORCED_FS
     }
 }
-#[doc = "Write proxy for field `SPDCONF`"]
-pub struct SPDCONF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SPDCONF_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SPDCONF_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
-    }
+#[doc = "Field `SPDCONF` writer - Mode Configuration"]
+pub type SPDCONF_W<'a, const O: u8> =
+    crate::FieldWriterSafe<'a, u32, HSTCTRL_SPEC, u8, SPDCONF_A, 2, O>;
+impl<'a, const O: u8> SPDCONF_W<'a, O> {
     #[doc = "The host starts in full-speed mode and performs a high-speed reset to switch to the high-speed mode if the downstream peripheral is high-speed capable."]
     #[inline(always)]
     pub fn normal(self) -> &'a mut W {
@@ -168,54 +124,77 @@ impl<'a> SPDCONF_W<'a> {
     pub fn forced_fs(self) -> &'a mut W {
         self.variant(SPDCONF_A::FORCED_FS)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 12)) | (((value as u32) & 0x03) << 12);
-        self.w
-    }
 }
 impl R {
     #[doc = "Bit 8 - Start of Frame Generation Enable"]
     #[inline(always)]
     pub fn sofe(&self) -> SOFE_R {
-        SOFE_R::new(((self.bits >> 8) & 0x01) != 0)
+        SOFE_R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Send USB Reset"]
     #[inline(always)]
     pub fn reset(&self) -> RESET_R {
-        RESET_R::new(((self.bits >> 9) & 0x01) != 0)
+        RESET_R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Send USB Resume"]
     #[inline(always)]
     pub fn resume(&self) -> RESUME_R {
-        RESUME_R::new(((self.bits >> 10) & 0x01) != 0)
+        RESUME_R::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bits 12:13 - Mode Configuration"]
     #[inline(always)]
     pub fn spdconf(&self) -> SPDCONF_R {
-        SPDCONF_R::new(((self.bits >> 12) & 0x03) as u8)
+        SPDCONF_R::new(((self.bits >> 12) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bit 8 - Start of Frame Generation Enable"]
     #[inline(always)]
-    pub fn sofe(&mut self) -> SOFE_W {
-        SOFE_W { w: self }
+    #[must_use]
+    pub fn sofe(&mut self) -> SOFE_W<8> {
+        SOFE_W::new(self)
     }
     #[doc = "Bit 9 - Send USB Reset"]
     #[inline(always)]
-    pub fn reset(&mut self) -> RESET_W {
-        RESET_W { w: self }
+    #[must_use]
+    pub fn reset(&mut self) -> RESET_W<9> {
+        RESET_W::new(self)
     }
     #[doc = "Bit 10 - Send USB Resume"]
     #[inline(always)]
-    pub fn resume(&mut self) -> RESUME_W {
-        RESUME_W { w: self }
+    #[must_use]
+    pub fn resume(&mut self) -> RESUME_W<10> {
+        RESUME_W::new(self)
     }
     #[doc = "Bits 12:13 - Mode Configuration"]
     #[inline(always)]
-    pub fn spdconf(&mut self) -> SPDCONF_W {
-        SPDCONF_W { w: self }
+    #[must_use]
+    pub fn spdconf(&mut self) -> SPDCONF_W<12> {
+        SPDCONF_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Host General Control Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hstctrl](index.html) module"]
+pub struct HSTCTRL_SPEC;
+impl crate::RegisterSpec for HSTCTRL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [hstctrl::R](R) reader structure"]
+impl crate::Readable for HSTCTRL_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [hstctrl::W](W) writer structure"]
+impl crate::Writable for HSTCTRL_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets HSTCTRL to value 0"]
+impl crate::Resettable for HSTCTRL_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

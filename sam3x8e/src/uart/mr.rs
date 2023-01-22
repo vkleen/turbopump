@@ -1,17 +1,43 @@
-#[doc = "Reader of register MR"]
-pub type R = crate::R<u32, super::MR>;
-#[doc = "Writer for register MR"]
-pub type W = crate::W<u32, super::MR>;
-#[doc = "Register MR `reset()`'s with value 0"]
-impl crate::ResetValue for super::MR {
-    type Type = u32;
+#[doc = "Register `MR` reader"]
+pub struct R(crate::R<MR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl From<crate::R<MR_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<MR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `MR` writer"]
+pub struct W(crate::W<MR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<MR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<MR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `PAR` reader - Parity Type"]
+pub type PAR_R = crate::FieldReader<u8, PAR_A>;
 #[doc = "Parity Type\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum PAR_A {
     #[doc = "0: Even Parity"]
@@ -31,20 +57,17 @@ impl From<PAR_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `PAR`"]
-pub type PAR_R = crate::R<u8, PAR_A>;
 impl PAR_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, PAR_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<PAR_A> {
         match self.bits {
-            0 => Val(PAR_A::EVEN),
-            1 => Val(PAR_A::ODD),
-            2 => Val(PAR_A::SPACE),
-            3 => Val(PAR_A::MARK),
-            4 => Val(PAR_A::NO),
-            i => Res(i),
+            0 => Some(PAR_A::EVEN),
+            1 => Some(PAR_A::ODD),
+            2 => Some(PAR_A::SPACE),
+            3 => Some(PAR_A::MARK),
+            4 => Some(PAR_A::NO),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `EVEN`"]
@@ -73,16 +96,9 @@ impl PAR_R {
         *self == PAR_A::NO
     }
 }
-#[doc = "Write proxy for field `PAR`"]
-pub struct PAR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PAR_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PAR_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `PAR` writer - Parity Type"]
+pub type PAR_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MR_SPEC, u8, PAR_A, 3, O>;
+impl<'a, const O: u8> PAR_W<'a, O> {
     #[doc = "Even Parity"]
     #[inline(always)]
     pub fn even(self) -> &'a mut W {
@@ -108,15 +124,11 @@ impl<'a> PAR_W<'a> {
     pub fn no(self) -> &'a mut W {
         self.variant(PAR_A::NO)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 9)) | (((value as u32) & 0x07) << 9);
-        self.w
-    }
 }
+#[doc = "Field `CHMODE` reader - Channel Mode"]
+pub type CHMODE_R = crate::FieldReader<u8, CHMODE_A>;
 #[doc = "Channel Mode\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum CHMODE_A {
     #[doc = "0: Normal Mode"]
@@ -134,10 +146,8 @@ impl From<CHMODE_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `CHMODE`"]
-pub type CHMODE_R = crate::R<u8, CHMODE_A>;
 impl CHMODE_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHMODE_A {
         match self.bits {
@@ -169,18 +179,9 @@ impl CHMODE_R {
         *self == CHMODE_A::REMOTE_LOOPBACK
     }
 }
-#[doc = "Write proxy for field `CHMODE`"]
-pub struct CHMODE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CHMODE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CHMODE_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
-    }
+#[doc = "Field `CHMODE` writer - Channel Mode"]
+pub type CHMODE_W<'a, const O: u8> = crate::FieldWriterSafe<'a, u32, MR_SPEC, u8, CHMODE_A, 2, O>;
+impl<'a, const O: u8> CHMODE_W<'a, O> {
     #[doc = "Normal Mode"]
     #[inline(always)]
     pub fn normal(self) -> &'a mut W {
@@ -201,34 +202,55 @@ impl<'a> CHMODE_W<'a> {
     pub fn remote_loopback(self) -> &'a mut W {
         self.variant(CHMODE_A::REMOTE_LOOPBACK)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 14)) | (((value as u32) & 0x03) << 14);
-        self.w
-    }
 }
 impl R {
     #[doc = "Bits 9:11 - Parity Type"]
     #[inline(always)]
     pub fn par(&self) -> PAR_R {
-        PAR_R::new(((self.bits >> 9) & 0x07) as u8)
+        PAR_R::new(((self.bits >> 9) & 7) as u8)
     }
     #[doc = "Bits 14:15 - Channel Mode"]
     #[inline(always)]
     pub fn chmode(&self) -> CHMODE_R {
-        CHMODE_R::new(((self.bits >> 14) & 0x03) as u8)
+        CHMODE_R::new(((self.bits >> 14) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 9:11 - Parity Type"]
     #[inline(always)]
-    pub fn par(&mut self) -> PAR_W {
-        PAR_W { w: self }
+    #[must_use]
+    pub fn par(&mut self) -> PAR_W<9> {
+        PAR_W::new(self)
     }
     #[doc = "Bits 14:15 - Channel Mode"]
     #[inline(always)]
-    pub fn chmode(&mut self) -> CHMODE_W {
-        CHMODE_W { w: self }
+    #[must_use]
+    pub fn chmode(&mut self) -> CHMODE_W<14> {
+        CHMODE_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mr](index.html) module"]
+pub struct MR_SPEC;
+impl crate::RegisterSpec for MR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mr::R](R) reader structure"]
+impl crate::Readable for MR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mr::W](W) writer structure"]
+impl crate::Writable for MR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets MR to value 0"]
+impl crate::Resettable for MR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

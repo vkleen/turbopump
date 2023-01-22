@@ -1,31 +1,47 @@
-#[doc = "Reader of register SMMR"]
-pub type R = crate::R<u32, super::SMMR>;
-#[doc = "Writer for register SMMR"]
-pub type W = crate::W<u32, super::SMMR>;
-#[doc = "Register SMMR `reset()`'s with value 0"]
-impl crate::ResetValue for super::SMMR {
-    type Type = u32;
+#[doc = "Register `SMMR` reader"]
+pub struct R(crate::R<SMMR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SMMR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `SMTH`"]
-pub type SMTH_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `SMTH`"]
-pub struct SMTH_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SMTH_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<SMMR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
-        self.w
+    fn from(reader: crate::R<SMMR_SPEC>) -> Self {
+        R(reader)
     }
 }
+#[doc = "Register `SMMR` writer"]
+pub struct W(crate::W<SMMR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SMMR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<SMMR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<SMMR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `SMTH` reader - Supply Monitor Threshold"]
+pub type SMTH_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `SMTH` writer - Supply Monitor Threshold"]
+pub type SMTH_W<'a, const O: u8> = crate::FieldWriter<'a, u32, SMMR_SPEC, u8, u8, 4, O>;
+#[doc = "Field `SMSMPL` reader - Supply Monitor Sampling Period"]
+pub type SMSMPL_R = crate::FieldReader<u8, SMSMPL_A>;
 #[doc = "Supply Monitor Sampling Period\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum SMSMPL_A {
     #[doc = "0: Supply Monitor disabled"]
@@ -45,20 +61,17 @@ impl From<SMSMPL_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `SMSMPL`"]
-pub type SMSMPL_R = crate::R<u8, SMSMPL_A>;
 impl SMSMPL_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, SMSMPL_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<SMSMPL_A> {
         match self.bits {
-            0 => Val(SMSMPL_A::SMD),
-            1 => Val(SMSMPL_A::CSM),
-            2 => Val(SMSMPL_A::_32SLCK),
-            3 => Val(SMSMPL_A::_256SLCK),
-            4 => Val(SMSMPL_A::_2048SLCK),
-            i => Res(i),
+            0 => Some(SMSMPL_A::SMD),
+            1 => Some(SMSMPL_A::CSM),
+            2 => Some(SMSMPL_A::_32SLCK),
+            3 => Some(SMSMPL_A::_256SLCK),
+            4 => Some(SMSMPL_A::_2048SLCK),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `SMD`"]
@@ -87,16 +100,9 @@ impl SMSMPL_R {
         *self == SMSMPL_A::_2048SLCK
     }
 }
-#[doc = "Write proxy for field `SMSMPL`"]
-pub struct SMSMPL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SMSMPL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SMSMPL_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `SMSMPL` writer - Supply Monitor Sampling Period"]
+pub type SMSMPL_W<'a, const O: u8> = crate::FieldWriter<'a, u32, SMMR_SPEC, u8, SMSMPL_A, 3, O>;
+impl<'a, const O: u8> SMSMPL_W<'a, O> {
     #[doc = "Supply Monitor disabled"]
     #[inline(always)]
     pub fn smd(self) -> &'a mut W {
@@ -122,15 +128,11 @@ impl<'a> SMSMPL_W<'a> {
     pub fn _2048slck(self) -> &'a mut W {
         self.variant(SMSMPL_A::_2048SLCK)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 8)) | (((value as u32) & 0x07) << 8);
-        self.w
-    }
 }
+#[doc = "Field `SMRSTEN` reader - Supply Monitor Reset Enable"]
+pub type SMRSTEN_R = crate::BitReader<SMRSTEN_A>;
 #[doc = "Supply Monitor Reset Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SMRSTEN_A {
     #[doc = "0: the core reset signal \"vddcore_nreset\" is not affected when a supply monitor detection occurs."]
     NOT_ENABLE = 0,
@@ -143,10 +145,8 @@ impl From<SMRSTEN_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SMRSTEN`"]
-pub type SMRSTEN_R = crate::R<bool, SMRSTEN_A>;
 impl SMRSTEN_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SMRSTEN_A {
         match self.bits {
@@ -165,18 +165,9 @@ impl SMRSTEN_R {
         *self == SMRSTEN_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `SMRSTEN`"]
-pub struct SMRSTEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SMRSTEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SMRSTEN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
-    }
+#[doc = "Field `SMRSTEN` writer - Supply Monitor Reset Enable"]
+pub type SMRSTEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, SMMR_SPEC, SMRSTEN_A, O>;
+impl<'a, const O: u8> SMRSTEN_W<'a, O> {
     #[doc = "the core reset signal \"vddcore_nreset\" is not affected when a supply monitor detection occurs."]
     #[inline(always)]
     pub fn not_enable(self) -> &'a mut W {
@@ -187,25 +178,11 @@ impl<'a> SMRSTEN_W<'a> {
     pub fn enable(self) -> &'a mut W {
         self.variant(SMRSTEN_A::ENABLE)
     }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 12)) | (((value as u32) & 0x01) << 12);
-        self.w
-    }
 }
+#[doc = "Field `SMIEN` reader - Supply Monitor Interrupt Enable"]
+pub type SMIEN_R = crate::BitReader<SMIEN_A>;
 #[doc = "Supply Monitor Interrupt Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SMIEN_A {
     #[doc = "0: the SUPC interrupt signal is not affected when a supply monitor detection occurs."]
     NOT_ENABLE = 0,
@@ -218,10 +195,8 @@ impl From<SMIEN_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SMIEN`"]
-pub type SMIEN_R = crate::R<bool, SMIEN_A>;
 impl SMIEN_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SMIEN_A {
         match self.bits {
@@ -240,18 +215,9 @@ impl SMIEN_R {
         *self == SMIEN_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `SMIEN`"]
-pub struct SMIEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SMIEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SMIEN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
-    }
+#[doc = "Field `SMIEN` writer - Supply Monitor Interrupt Enable"]
+pub type SMIEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, SMMR_SPEC, SMIEN_A, O>;
+impl<'a, const O: u8> SMIEN_W<'a, O> {
     #[doc = "the SUPC interrupt signal is not affected when a supply monitor detection occurs."]
     #[inline(always)]
     pub fn not_enable(self) -> &'a mut W {
@@ -261,22 +227,6 @@ impl<'a> SMIEN_W<'a> {
     #[inline(always)]
     pub fn enable(self) -> &'a mut W {
         self.variant(SMIEN_A::ENABLE)
-    }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 13)) | (((value as u32) & 0x01) << 13);
-        self.w
     }
 }
 impl R {
@@ -288,38 +238,67 @@ impl R {
     #[doc = "Bits 8:10 - Supply Monitor Sampling Period"]
     #[inline(always)]
     pub fn smsmpl(&self) -> SMSMPL_R {
-        SMSMPL_R::new(((self.bits >> 8) & 0x07) as u8)
+        SMSMPL_R::new(((self.bits >> 8) & 7) as u8)
     }
     #[doc = "Bit 12 - Supply Monitor Reset Enable"]
     #[inline(always)]
     pub fn smrsten(&self) -> SMRSTEN_R {
-        SMRSTEN_R::new(((self.bits >> 12) & 0x01) != 0)
+        SMRSTEN_R::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 13 - Supply Monitor Interrupt Enable"]
     #[inline(always)]
     pub fn smien(&self) -> SMIEN_R {
-        SMIEN_R::new(((self.bits >> 13) & 0x01) != 0)
+        SMIEN_R::new(((self.bits >> 13) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Supply Monitor Threshold"]
     #[inline(always)]
-    pub fn smth(&mut self) -> SMTH_W {
-        SMTH_W { w: self }
+    #[must_use]
+    pub fn smth(&mut self) -> SMTH_W<0> {
+        SMTH_W::new(self)
     }
     #[doc = "Bits 8:10 - Supply Monitor Sampling Period"]
     #[inline(always)]
-    pub fn smsmpl(&mut self) -> SMSMPL_W {
-        SMSMPL_W { w: self }
+    #[must_use]
+    pub fn smsmpl(&mut self) -> SMSMPL_W<8> {
+        SMSMPL_W::new(self)
     }
     #[doc = "Bit 12 - Supply Monitor Reset Enable"]
     #[inline(always)]
-    pub fn smrsten(&mut self) -> SMRSTEN_W {
-        SMRSTEN_W { w: self }
+    #[must_use]
+    pub fn smrsten(&mut self) -> SMRSTEN_W<12> {
+        SMRSTEN_W::new(self)
     }
     #[doc = "Bit 13 - Supply Monitor Interrupt Enable"]
     #[inline(always)]
-    pub fn smien(&mut self) -> SMIEN_W {
-        SMIEN_W { w: self }
+    #[must_use]
+    pub fn smien(&mut self) -> SMIEN_W<13> {
+        SMIEN_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Supply Controller Supply Monitor Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [smmr](index.html) module"]
+pub struct SMMR_SPEC;
+impl crate::RegisterSpec for SMMR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [smmr::R](R) reader structure"]
+impl crate::Readable for SMMR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [smmr::W](W) writer structure"]
+impl crate::Writable for SMMR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets SMMR to value 0"]
+impl crate::Resettable for SMMR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

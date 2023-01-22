@@ -1,99 +1,63 @@
-#[doc = "Reader of register MAN"]
-pub type R = crate::R<u32, super::MAN>;
-#[doc = "Writer for register MAN"]
-pub type W = crate::W<u32, super::MAN>;
-#[doc = "Register MAN `reset()`'s with value 0"]
-impl crate::ResetValue for super::MAN {
-    type Type = u32;
+#[doc = "Register `MAN` reader"]
+pub struct R(crate::R<MAN_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MAN_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `DATA`"]
-pub type DATA_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `DATA`"]
-pub struct DATA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DATA_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<MAN_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xffff) | ((value as u32) & 0xffff);
-        self.w
+    fn from(reader: crate::R<MAN_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `CODE`"]
-pub type CODE_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CODE`"]
-pub struct CODE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CODE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Register `MAN` writer"]
+pub struct W(crate::W<MAN_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MAN_SPEC>;
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | (((value as u32) & 0x03) << 16);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `REGA`"]
-pub type REGA_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `REGA`"]
-pub struct REGA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> REGA_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 18)) | (((value as u32) & 0x1f) << 18);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Reader of field `PHYA`"]
-pub type PHYA_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `PHYA`"]
-pub struct PHYA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PHYA_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::W<MAN_SPEC>> for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 23)) | (((value as u32) & 0x1f) << 23);
-        self.w
+    fn from(writer: crate::W<MAN_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Reader of field `RW`"]
-pub type RW_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `RW`"]
-pub struct RW_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RW_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 28)) | (((value as u32) & 0x03) << 28);
-        self.w
-    }
-}
-#[doc = "Reader of field `SOF`"]
-pub type SOF_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `SOF`"]
-pub struct SOF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SOF_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 30)) | (((value as u32) & 0x03) << 30);
-        self.w
-    }
-}
+#[doc = "Field `DATA` reader - "]
+pub type DATA_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `DATA` writer - "]
+pub type DATA_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MAN_SPEC, u16, u16, 16, O>;
+#[doc = "Field `CODE` reader - "]
+pub type CODE_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `CODE` writer - "]
+pub type CODE_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MAN_SPEC, u8, u8, 2, O>;
+#[doc = "Field `REGA` reader - Register Address"]
+pub type REGA_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `REGA` writer - Register Address"]
+pub type REGA_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MAN_SPEC, u8, u8, 5, O>;
+#[doc = "Field `PHYA` reader - PHY Address"]
+pub type PHYA_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `PHYA` writer - PHY Address"]
+pub type PHYA_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MAN_SPEC, u8, u8, 5, O>;
+#[doc = "Field `RW` reader - Read-write"]
+pub type RW_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `RW` writer - Read-write"]
+pub type RW_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MAN_SPEC, u8, u8, 2, O>;
+#[doc = "Field `SOF` reader - Start of frame"]
+pub type SOF_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `SOF` writer - Start of frame"]
+pub type SOF_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MAN_SPEC, u8, u8, 2, O>;
 impl R {
     #[doc = "Bits 0:15"]
     #[inline(always)]
@@ -103,7 +67,7 @@ impl R {
     #[doc = "Bits 16:17"]
     #[inline(always)]
     pub fn code(&self) -> CODE_R {
-        CODE_R::new(((self.bits >> 16) & 0x03) as u8)
+        CODE_R::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bits 18:22 - Register Address"]
     #[inline(always)]
@@ -118,43 +82,74 @@ impl R {
     #[doc = "Bits 28:29 - Read-write"]
     #[inline(always)]
     pub fn rw(&self) -> RW_R {
-        RW_R::new(((self.bits >> 28) & 0x03) as u8)
+        RW_R::new(((self.bits >> 28) & 3) as u8)
     }
     #[doc = "Bits 30:31 - Start of frame"]
     #[inline(always)]
     pub fn sof(&self) -> SOF_R {
-        SOF_R::new(((self.bits >> 30) & 0x03) as u8)
+        SOF_R::new(((self.bits >> 30) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:15"]
     #[inline(always)]
-    pub fn data(&mut self) -> DATA_W {
-        DATA_W { w: self }
+    #[must_use]
+    pub fn data(&mut self) -> DATA_W<0> {
+        DATA_W::new(self)
     }
     #[doc = "Bits 16:17"]
     #[inline(always)]
-    pub fn code(&mut self) -> CODE_W {
-        CODE_W { w: self }
+    #[must_use]
+    pub fn code(&mut self) -> CODE_W<16> {
+        CODE_W::new(self)
     }
     #[doc = "Bits 18:22 - Register Address"]
     #[inline(always)]
-    pub fn rega(&mut self) -> REGA_W {
-        REGA_W { w: self }
+    #[must_use]
+    pub fn rega(&mut self) -> REGA_W<18> {
+        REGA_W::new(self)
     }
     #[doc = "Bits 23:27 - PHY Address"]
     #[inline(always)]
-    pub fn phya(&mut self) -> PHYA_W {
-        PHYA_W { w: self }
+    #[must_use]
+    pub fn phya(&mut self) -> PHYA_W<23> {
+        PHYA_W::new(self)
     }
     #[doc = "Bits 28:29 - Read-write"]
     #[inline(always)]
-    pub fn rw(&mut self) -> RW_W {
-        RW_W { w: self }
+    #[must_use]
+    pub fn rw(&mut self) -> RW_W<28> {
+        RW_W::new(self)
     }
     #[doc = "Bits 30:31 - Start of frame"]
     #[inline(always)]
-    pub fn sof(&mut self) -> SOF_W {
-        SOF_W { w: self }
+    #[must_use]
+    pub fn sof(&mut self) -> SOF_W<30> {
+        SOF_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Phy Maintenance Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [man](index.html) module"]
+pub struct MAN_SPEC;
+impl crate::RegisterSpec for MAN_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [man::R](R) reader structure"]
+impl crate::Readable for MAN_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [man::W](W) writer structure"]
+impl crate::Writable for MAN_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets MAN to value 0"]
+impl crate::Resettable for MAN_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

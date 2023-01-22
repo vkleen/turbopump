@@ -1,220 +1,104 @@
-#[doc = "Writer for register DEVEPTICR[%s]"]
-pub type W = crate::W<u32, super::DEVEPTICR>;
-#[doc = "Write proxy for field `TXINIC`"]
-pub struct TXINIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TXINIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `DEVEPTICR[%s]` writer"]
+pub struct W(crate::W<DEVEPTICR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DEVEPTICR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Write proxy for field `RXOUTIC`"]
-pub struct RXOUTIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXOUTIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Write proxy for field `RXSTPIC`"]
-pub struct RXSTPIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXSTPIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<DEVEPTICR_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
-        self.w
+    fn from(writer: crate::W<DEVEPTICR_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Write proxy for field `NAKOUTIC`"]
-pub struct NAKOUTIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NAKOUTIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `NAKINIC`"]
-pub struct NAKINIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NAKINIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `OVERFIC`"]
-pub struct OVERFIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OVERFIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `STALLEDIC`"]
-pub struct STALLEDIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> STALLEDIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `SHORTPACKETC`"]
-pub struct SHORTPACKETC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SHORTPACKETC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
-        self.w
-    }
-}
+#[doc = "Field `TXINIC` writer - Transmitted IN Data Interrupt Clear"]
+pub type TXINIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVEPTICR_SPEC, bool, O>;
+#[doc = "Field `RXOUTIC` writer - Received OUT Data Interrupt Clear"]
+pub type RXOUTIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVEPTICR_SPEC, bool, O>;
+#[doc = "Field `RXSTPIC` writer - Received SETUP Interrupt Clear"]
+pub type RXSTPIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVEPTICR_SPEC, bool, O>;
+#[doc = "Field `NAKOUTIC` writer - NAKed OUT Interrupt Clear"]
+pub type NAKOUTIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVEPTICR_SPEC, bool, O>;
+#[doc = "Field `NAKINIC` writer - NAKed IN Interrupt Clear"]
+pub type NAKINIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVEPTICR_SPEC, bool, O>;
+#[doc = "Field `OVERFIC` writer - Overflow Interrupt Clear"]
+pub type OVERFIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVEPTICR_SPEC, bool, O>;
+#[doc = "Field `STALLEDIC` writer - STALLed Interrupt Clear"]
+pub type STALLEDIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVEPTICR_SPEC, bool, O>;
+#[doc = "Field `SHORTPACKETC` writer - Short Packet Interrupt Clear"]
+pub type SHORTPACKETC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVEPTICR_SPEC, bool, O>;
 impl W {
     #[doc = "Bit 0 - Transmitted IN Data Interrupt Clear"]
     #[inline(always)]
-    pub fn txinic(&mut self) -> TXINIC_W {
-        TXINIC_W { w: self }
+    #[must_use]
+    pub fn txinic(&mut self) -> TXINIC_W<0> {
+        TXINIC_W::new(self)
     }
     #[doc = "Bit 1 - Received OUT Data Interrupt Clear"]
     #[inline(always)]
-    pub fn rxoutic(&mut self) -> RXOUTIC_W {
-        RXOUTIC_W { w: self }
+    #[must_use]
+    pub fn rxoutic(&mut self) -> RXOUTIC_W<1> {
+        RXOUTIC_W::new(self)
     }
     #[doc = "Bit 2 - Received SETUP Interrupt Clear"]
     #[inline(always)]
-    pub fn rxstpic(&mut self) -> RXSTPIC_W {
-        RXSTPIC_W { w: self }
+    #[must_use]
+    pub fn rxstpic(&mut self) -> RXSTPIC_W<2> {
+        RXSTPIC_W::new(self)
     }
     #[doc = "Bit 3 - NAKed OUT Interrupt Clear"]
     #[inline(always)]
-    pub fn nakoutic(&mut self) -> NAKOUTIC_W {
-        NAKOUTIC_W { w: self }
+    #[must_use]
+    pub fn nakoutic(&mut self) -> NAKOUTIC_W<3> {
+        NAKOUTIC_W::new(self)
     }
     #[doc = "Bit 4 - NAKed IN Interrupt Clear"]
     #[inline(always)]
-    pub fn nakinic(&mut self) -> NAKINIC_W {
-        NAKINIC_W { w: self }
+    #[must_use]
+    pub fn nakinic(&mut self) -> NAKINIC_W<4> {
+        NAKINIC_W::new(self)
     }
     #[doc = "Bit 5 - Overflow Interrupt Clear"]
     #[inline(always)]
-    pub fn overfic(&mut self) -> OVERFIC_W {
-        OVERFIC_W { w: self }
+    #[must_use]
+    pub fn overfic(&mut self) -> OVERFIC_W<5> {
+        OVERFIC_W::new(self)
     }
     #[doc = "Bit 6 - STALLed Interrupt Clear"]
     #[inline(always)]
-    pub fn stalledic(&mut self) -> STALLEDIC_W {
-        STALLEDIC_W { w: self }
+    #[must_use]
+    pub fn stalledic(&mut self) -> STALLEDIC_W<6> {
+        STALLEDIC_W::new(self)
     }
     #[doc = "Bit 7 - Short Packet Interrupt Clear"]
     #[inline(always)]
-    pub fn shortpacketc(&mut self) -> SHORTPACKETC_W {
-        SHORTPACKETC_W { w: self }
+    #[must_use]
+    pub fn shortpacketc(&mut self) -> SHORTPACKETC_W<7> {
+        SHORTPACKETC_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Device Endpoint Clear Register (n = 0)\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [devepticr](index.html) module"]
+pub struct DEVEPTICR_SPEC;
+impl crate::RegisterSpec for DEVEPTICR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [devepticr::W](W) writer structure"]
+impl crate::Writable for DEVEPTICR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

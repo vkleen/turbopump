@@ -1,82 +1,72 @@
-#[doc = "Writer for register CMPMUPD3"]
-pub type W = crate::W<u32, super::CMPMUPD3>;
-#[doc = "Write proxy for field `CENUPD`"]
-pub struct CENUPD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CENUPD_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `CMPMUPD3` writer"]
+pub struct W(crate::W<CMPMUPD3_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CMPMUPD3_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Write proxy for field `CTRUPD`"]
-pub struct CTRUPD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CTRUPD_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 4)) | (((value as u32) & 0x0f) << 4);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Write proxy for field `CPRUPD`"]
-pub struct CPRUPD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CPRUPD_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::W<CMPMUPD3_SPEC>> for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
-        self.w
+    fn from(writer: crate::W<CMPMUPD3_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Write proxy for field `CUPRUPD`"]
-pub struct CUPRUPD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CUPRUPD_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
-        self.w
-    }
-}
+#[doc = "Field `CENUPD` writer - Comparison x Enable Update"]
+pub type CENUPD_W<'a, const O: u8> = crate::BitWriter<'a, u32, CMPMUPD3_SPEC, bool, O>;
+#[doc = "Field `CTRUPD` writer - Comparison x Trigger Update"]
+pub type CTRUPD_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CMPMUPD3_SPEC, u8, u8, 4, O>;
+#[doc = "Field `CPRUPD` writer - Comparison x Period Update"]
+pub type CPRUPD_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CMPMUPD3_SPEC, u8, u8, 4, O>;
+#[doc = "Field `CUPRUPD` writer - Comparison x Update Period Update"]
+pub type CUPRUPD_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CMPMUPD3_SPEC, u8, u8, 4, O>;
 impl W {
     #[doc = "Bit 0 - Comparison x Enable Update"]
     #[inline(always)]
-    pub fn cenupd(&mut self) -> CENUPD_W {
-        CENUPD_W { w: self }
+    #[must_use]
+    pub fn cenupd(&mut self) -> CENUPD_W<0> {
+        CENUPD_W::new(self)
     }
     #[doc = "Bits 4:7 - Comparison x Trigger Update"]
     #[inline(always)]
-    pub fn ctrupd(&mut self) -> CTRUPD_W {
-        CTRUPD_W { w: self }
+    #[must_use]
+    pub fn ctrupd(&mut self) -> CTRUPD_W<4> {
+        CTRUPD_W::new(self)
     }
     #[doc = "Bits 8:11 - Comparison x Period Update"]
     #[inline(always)]
-    pub fn cprupd(&mut self) -> CPRUPD_W {
-        CPRUPD_W { w: self }
+    #[must_use]
+    pub fn cprupd(&mut self) -> CPRUPD_W<8> {
+        CPRUPD_W::new(self)
     }
     #[doc = "Bits 16:19 - Comparison x Update Period Update"]
     #[inline(always)]
-    pub fn cuprupd(&mut self) -> CUPRUPD_W {
-        CUPRUPD_W { w: self }
+    #[must_use]
+    pub fn cuprupd(&mut self) -> CUPRUPD_W<16> {
+        CUPRUPD_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Comparison 3 Mode Update Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cmpmupd3](index.html) module"]
+pub struct CMPMUPD3_SPEC;
+impl crate::RegisterSpec for CMPMUPD3_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [cmpmupd3::W](W) writer structure"]
+impl crate::Writable for CMPMUPD3_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

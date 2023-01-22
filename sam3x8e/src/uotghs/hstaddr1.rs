@@ -1,71 +1,55 @@
-#[doc = "Reader of register HSTADDR1"]
-pub type R = crate::R<u32, super::HSTADDR1>;
-#[doc = "Writer for register HSTADDR1"]
-pub type W = crate::W<u32, super::HSTADDR1>;
-#[doc = "Register HSTADDR1 `reset()`'s with value 0"]
-impl crate::ResetValue for super::HSTADDR1 {
-    type Type = u32;
+#[doc = "Register `HSTADDR1` reader"]
+pub struct R(crate::R<HSTADDR1_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<HSTADDR1_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `HSTADDRP0`"]
-pub type HSTADDRP0_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `HSTADDRP0`"]
-pub struct HSTADDRP0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HSTADDRP0_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<HSTADDR1_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x7f) | ((value as u32) & 0x7f);
-        self.w
+    fn from(reader: crate::R<HSTADDR1_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `HSTADDRP1`"]
-pub type HSTADDRP1_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `HSTADDRP1`"]
-pub struct HSTADDRP1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HSTADDRP1_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Register `HSTADDR1` writer"]
+pub struct W(crate::W<HSTADDR1_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<HSTADDR1_SPEC>;
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x7f << 8)) | (((value as u32) & 0x7f) << 8);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `HSTADDRP2`"]
-pub type HSTADDRP2_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `HSTADDRP2`"]
-pub struct HSTADDRP2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HSTADDRP2_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x7f << 16)) | (((value as u32) & 0x7f) << 16);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Reader of field `HSTADDRP3`"]
-pub type HSTADDRP3_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `HSTADDRP3`"]
-pub struct HSTADDRP3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HSTADDRP3_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::W<HSTADDR1_SPEC>> for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x7f << 24)) | (((value as u32) & 0x7f) << 24);
-        self.w
+    fn from(writer: crate::W<HSTADDR1_SPEC>) -> Self {
+        W(writer)
     }
 }
+#[doc = "Field `HSTADDRP0` reader - USB Host Address"]
+pub type HSTADDRP0_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `HSTADDRP0` writer - USB Host Address"]
+pub type HSTADDRP0_W<'a, const O: u8> = crate::FieldWriter<'a, u32, HSTADDR1_SPEC, u8, u8, 7, O>;
+#[doc = "Field `HSTADDRP1` reader - USB Host Address"]
+pub type HSTADDRP1_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `HSTADDRP1` writer - USB Host Address"]
+pub type HSTADDRP1_W<'a, const O: u8> = crate::FieldWriter<'a, u32, HSTADDR1_SPEC, u8, u8, 7, O>;
+#[doc = "Field `HSTADDRP2` reader - USB Host Address"]
+pub type HSTADDRP2_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `HSTADDRP2` writer - USB Host Address"]
+pub type HSTADDRP2_W<'a, const O: u8> = crate::FieldWriter<'a, u32, HSTADDR1_SPEC, u8, u8, 7, O>;
+#[doc = "Field `HSTADDRP3` reader - USB Host Address"]
+pub type HSTADDRP3_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `HSTADDRP3` writer - USB Host Address"]
+pub type HSTADDRP3_W<'a, const O: u8> = crate::FieldWriter<'a, u32, HSTADDR1_SPEC, u8, u8, 7, O>;
 impl R {
     #[doc = "Bits 0:6 - USB Host Address"]
     #[inline(always)]
@@ -91,22 +75,51 @@ impl R {
 impl W {
     #[doc = "Bits 0:6 - USB Host Address"]
     #[inline(always)]
-    pub fn hstaddrp0(&mut self) -> HSTADDRP0_W {
-        HSTADDRP0_W { w: self }
+    #[must_use]
+    pub fn hstaddrp0(&mut self) -> HSTADDRP0_W<0> {
+        HSTADDRP0_W::new(self)
     }
     #[doc = "Bits 8:14 - USB Host Address"]
     #[inline(always)]
-    pub fn hstaddrp1(&mut self) -> HSTADDRP1_W {
-        HSTADDRP1_W { w: self }
+    #[must_use]
+    pub fn hstaddrp1(&mut self) -> HSTADDRP1_W<8> {
+        HSTADDRP1_W::new(self)
     }
     #[doc = "Bits 16:22 - USB Host Address"]
     #[inline(always)]
-    pub fn hstaddrp2(&mut self) -> HSTADDRP2_W {
-        HSTADDRP2_W { w: self }
+    #[must_use]
+    pub fn hstaddrp2(&mut self) -> HSTADDRP2_W<16> {
+        HSTADDRP2_W::new(self)
     }
     #[doc = "Bits 24:30 - USB Host Address"]
     #[inline(always)]
-    pub fn hstaddrp3(&mut self) -> HSTADDRP3_W {
-        HSTADDRP3_W { w: self }
+    #[must_use]
+    pub fn hstaddrp3(&mut self) -> HSTADDRP3_W<24> {
+        HSTADDRP3_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Host Address 1 Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hstaddr1](index.html) module"]
+pub struct HSTADDR1_SPEC;
+impl crate::RegisterSpec for HSTADDR1_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [hstaddr1::R](R) reader structure"]
+impl crate::Readable for HSTADDR1_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [hstaddr1::W](W) writer structure"]
+impl crate::Writable for HSTADDR1_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets HSTADDR1 to value 0"]
+impl crate::Resettable for HSTADDR1_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

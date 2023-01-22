@@ -1,79 +1,55 @@
-#[doc = "Reader of register MR"]
-pub type R = crate::R<u32, super::MR>;
-#[doc = "Writer for register MR"]
-pub type W = crate::W<u32, super::MR>;
-#[doc = "Register MR `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::MR {
-    type Type = u32;
+#[doc = "Register `MR` reader"]
+pub struct R(crate::R<MR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `URSTEN`"]
-pub type URSTEN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `URSTEN`"]
-pub struct URSTEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> URSTEN_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::R<MR_SPEC>> for R {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn from(reader: crate::R<MR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `URSTIEN`"]
-pub type URSTIEN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `URSTIEN`"]
-pub struct URSTIEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> URSTIEN_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `MR` writer"]
+pub struct W(crate::W<MR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `ERSTL`"]
-pub type ERSTL_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `ERSTL`"]
-pub struct ERSTL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ERSTL_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
+impl From<crate::W<MR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<MR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `URSTEN` reader - User Reset Enable"]
+pub type URSTEN_R = crate::BitReader<bool>;
+#[doc = "Field `URSTEN` writer - User Reset Enable"]
+pub type URSTEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, MR_SPEC, bool, O>;
+#[doc = "Field `URSTIEN` reader - User Reset Interrupt Enable"]
+pub type URSTIEN_R = crate::BitReader<bool>;
+#[doc = "Field `URSTIEN` writer - User Reset Interrupt Enable"]
+pub type URSTIEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, MR_SPEC, bool, O>;
+#[doc = "Field `ERSTL` reader - External Reset Length"]
+pub type ERSTL_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `ERSTL` writer - External Reset Length"]
+pub type ERSTL_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MR_SPEC, u8, u8, 4, O>;
+#[doc = "Field `KEY` reader - Write Access Password"]
+pub type KEY_R = crate::FieldReader<u8, KEY_A>;
 #[doc = "Write Access Password\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum KEY_A {
     #[doc = "165: Writing any other value in this field aborts the write operation.Always reads as 0."]
@@ -85,16 +61,13 @@ impl From<KEY_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `KEY`"]
-pub type KEY_R = crate::R<u8, KEY_A>;
 impl KEY_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, KEY_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<KEY_A> {
         match self.bits {
-            165 => Val(KEY_A::PASSWD),
-            i => Res(i),
+            165 => Some(KEY_A::PASSWD),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `PASSWD`"]
@@ -103,38 +76,25 @@ impl KEY_R {
         *self == KEY_A::PASSWD
     }
 }
-#[doc = "Write proxy for field `KEY`"]
-pub struct KEY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> KEY_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: KEY_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `KEY` writer - Write Access Password"]
+pub type KEY_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MR_SPEC, u8, KEY_A, 8, O>;
+impl<'a, const O: u8> KEY_W<'a, O> {
     #[doc = "Writing any other value in this field aborts the write operation.Always reads as 0."]
     #[inline(always)]
     pub fn passwd(self) -> &'a mut W {
         self.variant(KEY_A::PASSWD)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xff << 24)) | (((value as u32) & 0xff) << 24);
-        self.w
     }
 }
 impl R {
     #[doc = "Bit 0 - User Reset Enable"]
     #[inline(always)]
     pub fn ursten(&self) -> URSTEN_R {
-        URSTEN_R::new((self.bits & 0x01) != 0)
+        URSTEN_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 4 - User Reset Interrupt Enable"]
     #[inline(always)]
     pub fn urstien(&self) -> URSTIEN_R {
-        URSTIEN_R::new(((self.bits >> 4) & 0x01) != 0)
+        URSTIEN_R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bits 8:11 - External Reset Length"]
     #[inline(always)]
@@ -150,22 +110,51 @@ impl R {
 impl W {
     #[doc = "Bit 0 - User Reset Enable"]
     #[inline(always)]
-    pub fn ursten(&mut self) -> URSTEN_W {
-        URSTEN_W { w: self }
+    #[must_use]
+    pub fn ursten(&mut self) -> URSTEN_W<0> {
+        URSTEN_W::new(self)
     }
     #[doc = "Bit 4 - User Reset Interrupt Enable"]
     #[inline(always)]
-    pub fn urstien(&mut self) -> URSTIEN_W {
-        URSTIEN_W { w: self }
+    #[must_use]
+    pub fn urstien(&mut self) -> URSTIEN_W<4> {
+        URSTIEN_W::new(self)
     }
     #[doc = "Bits 8:11 - External Reset Length"]
     #[inline(always)]
-    pub fn erstl(&mut self) -> ERSTL_W {
-        ERSTL_W { w: self }
+    #[must_use]
+    pub fn erstl(&mut self) -> ERSTL_W<8> {
+        ERSTL_W::new(self)
     }
     #[doc = "Bits 24:31 - Write Access Password"]
     #[inline(always)]
-    pub fn key(&mut self) -> KEY_W {
-        KEY_W { w: self }
+    #[must_use]
+    pub fn key(&mut self) -> KEY_W<24> {
+        KEY_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mr](index.html) module"]
+pub struct MR_SPEC;
+impl crate::RegisterSpec for MR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mr::R](R) reader structure"]
+impl crate::Readable for MR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mr::W](W) writer structure"]
+impl crate::Writable for MR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets MR to value 0x01"]
+impl crate::Resettable for MR_SPEC {
+    const RESET_VALUE: Self::Ux = 0x01;
 }

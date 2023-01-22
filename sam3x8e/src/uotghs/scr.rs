@@ -1,247 +1,112 @@
-#[doc = "Writer for register SCR"]
-pub type W = crate::W<u32, super::SCR>;
-#[doc = "Write proxy for field `IDTIC`"]
-pub struct IDTIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> IDTIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `SCR` writer"]
+pub struct W(crate::W<SCR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SCR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Write proxy for field `VBUSTIC`"]
-pub struct VBUSTIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VBUSTIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Write proxy for field `SRPIC`"]
-pub struct SRPIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRPIC_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<SCR_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
-        self.w
+    fn from(writer: crate::W<SCR_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Write proxy for field `VBERRIC`"]
-pub struct VBERRIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VBERRIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `BCERRIC`"]
-pub struct BCERRIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> BCERRIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `ROLEEXIC`"]
-pub struct ROLEEXIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ROLEEXIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `HNPERRIC`"]
-pub struct HNPERRIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HNPERRIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `STOIC`"]
-pub struct STOIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> STOIC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `VBUSRQC`"]
-pub struct VBUSRQC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VBUSRQC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | (((value as u32) & 0x01) << 9);
-        self.w
-    }
-}
+#[doc = "Field `IDTIC` writer - ID Transition Interrupt Clear"]
+pub type IDTIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
+#[doc = "Field `VBUSTIC` writer - VBus Transition Interrupt Clear"]
+pub type VBUSTIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
+#[doc = "Field `SRPIC` writer - SRP Interrupt Clear"]
+pub type SRPIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
+#[doc = "Field `VBERRIC` writer - VBus Error Interrupt Clear"]
+pub type VBERRIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
+#[doc = "Field `BCERRIC` writer - B-Connection Error Interrupt Clear"]
+pub type BCERRIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
+#[doc = "Field `ROLEEXIC` writer - Role Exchange Interrupt Clear"]
+pub type ROLEEXIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
+#[doc = "Field `HNPERRIC` writer - HNP Error Interrupt Clear"]
+pub type HNPERRIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
+#[doc = "Field `STOIC` writer - Suspend Time-Out Interrupt Clear"]
+pub type STOIC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
+#[doc = "Field `VBUSRQC` writer - VBus Request Clear"]
+pub type VBUSRQC_W<'a, const O: u8> = crate::BitWriter<'a, u32, SCR_SPEC, bool, O>;
 impl W {
     #[doc = "Bit 0 - ID Transition Interrupt Clear"]
     #[inline(always)]
-    pub fn idtic(&mut self) -> IDTIC_W {
-        IDTIC_W { w: self }
+    #[must_use]
+    pub fn idtic(&mut self) -> IDTIC_W<0> {
+        IDTIC_W::new(self)
     }
     #[doc = "Bit 1 - VBus Transition Interrupt Clear"]
     #[inline(always)]
-    pub fn vbustic(&mut self) -> VBUSTIC_W {
-        VBUSTIC_W { w: self }
+    #[must_use]
+    pub fn vbustic(&mut self) -> VBUSTIC_W<1> {
+        VBUSTIC_W::new(self)
     }
     #[doc = "Bit 2 - SRP Interrupt Clear"]
     #[inline(always)]
-    pub fn srpic(&mut self) -> SRPIC_W {
-        SRPIC_W { w: self }
+    #[must_use]
+    pub fn srpic(&mut self) -> SRPIC_W<2> {
+        SRPIC_W::new(self)
     }
     #[doc = "Bit 3 - VBus Error Interrupt Clear"]
     #[inline(always)]
-    pub fn vberric(&mut self) -> VBERRIC_W {
-        VBERRIC_W { w: self }
+    #[must_use]
+    pub fn vberric(&mut self) -> VBERRIC_W<3> {
+        VBERRIC_W::new(self)
     }
     #[doc = "Bit 4 - B-Connection Error Interrupt Clear"]
     #[inline(always)]
-    pub fn bcerric(&mut self) -> BCERRIC_W {
-        BCERRIC_W { w: self }
+    #[must_use]
+    pub fn bcerric(&mut self) -> BCERRIC_W<4> {
+        BCERRIC_W::new(self)
     }
     #[doc = "Bit 5 - Role Exchange Interrupt Clear"]
     #[inline(always)]
-    pub fn roleexic(&mut self) -> ROLEEXIC_W {
-        ROLEEXIC_W { w: self }
+    #[must_use]
+    pub fn roleexic(&mut self) -> ROLEEXIC_W<5> {
+        ROLEEXIC_W::new(self)
     }
     #[doc = "Bit 6 - HNP Error Interrupt Clear"]
     #[inline(always)]
-    pub fn hnperric(&mut self) -> HNPERRIC_W {
-        HNPERRIC_W { w: self }
+    #[must_use]
+    pub fn hnperric(&mut self) -> HNPERRIC_W<6> {
+        HNPERRIC_W::new(self)
     }
     #[doc = "Bit 7 - Suspend Time-Out Interrupt Clear"]
     #[inline(always)]
-    pub fn stoic(&mut self) -> STOIC_W {
-        STOIC_W { w: self }
+    #[must_use]
+    pub fn stoic(&mut self) -> STOIC_W<7> {
+        STOIC_W::new(self)
     }
     #[doc = "Bit 9 - VBus Request Clear"]
     #[inline(always)]
-    pub fn vbusrqc(&mut self) -> VBUSRQC_W {
-        VBUSRQC_W { w: self }
+    #[must_use]
+    pub fn vbusrqc(&mut self) -> VBUSRQC_W<9> {
+        VBUSRQC_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "General Status Clear Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [scr](index.html) module"]
+pub struct SCR_SPEC;
+impl crate::RegisterSpec for SCR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [scr::W](W) writer structure"]
+impl crate::Writable for SCR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

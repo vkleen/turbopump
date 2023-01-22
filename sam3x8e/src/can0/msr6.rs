@@ -1,17 +1,30 @@
-#[doc = "Reader of register MSR6"]
-pub type R = crate::R<u32, super::MSR6>;
-#[doc = "Reader of field `MTIMESTAMP`"]
-pub type MTIMESTAMP_R = crate::R<u16, u16>;
-#[doc = "Reader of field `MDLC`"]
-pub type MDLC_R = crate::R<u8, u8>;
-#[doc = "Reader of field `MRTR`"]
-pub type MRTR_R = crate::R<bool, bool>;
-#[doc = "Reader of field `MABT`"]
-pub type MABT_R = crate::R<bool, bool>;
-#[doc = "Reader of field `MRDY`"]
-pub type MRDY_R = crate::R<bool, bool>;
-#[doc = "Reader of field `MMI`"]
-pub type MMI_R = crate::R<bool, bool>;
+#[doc = "Register `MSR6` reader"]
+pub struct R(crate::R<MSR6_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MSR6_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl From<crate::R<MSR6_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<MSR6_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Field `MTIMESTAMP` reader - Timer value"]
+pub type MTIMESTAMP_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `MDLC` reader - Mailbox Data Length Code"]
+pub type MDLC_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `MRTR` reader - Mailbox Remote Transmission Request"]
+pub type MRTR_R = crate::BitReader<bool>;
+#[doc = "Field `MABT` reader - Mailbox Message Abort"]
+pub type MABT_R = crate::BitReader<bool>;
+#[doc = "Field `MRDY` reader - Mailbox Ready"]
+pub type MRDY_R = crate::BitReader<bool>;
+#[doc = "Field `MMI` reader - Mailbox Message Ignored"]
+pub type MMI_R = crate::BitReader<bool>;
 impl R {
     #[doc = "Bits 0:15 - Timer value"]
     #[inline(always)]
@@ -26,21 +39,34 @@ impl R {
     #[doc = "Bit 20 - Mailbox Remote Transmission Request"]
     #[inline(always)]
     pub fn mrtr(&self) -> MRTR_R {
-        MRTR_R::new(((self.bits >> 20) & 0x01) != 0)
+        MRTR_R::new(((self.bits >> 20) & 1) != 0)
     }
     #[doc = "Bit 22 - Mailbox Message Abort"]
     #[inline(always)]
     pub fn mabt(&self) -> MABT_R {
-        MABT_R::new(((self.bits >> 22) & 0x01) != 0)
+        MABT_R::new(((self.bits >> 22) & 1) != 0)
     }
     #[doc = "Bit 23 - Mailbox Ready"]
     #[inline(always)]
     pub fn mrdy(&self) -> MRDY_R {
-        MRDY_R::new(((self.bits >> 23) & 0x01) != 0)
+        MRDY_R::new(((self.bits >> 23) & 1) != 0)
     }
     #[doc = "Bit 24 - Mailbox Message Ignored"]
     #[inline(always)]
     pub fn mmi(&self) -> MMI_R {
-        MMI_R::new(((self.bits >> 24) & 0x01) != 0)
+        MMI_R::new(((self.bits >> 24) & 1) != 0)
     }
+}
+#[doc = "Mailbox Status Register (MB = 6)\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [msr6](index.html) module"]
+pub struct MSR6_SPEC;
+impl crate::RegisterSpec for MSR6_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [msr6::R](R) reader structure"]
+impl crate::Readable for MSR6_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets MSR6 to value 0"]
+impl crate::Resettable for MSR6_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

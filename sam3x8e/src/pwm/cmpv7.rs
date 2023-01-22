@@ -1,74 +1,95 @@
-#[doc = "Reader of register CMPV7"]
-pub type R = crate::R<u32, super::CMPV7>;
-#[doc = "Writer for register CMPV7"]
-pub type W = crate::W<u32, super::CMPV7>;
-#[doc = "Register CMPV7 `reset()`'s with value 0"]
-impl crate::ResetValue for super::CMPV7 {
-    type Type = u32;
+#[doc = "Register `CMPV7` reader"]
+pub struct R(crate::R<CMPV7_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CMPV7_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CV`"]
-pub type CV_R = crate::R<u32, u32>;
-#[doc = "Write proxy for field `CV`"]
-pub struct CV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CV_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<CMPV7_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x00ff_ffff) | ((value as u32) & 0x00ff_ffff);
-        self.w
+    fn from(reader: crate::R<CMPV7_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `CVM`"]
-pub type CVM_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CVM`"]
-pub struct CVM_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CVM_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `CMPV7` writer"]
+pub struct W(crate::W<CMPV7_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CMPV7_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 24)) | (((value as u32) & 0x01) << 24);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<CMPV7_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<CMPV7_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CV` reader - Comparison x Value"]
+pub type CV_R = crate::FieldReader<u32, u32>;
+#[doc = "Field `CV` writer - Comparison x Value"]
+pub type CV_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CMPV7_SPEC, u32, u32, 24, O>;
+#[doc = "Field `CVM` reader - Comparison x Value Mode"]
+pub type CVM_R = crate::BitReader<bool>;
+#[doc = "Field `CVM` writer - Comparison x Value Mode"]
+pub type CVM_W<'a, const O: u8> = crate::BitWriter<'a, u32, CMPV7_SPEC, bool, O>;
 impl R {
     #[doc = "Bits 0:23 - Comparison x Value"]
     #[inline(always)]
     pub fn cv(&self) -> CV_R {
-        CV_R::new((self.bits & 0x00ff_ffff) as u32)
+        CV_R::new(self.bits & 0x00ff_ffff)
     }
     #[doc = "Bit 24 - Comparison x Value Mode"]
     #[inline(always)]
     pub fn cvm(&self) -> CVM_R {
-        CVM_R::new(((self.bits >> 24) & 0x01) != 0)
+        CVM_R::new(((self.bits >> 24) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:23 - Comparison x Value"]
     #[inline(always)]
-    pub fn cv(&mut self) -> CV_W {
-        CV_W { w: self }
+    #[must_use]
+    pub fn cv(&mut self) -> CV_W<0> {
+        CV_W::new(self)
     }
     #[doc = "Bit 24 - Comparison x Value Mode"]
     #[inline(always)]
-    pub fn cvm(&mut self) -> CVM_W {
-        CVM_W { w: self }
+    #[must_use]
+    pub fn cvm(&mut self) -> CVM_W<24> {
+        CVM_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Comparison 7 Value Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cmpv7](index.html) module"]
+pub struct CMPV7_SPEC;
+impl crate::RegisterSpec for CMPV7_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cmpv7::R](R) reader structure"]
+impl crate::Readable for CMPV7_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cmpv7::W](W) writer structure"]
+impl crate::Writable for CMPV7_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets CMPV7 to value 0"]
+impl crate::Resettable for CMPV7_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

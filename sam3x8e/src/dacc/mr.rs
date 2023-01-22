@@ -1,17 +1,43 @@
-#[doc = "Reader of register MR"]
-pub type R = crate::R<u32, super::MR>;
-#[doc = "Writer for register MR"]
-pub type W = crate::W<u32, super::MR>;
-#[doc = "Register MR `reset()`'s with value 0"]
-impl crate::ResetValue for super::MR {
-    type Type = u32;
+#[doc = "Register `MR` reader"]
+pub struct R(crate::R<MR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl From<crate::R<MR_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<MR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `MR` writer"]
+pub struct W(crate::W<MR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<MR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<MR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `TRGEN` reader - Trigger Enable"]
+pub type TRGEN_R = crate::BitReader<TRGEN_A>;
 #[doc = "Trigger Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum TRGEN_A {
     #[doc = "0: External trigger mode disabled. DACC in free running mode."]
     DIS = 0,
@@ -24,10 +50,8 @@ impl From<TRGEN_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRGEN`"]
-pub type TRGEN_R = crate::R<bool, TRGEN_A>;
 impl TRGEN_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRGEN_A {
         match self.bits {
@@ -46,18 +70,9 @@ impl TRGEN_R {
         *self == TRGEN_A::EN
     }
 }
-#[doc = "Write proxy for field `TRGEN`"]
-pub struct TRGEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TRGEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TRGEN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
-    }
+#[doc = "Field `TRGEN` writer - Trigger Enable"]
+pub type TRGEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, MR_SPEC, TRGEN_A, O>;
+impl<'a, const O: u8> TRGEN_W<'a, O> {
     #[doc = "External trigger mode disabled. DACC in free running mode."]
     #[inline(always)]
     pub fn dis(self) -> &'a mut W {
@@ -68,39 +83,15 @@ impl<'a> TRGEN_W<'a> {
     pub fn en(self) -> &'a mut W {
         self.variant(TRGEN_A::EN)
     }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
-    }
 }
-#[doc = "Reader of field `TRGSEL`"]
-pub type TRGSEL_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `TRGSEL`"]
-pub struct TRGSEL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TRGSEL_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 1)) | (((value as u32) & 0x07) << 1);
-        self.w
-    }
-}
+#[doc = "Field `TRGSEL` reader - Trigger Selection"]
+pub type TRGSEL_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `TRGSEL` writer - Trigger Selection"]
+pub type TRGSEL_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MR_SPEC, u8, u8, 3, O>;
+#[doc = "Field `WORD` reader - Word Transfer"]
+pub type WORD_R = crate::BitReader<WORD_A>;
 #[doc = "Word Transfer\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum WORD_A {
     #[doc = "0: Half-Word transfer"]
     HALF = 0,
@@ -113,10 +104,8 @@ impl From<WORD_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `WORD`"]
-pub type WORD_R = crate::R<bool, WORD_A>;
 impl WORD_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> WORD_A {
         match self.bits {
@@ -135,18 +124,9 @@ impl WORD_R {
         *self == WORD_A::WORD
     }
 }
-#[doc = "Write proxy for field `WORD`"]
-pub struct WORD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WORD_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: WORD_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
-    }
+#[doc = "Field `WORD` writer - Word Transfer"]
+pub type WORD_W<'a, const O: u8> = crate::BitWriter<'a, u32, MR_SPEC, WORD_A, O>;
+impl<'a, const O: u8> WORD_W<'a, O> {
     #[doc = "Half-Word transfer"]
     #[inline(always)]
     pub fn half(self) -> &'a mut W {
@@ -157,87 +137,23 @@ impl<'a> WORD_W<'a> {
     pub fn word(self) -> &'a mut W {
         self.variant(WORD_A::WORD)
     }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
-    }
 }
-#[doc = "Reader of field `SLEEP`"]
-pub type SLEEP_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `SLEEP`"]
-pub struct SLEEP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SLEEP_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
-        self.w
-    }
-}
-#[doc = "Reader of field `FASTWKUP`"]
-pub type FASTWKUP_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `FASTWKUP`"]
-pub struct FASTWKUP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FASTWKUP_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
-        self.w
-    }
-}
-#[doc = "Reader of field `REFRESH`"]
-pub type REFRESH_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `REFRESH`"]
-pub struct REFRESH_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> REFRESH_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xff << 8)) | (((value as u32) & 0xff) << 8);
-        self.w
-    }
-}
+#[doc = "Field `SLEEP` reader - Sleep Mode"]
+pub type SLEEP_R = crate::BitReader<bool>;
+#[doc = "Field `SLEEP` writer - Sleep Mode"]
+pub type SLEEP_W<'a, const O: u8> = crate::BitWriter<'a, u32, MR_SPEC, bool, O>;
+#[doc = "Field `FASTWKUP` reader - Fast Wake up Mode"]
+pub type FASTWKUP_R = crate::BitReader<bool>;
+#[doc = "Field `FASTWKUP` writer - Fast Wake up Mode"]
+pub type FASTWKUP_W<'a, const O: u8> = crate::BitWriter<'a, u32, MR_SPEC, bool, O>;
+#[doc = "Field `REFRESH` reader - Refresh Period"]
+pub type REFRESH_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `REFRESH` writer - Refresh Period"]
+pub type REFRESH_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MR_SPEC, u8, u8, 8, O>;
+#[doc = "Field `USER_SEL` reader - User Channel Selection"]
+pub type USER_SEL_R = crate::FieldReader<u8, USER_SEL_A>;
 #[doc = "User Channel Selection\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum USER_SEL_A {
     #[doc = "0: Channel 0"]
@@ -251,17 +167,14 @@ impl From<USER_SEL_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `USER_SEL`"]
-pub type USER_SEL_R = crate::R<u8, USER_SEL_A>;
 impl USER_SEL_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, USER_SEL_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<USER_SEL_A> {
         match self.bits {
-            0 => Val(USER_SEL_A::CHANNEL0),
-            1 => Val(USER_SEL_A::CHANNEL1),
-            i => Res(i),
+            0 => Some(USER_SEL_A::CHANNEL0),
+            1 => Some(USER_SEL_A::CHANNEL1),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `CHANNEL0`"]
@@ -275,16 +188,9 @@ impl USER_SEL_R {
         *self == USER_SEL_A::CHANNEL1
     }
 }
-#[doc = "Write proxy for field `USER_SEL`"]
-pub struct USER_SEL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> USER_SEL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: USER_SEL_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `USER_SEL` writer - User Channel Selection"]
+pub type USER_SEL_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MR_SPEC, u8, USER_SEL_A, 2, O>;
+impl<'a, const O: u8> USER_SEL_W<'a, O> {
     #[doc = "Channel 0"]
     #[inline(always)]
     pub fn channel0(self) -> &'a mut W {
@@ -295,15 +201,11 @@ impl<'a> USER_SEL_W<'a> {
     pub fn channel1(self) -> &'a mut W {
         self.variant(USER_SEL_A::CHANNEL1)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | (((value as u32) & 0x03) << 16);
-        self.w
-    }
 }
+#[doc = "Field `TAG` reader - Tag Selection Mode"]
+pub type TAG_R = crate::BitReader<TAG_A>;
 #[doc = "Tag Selection Mode\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum TAG_A {
     #[doc = "0: Tag selection mode disabled. Using USER_SEL to select the channel for the conversion."]
     DIS = 0,
@@ -316,10 +218,8 @@ impl From<TAG_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TAG`"]
-pub type TAG_R = crate::R<bool, TAG_A>;
 impl TAG_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TAG_A {
         match self.bits {
@@ -338,18 +238,9 @@ impl TAG_R {
         *self == TAG_A::EN
     }
 }
-#[doc = "Write proxy for field `TAG`"]
-pub struct TAG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TAG_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TAG_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
-    }
+#[doc = "Field `TAG` writer - Tag Selection Mode"]
+pub type TAG_W<'a, const O: u8> = crate::BitWriter<'a, u32, MR_SPEC, TAG_A, O>;
+impl<'a, const O: u8> TAG_W<'a, O> {
     #[doc = "Tag selection mode disabled. Using USER_SEL to select the channel for the conversion."]
     #[inline(always)]
     pub fn dis(self) -> &'a mut W {
@@ -360,25 +251,11 @@ impl<'a> TAG_W<'a> {
     pub fn en(self) -> &'a mut W {
         self.variant(TAG_A::EN)
     }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 20)) | (((value as u32) & 0x01) << 20);
-        self.w
-    }
 }
+#[doc = "Field `MAXS` reader - Max Speed Mode"]
+pub type MAXS_R = crate::BitReader<MAXS_A>;
 #[doc = "Max Speed Mode\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum MAXS_A {
     #[doc = "0: Normal Mode"]
     NORMAL = 0,
@@ -391,10 +268,8 @@ impl From<MAXS_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `MAXS`"]
-pub type MAXS_R = crate::R<bool, MAXS_A>;
 impl MAXS_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> MAXS_A {
         match self.bits {
@@ -413,18 +288,9 @@ impl MAXS_R {
         *self == MAXS_A::MAXIMUM
     }
 }
-#[doc = "Write proxy for field `MAXS`"]
-pub struct MAXS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MAXS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: MAXS_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
-    }
+#[doc = "Field `MAXS` writer - Max Speed Mode"]
+pub type MAXS_W<'a, const O: u8> = crate::BitWriter<'a, u32, MR_SPEC, MAXS_A, O>;
+impl<'a, const O: u8> MAXS_W<'a, O> {
     #[doc = "Normal Mode"]
     #[inline(always)]
     pub fn normal(self) -> &'a mut W {
@@ -435,25 +301,11 @@ impl<'a> MAXS_W<'a> {
     pub fn maximum(self) -> &'a mut W {
         self.variant(MAXS_A::MAXIMUM)
     }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 21)) | (((value as u32) & 0x01) << 21);
-        self.w
-    }
 }
+#[doc = "Field `STARTUP` reader - Startup Time Selection"]
+pub type STARTUP_R = crate::FieldReader<u8, STARTUP_A>;
 #[doc = "Startup Time Selection\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum STARTUP_A {
     #[doc = "0: 0 periods of DACClock"]
@@ -527,47 +379,44 @@ impl From<STARTUP_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `STARTUP`"]
-pub type STARTUP_R = crate::R<u8, STARTUP_A>;
 impl STARTUP_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, STARTUP_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<STARTUP_A> {
         match self.bits {
-            0 => Val(STARTUP_A::_0),
-            1 => Val(STARTUP_A::_8),
-            2 => Val(STARTUP_A::_16),
-            3 => Val(STARTUP_A::_24),
-            4 => Val(STARTUP_A::_64),
-            5 => Val(STARTUP_A::_80),
-            6 => Val(STARTUP_A::_96),
-            7 => Val(STARTUP_A::_112),
-            8 => Val(STARTUP_A::_512),
-            9 => Val(STARTUP_A::_576),
-            10 => Val(STARTUP_A::_640),
-            11 => Val(STARTUP_A::_704),
-            12 => Val(STARTUP_A::_768),
-            13 => Val(STARTUP_A::_832),
-            14 => Val(STARTUP_A::_896),
-            15 => Val(STARTUP_A::_960),
-            16 => Val(STARTUP_A::_1024),
-            17 => Val(STARTUP_A::_1088),
-            18 => Val(STARTUP_A::_1152),
-            19 => Val(STARTUP_A::_1216),
-            20 => Val(STARTUP_A::_1280),
-            21 => Val(STARTUP_A::_1344),
-            22 => Val(STARTUP_A::_1408),
-            23 => Val(STARTUP_A::_1472),
-            24 => Val(STARTUP_A::_1536),
-            25 => Val(STARTUP_A::_1600),
-            26 => Val(STARTUP_A::_1664),
-            27 => Val(STARTUP_A::_1728),
-            28 => Val(STARTUP_A::_1792),
-            29 => Val(STARTUP_A::_1856),
-            30 => Val(STARTUP_A::_1920),
-            31 => Val(STARTUP_A::_1984),
-            i => Res(i),
+            0 => Some(STARTUP_A::_0),
+            1 => Some(STARTUP_A::_8),
+            2 => Some(STARTUP_A::_16),
+            3 => Some(STARTUP_A::_24),
+            4 => Some(STARTUP_A::_64),
+            5 => Some(STARTUP_A::_80),
+            6 => Some(STARTUP_A::_96),
+            7 => Some(STARTUP_A::_112),
+            8 => Some(STARTUP_A::_512),
+            9 => Some(STARTUP_A::_576),
+            10 => Some(STARTUP_A::_640),
+            11 => Some(STARTUP_A::_704),
+            12 => Some(STARTUP_A::_768),
+            13 => Some(STARTUP_A::_832),
+            14 => Some(STARTUP_A::_896),
+            15 => Some(STARTUP_A::_960),
+            16 => Some(STARTUP_A::_1024),
+            17 => Some(STARTUP_A::_1088),
+            18 => Some(STARTUP_A::_1152),
+            19 => Some(STARTUP_A::_1216),
+            20 => Some(STARTUP_A::_1280),
+            21 => Some(STARTUP_A::_1344),
+            22 => Some(STARTUP_A::_1408),
+            23 => Some(STARTUP_A::_1472),
+            24 => Some(STARTUP_A::_1536),
+            25 => Some(STARTUP_A::_1600),
+            26 => Some(STARTUP_A::_1664),
+            27 => Some(STARTUP_A::_1728),
+            28 => Some(STARTUP_A::_1792),
+            29 => Some(STARTUP_A::_1856),
+            30 => Some(STARTUP_A::_1920),
+            31 => Some(STARTUP_A::_1984),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `_0`"]
@@ -731,16 +580,9 @@ impl STARTUP_R {
         *self == STARTUP_A::_1984
     }
 }
-#[doc = "Write proxy for field `STARTUP`"]
-pub struct STARTUP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> STARTUP_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: STARTUP_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `STARTUP` writer - Startup Time Selection"]
+pub type STARTUP_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MR_SPEC, u8, STARTUP_A, 6, O>;
+impl<'a, const O: u8> STARTUP_W<'a, O> {
     #[doc = "0 periods of DACClock"]
     #[inline(always)]
     pub fn _0(self) -> &'a mut W {
@@ -901,38 +743,32 @@ impl<'a> STARTUP_W<'a> {
     pub fn _1984(self) -> &'a mut W {
         self.variant(STARTUP_A::_1984)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x3f << 24)) | (((value as u32) & 0x3f) << 24);
-        self.w
-    }
 }
 impl R {
     #[doc = "Bit 0 - Trigger Enable"]
     #[inline(always)]
     pub fn trgen(&self) -> TRGEN_R {
-        TRGEN_R::new((self.bits & 0x01) != 0)
+        TRGEN_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bits 1:3 - Trigger Selection"]
     #[inline(always)]
     pub fn trgsel(&self) -> TRGSEL_R {
-        TRGSEL_R::new(((self.bits >> 1) & 0x07) as u8)
+        TRGSEL_R::new(((self.bits >> 1) & 7) as u8)
     }
     #[doc = "Bit 4 - Word Transfer"]
     #[inline(always)]
     pub fn word(&self) -> WORD_R {
-        WORD_R::new(((self.bits >> 4) & 0x01) != 0)
+        WORD_R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Sleep Mode"]
     #[inline(always)]
     pub fn sleep(&self) -> SLEEP_R {
-        SLEEP_R::new(((self.bits >> 5) & 0x01) != 0)
+        SLEEP_R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Fast Wake up Mode"]
     #[inline(always)]
     pub fn fastwkup(&self) -> FASTWKUP_R {
-        FASTWKUP_R::new(((self.bits >> 6) & 0x01) != 0)
+        FASTWKUP_R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bits 8:15 - Refresh Period"]
     #[inline(always)]
@@ -942,17 +778,17 @@ impl R {
     #[doc = "Bits 16:17 - User Channel Selection"]
     #[inline(always)]
     pub fn user_sel(&self) -> USER_SEL_R {
-        USER_SEL_R::new(((self.bits >> 16) & 0x03) as u8)
+        USER_SEL_R::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bit 20 - Tag Selection Mode"]
     #[inline(always)]
     pub fn tag(&self) -> TAG_R {
-        TAG_R::new(((self.bits >> 20) & 0x01) != 0)
+        TAG_R::new(((self.bits >> 20) & 1) != 0)
     }
     #[doc = "Bit 21 - Max Speed Mode"]
     #[inline(always)]
     pub fn maxs(&self) -> MAXS_R {
-        MAXS_R::new(((self.bits >> 21) & 0x01) != 0)
+        MAXS_R::new(((self.bits >> 21) & 1) != 0)
     }
     #[doc = "Bits 24:29 - Startup Time Selection"]
     #[inline(always)]
@@ -963,52 +799,87 @@ impl R {
 impl W {
     #[doc = "Bit 0 - Trigger Enable"]
     #[inline(always)]
-    pub fn trgen(&mut self) -> TRGEN_W {
-        TRGEN_W { w: self }
+    #[must_use]
+    pub fn trgen(&mut self) -> TRGEN_W<0> {
+        TRGEN_W::new(self)
     }
     #[doc = "Bits 1:3 - Trigger Selection"]
     #[inline(always)]
-    pub fn trgsel(&mut self) -> TRGSEL_W {
-        TRGSEL_W { w: self }
+    #[must_use]
+    pub fn trgsel(&mut self) -> TRGSEL_W<1> {
+        TRGSEL_W::new(self)
     }
     #[doc = "Bit 4 - Word Transfer"]
     #[inline(always)]
-    pub fn word(&mut self) -> WORD_W {
-        WORD_W { w: self }
+    #[must_use]
+    pub fn word(&mut self) -> WORD_W<4> {
+        WORD_W::new(self)
     }
     #[doc = "Bit 5 - Sleep Mode"]
     #[inline(always)]
-    pub fn sleep(&mut self) -> SLEEP_W {
-        SLEEP_W { w: self }
+    #[must_use]
+    pub fn sleep(&mut self) -> SLEEP_W<5> {
+        SLEEP_W::new(self)
     }
     #[doc = "Bit 6 - Fast Wake up Mode"]
     #[inline(always)]
-    pub fn fastwkup(&mut self) -> FASTWKUP_W {
-        FASTWKUP_W { w: self }
+    #[must_use]
+    pub fn fastwkup(&mut self) -> FASTWKUP_W<6> {
+        FASTWKUP_W::new(self)
     }
     #[doc = "Bits 8:15 - Refresh Period"]
     #[inline(always)]
-    pub fn refresh(&mut self) -> REFRESH_W {
-        REFRESH_W { w: self }
+    #[must_use]
+    pub fn refresh(&mut self) -> REFRESH_W<8> {
+        REFRESH_W::new(self)
     }
     #[doc = "Bits 16:17 - User Channel Selection"]
     #[inline(always)]
-    pub fn user_sel(&mut self) -> USER_SEL_W {
-        USER_SEL_W { w: self }
+    #[must_use]
+    pub fn user_sel(&mut self) -> USER_SEL_W<16> {
+        USER_SEL_W::new(self)
     }
     #[doc = "Bit 20 - Tag Selection Mode"]
     #[inline(always)]
-    pub fn tag(&mut self) -> TAG_W {
-        TAG_W { w: self }
+    #[must_use]
+    pub fn tag(&mut self) -> TAG_W<20> {
+        TAG_W::new(self)
     }
     #[doc = "Bit 21 - Max Speed Mode"]
     #[inline(always)]
-    pub fn maxs(&mut self) -> MAXS_W {
-        MAXS_W { w: self }
+    #[must_use]
+    pub fn maxs(&mut self) -> MAXS_W<21> {
+        MAXS_W::new(self)
     }
     #[doc = "Bits 24:29 - Startup Time Selection"]
     #[inline(always)]
-    pub fn startup(&mut self) -> STARTUP_W {
-        STARTUP_W { w: self }
+    #[must_use]
+    pub fn startup(&mut self) -> STARTUP_W<24> {
+        STARTUP_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mr](index.html) module"]
+pub struct MR_SPEC;
+impl crate::RegisterSpec for MR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mr::R](R) reader structure"]
+impl crate::Readable for MR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mr::W](W) writer structure"]
+impl crate::Writable for MR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets MR to value 0"]
+impl crate::Resettable for MR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

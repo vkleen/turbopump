@@ -1,17 +1,43 @@
-#[doc = "Reader of register PMC_MCKR"]
-pub type R = crate::R<u32, super::PMC_MCKR>;
-#[doc = "Writer for register PMC_MCKR"]
-pub type W = crate::W<u32, super::PMC_MCKR>;
-#[doc = "Register PMC_MCKR `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::PMC_MCKR {
-    type Type = u32;
+#[doc = "Register `PMC_MCKR` reader"]
+pub struct R(crate::R<PMC_MCKR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PMC_MCKR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl From<crate::R<PMC_MCKR_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<PMC_MCKR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `PMC_MCKR` writer"]
+pub struct W(crate::W<PMC_MCKR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PMC_MCKR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<PMC_MCKR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<PMC_MCKR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CSS` reader - Master Clock Source Selection"]
+pub type CSS_R = crate::FieldReader<u8, CSS_A>;
 #[doc = "Master Clock Source Selection\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum CSS_A {
     #[doc = "0: Slow Clock is selected"]
@@ -29,10 +55,8 @@ impl From<CSS_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `CSS`"]
-pub type CSS_R = crate::R<u8, CSS_A>;
 impl CSS_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CSS_A {
         match self.bits {
@@ -64,18 +88,9 @@ impl CSS_R {
         *self == CSS_A::UPLL_CLK
     }
 }
-#[doc = "Write proxy for field `CSS`"]
-pub struct CSS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CSS_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
-    }
+#[doc = "Field `CSS` writer - Master Clock Source Selection"]
+pub type CSS_W<'a, const O: u8> = crate::FieldWriterSafe<'a, u32, PMC_MCKR_SPEC, u8, CSS_A, 2, O>;
+impl<'a, const O: u8> CSS_W<'a, O> {
     #[doc = "Slow Clock is selected"]
     #[inline(always)]
     pub fn slow_clk(self) -> &'a mut W {
@@ -96,15 +111,11 @@ impl<'a> CSS_W<'a> {
     pub fn upll_clk(self) -> &'a mut W {
         self.variant(CSS_A::UPLL_CLK)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | ((value as u32) & 0x03);
-        self.w
-    }
 }
+#[doc = "Field `PRES` reader - Processor Clock Prescaler"]
+pub type PRES_R = crate::FieldReader<u8, PRES_A>;
 #[doc = "Processor Clock Prescaler\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum PRES_A {
     #[doc = "0: Selected clock"]
@@ -130,10 +141,8 @@ impl From<PRES_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `PRES`"]
-pub type PRES_R = crate::R<u8, PRES_A>;
 impl PRES_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> PRES_A {
         match self.bits {
@@ -189,18 +198,9 @@ impl PRES_R {
         *self == PRES_A::CLK_3
     }
 }
-#[doc = "Write proxy for field `PRES`"]
-pub struct PRES_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PRES_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PRES_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
-    }
+#[doc = "Field `PRES` writer - Processor Clock Prescaler"]
+pub type PRES_W<'a, const O: u8> = crate::FieldWriterSafe<'a, u32, PMC_MCKR_SPEC, u8, PRES_A, 3, O>;
+impl<'a, const O: u8> PRES_W<'a, O> {
     #[doc = "Selected clock"]
     #[inline(always)]
     pub fn clk_1(self) -> &'a mut W {
@@ -241,102 +241,85 @@ impl<'a> PRES_W<'a> {
     pub fn clk_3(self) -> &'a mut W {
         self.variant(PRES_A::CLK_3)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 4)) | (((value as u32) & 0x07) << 4);
-        self.w
-    }
 }
-#[doc = "Reader of field `PLLADIV2`"]
-pub type PLLADIV2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `PLLADIV2`"]
-pub struct PLLADIV2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PLLADIV2_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 12)) | (((value as u32) & 0x01) << 12);
-        self.w
-    }
-}
-#[doc = "Reader of field `UPLLDIV2`"]
-pub type UPLLDIV2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `UPLLDIV2`"]
-pub struct UPLLDIV2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> UPLLDIV2_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 13)) | (((value as u32) & 0x01) << 13);
-        self.w
-    }
-}
+#[doc = "Field `PLLADIV2` reader - PLLA Divisor by 2"]
+pub type PLLADIV2_R = crate::BitReader<bool>;
+#[doc = "Field `PLLADIV2` writer - PLLA Divisor by 2"]
+pub type PLLADIV2_W<'a, const O: u8> = crate::BitWriter<'a, u32, PMC_MCKR_SPEC, bool, O>;
+#[doc = "Field `UPLLDIV2` reader - "]
+pub type UPLLDIV2_R = crate::BitReader<bool>;
+#[doc = "Field `UPLLDIV2` writer - "]
+pub type UPLLDIV2_W<'a, const O: u8> = crate::BitWriter<'a, u32, PMC_MCKR_SPEC, bool, O>;
 impl R {
     #[doc = "Bits 0:1 - Master Clock Source Selection"]
     #[inline(always)]
     pub fn css(&self) -> CSS_R {
-        CSS_R::new((self.bits & 0x03) as u8)
+        CSS_R::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 4:6 - Processor Clock Prescaler"]
     #[inline(always)]
     pub fn pres(&self) -> PRES_R {
-        PRES_R::new(((self.bits >> 4) & 0x07) as u8)
+        PRES_R::new(((self.bits >> 4) & 7) as u8)
     }
     #[doc = "Bit 12 - PLLA Divisor by 2"]
     #[inline(always)]
     pub fn plladiv2(&self) -> PLLADIV2_R {
-        PLLADIV2_R::new(((self.bits >> 12) & 0x01) != 0)
+        PLLADIV2_R::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 13"]
     #[inline(always)]
     pub fn uplldiv2(&self) -> UPLLDIV2_R {
-        UPLLDIV2_R::new(((self.bits >> 13) & 0x01) != 0)
+        UPLLDIV2_R::new(((self.bits >> 13) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Master Clock Source Selection"]
     #[inline(always)]
-    pub fn css(&mut self) -> CSS_W {
-        CSS_W { w: self }
+    #[must_use]
+    pub fn css(&mut self) -> CSS_W<0> {
+        CSS_W::new(self)
     }
     #[doc = "Bits 4:6 - Processor Clock Prescaler"]
     #[inline(always)]
-    pub fn pres(&mut self) -> PRES_W {
-        PRES_W { w: self }
+    #[must_use]
+    pub fn pres(&mut self) -> PRES_W<4> {
+        PRES_W::new(self)
     }
     #[doc = "Bit 12 - PLLA Divisor by 2"]
     #[inline(always)]
-    pub fn plladiv2(&mut self) -> PLLADIV2_W {
-        PLLADIV2_W { w: self }
+    #[must_use]
+    pub fn plladiv2(&mut self) -> PLLADIV2_W<12> {
+        PLLADIV2_W::new(self)
     }
     #[doc = "Bit 13"]
     #[inline(always)]
-    pub fn uplldiv2(&mut self) -> UPLLDIV2_W {
-        UPLLDIV2_W { w: self }
+    #[must_use]
+    pub fn uplldiv2(&mut self) -> UPLLDIV2_W<13> {
+        UPLLDIV2_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Master Clock Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pmc_mckr](index.html) module"]
+pub struct PMC_MCKR_SPEC;
+impl crate::RegisterSpec for PMC_MCKR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [pmc_mckr::R](R) reader structure"]
+impl crate::Readable for PMC_MCKR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [pmc_mckr::W](W) writer structure"]
+impl crate::Writable for PMC_MCKR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets PMC_MCKR to value 0x01"]
+impl crate::Resettable for PMC_MCKR_SPEC {
+    const RESET_VALUE: Self::Ux = 0x01;
 }

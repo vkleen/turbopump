@@ -1,98 +1,110 @@
-#[doc = "Reader of register MID1"]
-pub type R = crate::R<u32, super::MID1>;
-#[doc = "Writer for register MID1"]
-pub type W = crate::W<u32, super::MID1>;
-#[doc = "Register MID1 `reset()`'s with value 0"]
-impl crate::ResetValue for super::MID1 {
-    type Type = u32;
+#[doc = "Register `MID1` reader"]
+pub struct R(crate::R<MID1_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MID1_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MIDvB`"]
-pub type MIDVB_R = crate::R<u32, u32>;
-#[doc = "Write proxy for field `MIDvB`"]
-pub struct MIDVB_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MIDVB_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<MID1_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x0003_ffff) | ((value as u32) & 0x0003_ffff);
-        self.w
+    fn from(reader: crate::R<MID1_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `MIDvA`"]
-pub type MIDVA_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `MIDvA`"]
-pub struct MIDVA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MIDVA_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Register `MID1` writer"]
+pub struct W(crate::W<MID1_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MID1_SPEC>;
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07ff << 18)) | (((value as u32) & 0x07ff) << 18);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MIDE`"]
-pub type MIDE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `MIDE`"]
-pub struct MIDE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MIDE_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 29)) | (((value as u32) & 0x01) << 29);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
+impl From<crate::W<MID1_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<MID1_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `MIDvB` reader - Complementary bits for identifier in extended frame mode"]
+pub type MIDV_B_R = crate::FieldReader<u32, u32>;
+#[doc = "Field `MIDvB` writer - Complementary bits for identifier in extended frame mode"]
+pub type MIDV_B_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MID1_SPEC, u32, u32, 18, O>;
+#[doc = "Field `MIDvA` reader - Identifier for standard frame mode"]
+pub type MIDV_A_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `MIDvA` writer - Identifier for standard frame mode"]
+pub type MIDV_A_W<'a, const O: u8> = crate::FieldWriter<'a, u32, MID1_SPEC, u16, u16, 11, O>;
+#[doc = "Field `MIDE` reader - Identifier Version"]
+pub type MIDE_R = crate::BitReader<bool>;
+#[doc = "Field `MIDE` writer - Identifier Version"]
+pub type MIDE_W<'a, const O: u8> = crate::BitWriter<'a, u32, MID1_SPEC, bool, O>;
 impl R {
     #[doc = "Bits 0:17 - Complementary bits for identifier in extended frame mode"]
     #[inline(always)]
-    pub fn midv_b(&self) -> MIDVB_R {
-        MIDVB_R::new((self.bits & 0x0003_ffff) as u32)
+    pub fn midv_b(&self) -> MIDV_B_R {
+        MIDV_B_R::new(self.bits & 0x0003_ffff)
     }
     #[doc = "Bits 18:28 - Identifier for standard frame mode"]
     #[inline(always)]
-    pub fn midv_a(&self) -> MIDVA_R {
-        MIDVA_R::new(((self.bits >> 18) & 0x07ff) as u16)
+    pub fn midv_a(&self) -> MIDV_A_R {
+        MIDV_A_R::new(((self.bits >> 18) & 0x07ff) as u16)
     }
     #[doc = "Bit 29 - Identifier Version"]
     #[inline(always)]
     pub fn mide(&self) -> MIDE_R {
-        MIDE_R::new(((self.bits >> 29) & 0x01) != 0)
+        MIDE_R::new(((self.bits >> 29) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:17 - Complementary bits for identifier in extended frame mode"]
     #[inline(always)]
-    pub fn midv_b(&mut self) -> MIDVB_W {
-        MIDVB_W { w: self }
+    #[must_use]
+    pub fn midv_b(&mut self) -> MIDV_B_W<0> {
+        MIDV_B_W::new(self)
     }
     #[doc = "Bits 18:28 - Identifier for standard frame mode"]
     #[inline(always)]
-    pub fn midv_a(&mut self) -> MIDVA_W {
-        MIDVA_W { w: self }
+    #[must_use]
+    pub fn midv_a(&mut self) -> MIDV_A_W<18> {
+        MIDV_A_W::new(self)
     }
     #[doc = "Bit 29 - Identifier Version"]
     #[inline(always)]
-    pub fn mide(&mut self) -> MIDE_W {
-        MIDE_W { w: self }
+    #[must_use]
+    pub fn mide(&mut self) -> MIDE_W<29> {
+        MIDE_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Mailbox ID Register (MB = 1)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mid1](index.html) module"]
+pub struct MID1_SPEC;
+impl crate::RegisterSpec for MID1_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mid1::R](R) reader structure"]
+impl crate::Readable for MID1_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mid1::W](W) writer structure"]
+impl crate::Writable for MID1_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets MID1 to value 0"]
+impl crate::Resettable for MID1_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

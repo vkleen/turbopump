@@ -1,91 +1,55 @@
-#[doc = "Reader of register CALALR"]
-pub type R = crate::R<u32, super::CALALR>;
-#[doc = "Writer for register CALALR"]
-pub type W = crate::W<u32, super::CALALR>;
-#[doc = "Register CALALR `reset()`'s with value 0x0101_0000"]
-impl crate::ResetValue for super::CALALR {
-    type Type = u32;
+#[doc = "Register `CALALR` reader"]
+pub struct R(crate::R<CALALR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CALALR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x0101_0000
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MONTH`"]
-pub type MONTH_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `MONTH`"]
-pub struct MONTH_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MONTH_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<CALALR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 16)) | (((value as u32) & 0x1f) << 16);
-        self.w
+    fn from(reader: crate::R<CALALR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `MTHEN`"]
-pub type MTHEN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `MTHEN`"]
-pub struct MTHEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MTHEN_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `CALALR` writer"]
+pub struct W(crate::W<CALALR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CALALR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 23)) | (((value as u32) & 0x01) << 23);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `DATE`"]
-pub type DATE_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `DATE`"]
-pub struct DATE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DATE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x3f << 24)) | (((value as u32) & 0x3f) << 24);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Reader of field `DATEEN`"]
-pub type DATEEN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DATEEN`"]
-pub struct DATEEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DATEEN_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<CALALR_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 31)) | (((value as u32) & 0x01) << 31);
-        self.w
+    fn from(writer: crate::W<CALALR_SPEC>) -> Self {
+        W(writer)
     }
 }
+#[doc = "Field `MONTH` reader - Month Alarm"]
+pub type MONTH_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `MONTH` writer - Month Alarm"]
+pub type MONTH_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CALALR_SPEC, u8, u8, 5, O>;
+#[doc = "Field `MTHEN` reader - Month Alarm Enable"]
+pub type MTHEN_R = crate::BitReader<bool>;
+#[doc = "Field `MTHEN` writer - Month Alarm Enable"]
+pub type MTHEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, CALALR_SPEC, bool, O>;
+#[doc = "Field `DATE` reader - Date Alarm"]
+pub type DATE_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `DATE` writer - Date Alarm"]
+pub type DATE_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CALALR_SPEC, u8, u8, 6, O>;
+#[doc = "Field `DATEEN` reader - Date Alarm Enable"]
+pub type DATEEN_R = crate::BitReader<bool>;
+#[doc = "Field `DATEEN` writer - Date Alarm Enable"]
+pub type DATEEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, CALALR_SPEC, bool, O>;
 impl R {
     #[doc = "Bits 16:20 - Month Alarm"]
     #[inline(always)]
@@ -95,7 +59,7 @@ impl R {
     #[doc = "Bit 23 - Month Alarm Enable"]
     #[inline(always)]
     pub fn mthen(&self) -> MTHEN_R {
-        MTHEN_R::new(((self.bits >> 23) & 0x01) != 0)
+        MTHEN_R::new(((self.bits >> 23) & 1) != 0)
     }
     #[doc = "Bits 24:29 - Date Alarm"]
     #[inline(always)]
@@ -105,28 +69,57 @@ impl R {
     #[doc = "Bit 31 - Date Alarm Enable"]
     #[inline(always)]
     pub fn dateen(&self) -> DATEEN_R {
-        DATEEN_R::new(((self.bits >> 31) & 0x01) != 0)
+        DATEEN_R::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 16:20 - Month Alarm"]
     #[inline(always)]
-    pub fn month(&mut self) -> MONTH_W {
-        MONTH_W { w: self }
+    #[must_use]
+    pub fn month(&mut self) -> MONTH_W<16> {
+        MONTH_W::new(self)
     }
     #[doc = "Bit 23 - Month Alarm Enable"]
     #[inline(always)]
-    pub fn mthen(&mut self) -> MTHEN_W {
-        MTHEN_W { w: self }
+    #[must_use]
+    pub fn mthen(&mut self) -> MTHEN_W<23> {
+        MTHEN_W::new(self)
     }
     #[doc = "Bits 24:29 - Date Alarm"]
     #[inline(always)]
-    pub fn date(&mut self) -> DATE_W {
-        DATE_W { w: self }
+    #[must_use]
+    pub fn date(&mut self) -> DATE_W<24> {
+        DATE_W::new(self)
     }
     #[doc = "Bit 31 - Date Alarm Enable"]
     #[inline(always)]
-    pub fn dateen(&mut self) -> DATEEN_W {
-        DATEEN_W { w: self }
+    #[must_use]
+    pub fn dateen(&mut self) -> DATEEN_W<31> {
+        DATEEN_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Calendar Alarm Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [calalr](index.html) module"]
+pub struct CALALR_SPEC;
+impl crate::RegisterSpec for CALALR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [calalr::R](R) reader structure"]
+impl crate::Readable for CALALR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [calalr::W](W) writer structure"]
+impl crate::Writable for CALALR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets CALALR to value 0x0101_0000"]
+impl crate::Resettable for CALALR_SPEC {
+    const RESET_VALUE: Self::Ux = 0x0101_0000;
 }

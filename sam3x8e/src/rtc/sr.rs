@@ -1,7 +1,22 @@
-#[doc = "Reader of register SR"]
-pub type R = crate::R<u32, super::SR>;
+#[doc = "Register `SR` reader"]
+pub struct R(crate::R<SR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl From<crate::R<SR_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<SR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Field `ACKUPD` reader - Acknowledge for Update"]
+pub type ACKUPD_R = crate::BitReader<ACKUPD_A>;
 #[doc = "Acknowledge for Update\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ACKUPD_A {
     #[doc = "0: Time and calendar registers cannot be updated."]
     FREERUN = 0,
@@ -14,10 +29,8 @@ impl From<ACKUPD_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ACKUPD`"]
-pub type ACKUPD_R = crate::R<bool, ACKUPD_A>;
 impl ACKUPD_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ACKUPD_A {
         match self.bits {
@@ -36,8 +49,10 @@ impl ACKUPD_R {
         *self == ACKUPD_A::UPDATE
     }
 }
+#[doc = "Field `ALARM` reader - Alarm Flag"]
+pub type ALARM_R = crate::BitReader<ALARM_A>;
 #[doc = "Alarm Flag\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ALARM_A {
     #[doc = "0: No alarm matching condition occurred."]
     NO_ALARMEVENT = 0,
@@ -50,10 +65,8 @@ impl From<ALARM_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ALARM`"]
-pub type ALARM_R = crate::R<bool, ALARM_A>;
 impl ALARM_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ALARM_A {
         match self.bits {
@@ -72,8 +85,10 @@ impl ALARM_R {
         *self == ALARM_A::ALARMEVENT
     }
 }
+#[doc = "Field `SEC` reader - Second Event"]
+pub type SEC_R = crate::BitReader<SEC_A>;
 #[doc = "Second Event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SEC_A {
     #[doc = "0: No second event has occurred since the last clear."]
     NO_SECEVENT = 0,
@@ -86,10 +101,8 @@ impl From<SEC_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SEC`"]
-pub type SEC_R = crate::R<bool, SEC_A>;
 impl SEC_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SEC_A {
         match self.bits {
@@ -108,8 +121,10 @@ impl SEC_R {
         *self == SEC_A::SECEVENT
     }
 }
+#[doc = "Field `TIMEV` reader - Time Event"]
+pub type TIMEV_R = crate::BitReader<TIMEV_A>;
 #[doc = "Time Event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum TIMEV_A {
     #[doc = "0: No time event has occurred since the last clear."]
     NO_TIMEVENT = 0,
@@ -122,10 +137,8 @@ impl From<TIMEV_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TIMEV`"]
-pub type TIMEV_R = crate::R<bool, TIMEV_A>;
 impl TIMEV_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TIMEV_A {
         match self.bits {
@@ -144,8 +157,10 @@ impl TIMEV_R {
         *self == TIMEV_A::TIMEVENT
     }
 }
+#[doc = "Field `CALEV` reader - Calendar Event"]
+pub type CALEV_R = crate::BitReader<CALEV_A>;
 #[doc = "Calendar Event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum CALEV_A {
     #[doc = "0: No calendar event has occurred since the last clear."]
     NO_CALEVENT = 0,
@@ -158,10 +173,8 @@ impl From<CALEV_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CALEV`"]
-pub type CALEV_R = crate::R<bool, CALEV_A>;
 impl CALEV_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CALEV_A {
         match self.bits {
@@ -184,26 +197,39 @@ impl R {
     #[doc = "Bit 0 - Acknowledge for Update"]
     #[inline(always)]
     pub fn ackupd(&self) -> ACKUPD_R {
-        ACKUPD_R::new((self.bits & 0x01) != 0)
+        ACKUPD_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Alarm Flag"]
     #[inline(always)]
     pub fn alarm(&self) -> ALARM_R {
-        ALARM_R::new(((self.bits >> 1) & 0x01) != 0)
+        ALARM_R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Second Event"]
     #[inline(always)]
     pub fn sec(&self) -> SEC_R {
-        SEC_R::new(((self.bits >> 2) & 0x01) != 0)
+        SEC_R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Time Event"]
     #[inline(always)]
     pub fn timev(&self) -> TIMEV_R {
-        TIMEV_R::new(((self.bits >> 3) & 0x01) != 0)
+        TIMEV_R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Calendar Event"]
     #[inline(always)]
     pub fn calev(&self) -> CALEV_R {
-        CALEV_R::new(((self.bits >> 4) & 0x01) != 0)
+        CALEV_R::new(((self.bits >> 4) & 1) != 0)
     }
+}
+#[doc = "Status Register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sr](index.html) module"]
+pub struct SR_SPEC;
+impl crate::RegisterSpec for SR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [sr::R](R) reader structure"]
+impl crate::Readable for SR_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets SR to value 0"]
+impl crate::Resettable for SR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

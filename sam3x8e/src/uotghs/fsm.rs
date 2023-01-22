@@ -1,7 +1,22 @@
-#[doc = "Reader of register FSM"]
-pub type R = crate::R<u32, super::FSM>;
+#[doc = "Register `FSM` reader"]
+pub struct R(crate::R<FSM_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<FSM_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl From<crate::R<FSM_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<FSM_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Field `DRDSTATE` reader - Dual Role Device State"]
+pub type DRDSTATE_R = crate::FieldReader<u8, DRDSTATE_A>;
 #[doc = "Dual Role Device State\n\nValue on reset: 9"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum DRDSTATE_A {
     #[doc = "0: This is the start state for A-devices (when the ID pin is 0)"]
@@ -43,10 +58,8 @@ impl From<DRDSTATE_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `DRDSTATE`"]
-pub type DRDSTATE_R = crate::R<u8, DRDSTATE_A>;
 impl DRDSTATE_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DRDSTATE_A {
         match self.bits {
@@ -156,4 +169,17 @@ impl R {
     pub fn drdstate(&self) -> DRDSTATE_R {
         DRDSTATE_R::new((self.bits & 0x0f) as u8)
     }
+}
+#[doc = "General Finite State Machine Register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fsm](index.html) module"]
+pub struct FSM_SPEC;
+impl crate::RegisterSpec for FSM_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [fsm::R](R) reader structure"]
+impl crate::Readable for FSM_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets FSM to value 0x09"]
+impl crate::Resettable for FSM_SPEC {
+    const RESET_VALUE: Self::Ux = 0x09;
 }

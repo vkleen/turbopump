@@ -1,62 +1,56 @@
-#[doc = "Reader of register HSTFNUM"]
-pub type R = crate::R<u32, super::HSTFNUM>;
-#[doc = "Writer for register HSTFNUM"]
-pub type W = crate::W<u32, super::HSTFNUM>;
-#[doc = "Register HSTFNUM `reset()`'s with value 0"]
-impl crate::ResetValue for super::HSTFNUM {
-    type Type = u32;
+#[doc = "Register `HSTFNUM` reader"]
+pub struct R(crate::R<HSTFNUM_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<HSTFNUM_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MFNUM`"]
-pub type MFNUM_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `MFNUM`"]
-pub struct MFNUM_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MFNUM_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<HSTFNUM_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x07) | ((value as u32) & 0x07);
-        self.w
+    fn from(reader: crate::R<HSTFNUM_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `FNUM`"]
-pub type FNUM_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `FNUM`"]
-pub struct FNUM_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FNUM_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Register `HSTFNUM` writer"]
+pub struct W(crate::W<HSTFNUM_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<HSTFNUM_SPEC>;
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07ff << 3)) | (((value as u32) & 0x07ff) << 3);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `FLENHIGH`"]
-pub type FLENHIGH_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `FLENHIGH`"]
-pub struct FLENHIGH_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FLENHIGH_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xff << 16)) | (((value as u32) & 0xff) << 16);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
+impl From<crate::W<HSTFNUM_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<HSTFNUM_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `MFNUM` reader - Micro Frame Number"]
+pub type MFNUM_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `MFNUM` writer - Micro Frame Number"]
+pub type MFNUM_W<'a, const O: u8> = crate::FieldWriter<'a, u32, HSTFNUM_SPEC, u8, u8, 3, O>;
+#[doc = "Field `FNUM` reader - Frame Number"]
+pub type FNUM_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `FNUM` writer - Frame Number"]
+pub type FNUM_W<'a, const O: u8> = crate::FieldWriter<'a, u32, HSTFNUM_SPEC, u16, u16, 11, O>;
+#[doc = "Field `FLENHIGH` reader - Frame Length"]
+pub type FLENHIGH_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `FLENHIGH` writer - Frame Length"]
+pub type FLENHIGH_W<'a, const O: u8> = crate::FieldWriter<'a, u32, HSTFNUM_SPEC, u8, u8, 8, O>;
 impl R {
     #[doc = "Bits 0:2 - Micro Frame Number"]
     #[inline(always)]
     pub fn mfnum(&self) -> MFNUM_R {
-        MFNUM_R::new((self.bits & 0x07) as u8)
+        MFNUM_R::new((self.bits & 7) as u8)
     }
     #[doc = "Bits 3:13 - Frame Number"]
     #[inline(always)]
@@ -72,17 +66,45 @@ impl R {
 impl W {
     #[doc = "Bits 0:2 - Micro Frame Number"]
     #[inline(always)]
-    pub fn mfnum(&mut self) -> MFNUM_W {
-        MFNUM_W { w: self }
+    #[must_use]
+    pub fn mfnum(&mut self) -> MFNUM_W<0> {
+        MFNUM_W::new(self)
     }
     #[doc = "Bits 3:13 - Frame Number"]
     #[inline(always)]
-    pub fn fnum(&mut self) -> FNUM_W {
-        FNUM_W { w: self }
+    #[must_use]
+    pub fn fnum(&mut self) -> FNUM_W<3> {
+        FNUM_W::new(self)
     }
     #[doc = "Bits 16:23 - Frame Length"]
     #[inline(always)]
-    pub fn flenhigh(&mut self) -> FLENHIGH_W {
-        FLENHIGH_W { w: self }
+    #[must_use]
+    pub fn flenhigh(&mut self) -> FLENHIGH_W<16> {
+        FLENHIGH_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Host Frame Number Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hstfnum](index.html) module"]
+pub struct HSTFNUM_SPEC;
+impl crate::RegisterSpec for HSTFNUM_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [hstfnum::R](R) reader structure"]
+impl crate::Readable for HSTFNUM_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [hstfnum::W](W) writer structure"]
+impl crate::Writable for HSTFNUM_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets HSTFNUM to value 0"]
+impl crate::Resettable for HSTFNUM_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

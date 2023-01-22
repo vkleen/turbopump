@@ -1,280 +1,181 @@
-#[doc = "Reader of register ELMR[%s]"]
-pub type R = crate::R<u32, super::ELMR>;
-#[doc = "Writer for register ELMR[%s]"]
-pub type W = crate::W<u32, super::ELMR>;
-#[doc = "Reader of field `CSEL0`"]
-pub type CSEL0_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CSEL0`"]
-pub struct CSEL0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSEL0_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `ELMR[%s]` reader"]
+pub struct R(crate::R<ELMR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<ELMR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CSEL1`"]
-pub type CSEL1_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CSEL1`"]
-pub struct CSEL1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSEL1_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::R<ELMR_SPEC>> for R {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn from(reader: crate::R<ELMR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `CSEL2`"]
-pub type CSEL2_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CSEL2`"]
-pub struct CSEL2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSEL2_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `ELMR[%s]` writer"]
+pub struct W(crate::W<ELMR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<ELMR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CSEL3`"]
-pub type CSEL3_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CSEL3`"]
-pub struct CSEL3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSEL3_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Reader of field `CSEL4`"]
-pub type CSEL4_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CSEL4`"]
-pub struct CSEL4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSEL4_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<ELMR_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
+    fn from(writer: crate::W<ELMR_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Reader of field `CSEL5`"]
-pub type CSEL5_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CSEL5`"]
-pub struct CSEL5_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSEL5_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
-        self.w
-    }
-}
-#[doc = "Reader of field `CSEL6`"]
-pub type CSEL6_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CSEL6`"]
-pub struct CSEL6_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSEL6_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
-        self.w
-    }
-}
-#[doc = "Reader of field `CSEL7`"]
-pub type CSEL7_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CSEL7`"]
-pub struct CSEL7_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSEL7_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
-        self.w
-    }
-}
+#[doc = "Field `CSEL0` reader - Comparison 0 Selection"]
+pub type CSEL0_R = crate::BitReader<bool>;
+#[doc = "Field `CSEL0` writer - Comparison 0 Selection"]
+pub type CSEL0_W<'a, const O: u8> = crate::BitWriter<'a, u32, ELMR_SPEC, bool, O>;
+#[doc = "Field `CSEL1` reader - Comparison 1 Selection"]
+pub type CSEL1_R = crate::BitReader<bool>;
+#[doc = "Field `CSEL1` writer - Comparison 1 Selection"]
+pub type CSEL1_W<'a, const O: u8> = crate::BitWriter<'a, u32, ELMR_SPEC, bool, O>;
+#[doc = "Field `CSEL2` reader - Comparison 2 Selection"]
+pub type CSEL2_R = crate::BitReader<bool>;
+#[doc = "Field `CSEL2` writer - Comparison 2 Selection"]
+pub type CSEL2_W<'a, const O: u8> = crate::BitWriter<'a, u32, ELMR_SPEC, bool, O>;
+#[doc = "Field `CSEL3` reader - Comparison 3 Selection"]
+pub type CSEL3_R = crate::BitReader<bool>;
+#[doc = "Field `CSEL3` writer - Comparison 3 Selection"]
+pub type CSEL3_W<'a, const O: u8> = crate::BitWriter<'a, u32, ELMR_SPEC, bool, O>;
+#[doc = "Field `CSEL4` reader - Comparison 4 Selection"]
+pub type CSEL4_R = crate::BitReader<bool>;
+#[doc = "Field `CSEL4` writer - Comparison 4 Selection"]
+pub type CSEL4_W<'a, const O: u8> = crate::BitWriter<'a, u32, ELMR_SPEC, bool, O>;
+#[doc = "Field `CSEL5` reader - Comparison 5 Selection"]
+pub type CSEL5_R = crate::BitReader<bool>;
+#[doc = "Field `CSEL5` writer - Comparison 5 Selection"]
+pub type CSEL5_W<'a, const O: u8> = crate::BitWriter<'a, u32, ELMR_SPEC, bool, O>;
+#[doc = "Field `CSEL6` reader - Comparison 6 Selection"]
+pub type CSEL6_R = crate::BitReader<bool>;
+#[doc = "Field `CSEL6` writer - Comparison 6 Selection"]
+pub type CSEL6_W<'a, const O: u8> = crate::BitWriter<'a, u32, ELMR_SPEC, bool, O>;
+#[doc = "Field `CSEL7` reader - Comparison 7 Selection"]
+pub type CSEL7_R = crate::BitReader<bool>;
+#[doc = "Field `CSEL7` writer - Comparison 7 Selection"]
+pub type CSEL7_W<'a, const O: u8> = crate::BitWriter<'a, u32, ELMR_SPEC, bool, O>;
 impl R {
     #[doc = "Bit 0 - Comparison 0 Selection"]
     #[inline(always)]
     pub fn csel0(&self) -> CSEL0_R {
-        CSEL0_R::new((self.bits & 0x01) != 0)
+        CSEL0_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Comparison 1 Selection"]
     #[inline(always)]
     pub fn csel1(&self) -> CSEL1_R {
-        CSEL1_R::new(((self.bits >> 1) & 0x01) != 0)
+        CSEL1_R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Comparison 2 Selection"]
     #[inline(always)]
     pub fn csel2(&self) -> CSEL2_R {
-        CSEL2_R::new(((self.bits >> 2) & 0x01) != 0)
+        CSEL2_R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Comparison 3 Selection"]
     #[inline(always)]
     pub fn csel3(&self) -> CSEL3_R {
-        CSEL3_R::new(((self.bits >> 3) & 0x01) != 0)
+        CSEL3_R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Comparison 4 Selection"]
     #[inline(always)]
     pub fn csel4(&self) -> CSEL4_R {
-        CSEL4_R::new(((self.bits >> 4) & 0x01) != 0)
+        CSEL4_R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Comparison 5 Selection"]
     #[inline(always)]
     pub fn csel5(&self) -> CSEL5_R {
-        CSEL5_R::new(((self.bits >> 5) & 0x01) != 0)
+        CSEL5_R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Comparison 6 Selection"]
     #[inline(always)]
     pub fn csel6(&self) -> CSEL6_R {
-        CSEL6_R::new(((self.bits >> 6) & 0x01) != 0)
+        CSEL6_R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Comparison 7 Selection"]
     #[inline(always)]
     pub fn csel7(&self) -> CSEL7_R {
-        CSEL7_R::new(((self.bits >> 7) & 0x01) != 0)
+        CSEL7_R::new(((self.bits >> 7) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Comparison 0 Selection"]
     #[inline(always)]
-    pub fn csel0(&mut self) -> CSEL0_W {
-        CSEL0_W { w: self }
+    #[must_use]
+    pub fn csel0(&mut self) -> CSEL0_W<0> {
+        CSEL0_W::new(self)
     }
     #[doc = "Bit 1 - Comparison 1 Selection"]
     #[inline(always)]
-    pub fn csel1(&mut self) -> CSEL1_W {
-        CSEL1_W { w: self }
+    #[must_use]
+    pub fn csel1(&mut self) -> CSEL1_W<1> {
+        CSEL1_W::new(self)
     }
     #[doc = "Bit 2 - Comparison 2 Selection"]
     #[inline(always)]
-    pub fn csel2(&mut self) -> CSEL2_W {
-        CSEL2_W { w: self }
+    #[must_use]
+    pub fn csel2(&mut self) -> CSEL2_W<2> {
+        CSEL2_W::new(self)
     }
     #[doc = "Bit 3 - Comparison 3 Selection"]
     #[inline(always)]
-    pub fn csel3(&mut self) -> CSEL3_W {
-        CSEL3_W { w: self }
+    #[must_use]
+    pub fn csel3(&mut self) -> CSEL3_W<3> {
+        CSEL3_W::new(self)
     }
     #[doc = "Bit 4 - Comparison 4 Selection"]
     #[inline(always)]
-    pub fn csel4(&mut self) -> CSEL4_W {
-        CSEL4_W { w: self }
+    #[must_use]
+    pub fn csel4(&mut self) -> CSEL4_W<4> {
+        CSEL4_W::new(self)
     }
     #[doc = "Bit 5 - Comparison 5 Selection"]
     #[inline(always)]
-    pub fn csel5(&mut self) -> CSEL5_W {
-        CSEL5_W { w: self }
+    #[must_use]
+    pub fn csel5(&mut self) -> CSEL5_W<5> {
+        CSEL5_W::new(self)
     }
     #[doc = "Bit 6 - Comparison 6 Selection"]
     #[inline(always)]
-    pub fn csel6(&mut self) -> CSEL6_W {
-        CSEL6_W { w: self }
+    #[must_use]
+    pub fn csel6(&mut self) -> CSEL6_W<6> {
+        CSEL6_W::new(self)
     }
     #[doc = "Bit 7 - Comparison 7 Selection"]
     #[inline(always)]
-    pub fn csel7(&mut self) -> CSEL7_W {
-        CSEL7_W { w: self }
+    #[must_use]
+    pub fn csel7(&mut self) -> CSEL7_W<7> {
+        CSEL7_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Event Line 0 Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [elmr](index.html) module"]
+pub struct ELMR_SPEC;
+impl crate::RegisterSpec for ELMR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [elmr::R](R) reader structure"]
+impl crate::Readable for ELMR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [elmr::W](W) writer structure"]
+impl crate::Writable for ELMR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

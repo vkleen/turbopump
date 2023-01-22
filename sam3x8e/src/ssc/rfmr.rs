@@ -1,107 +1,63 @@
-#[doc = "Reader of register RFMR"]
-pub type R = crate::R<u32, super::RFMR>;
-#[doc = "Writer for register RFMR"]
-pub type W = crate::W<u32, super::RFMR>;
-#[doc = "Register RFMR `reset()`'s with value 0"]
-impl crate::ResetValue for super::RFMR {
-    type Type = u32;
+#[doc = "Register `RFMR` reader"]
+pub struct R(crate::R<RFMR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<RFMR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `DATLEN`"]
-pub type DATLEN_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `DATLEN`"]
-pub struct DATLEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DATLEN_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<RFMR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x1f) | ((value as u32) & 0x1f);
-        self.w
+    fn from(reader: crate::R<RFMR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `LOOP`"]
-pub type LOOP_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `LOOP`"]
-pub struct LOOP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOOP_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `RFMR` writer"]
+pub struct W(crate::W<RFMR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<RFMR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MSBF`"]
-pub type MSBF_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `MSBF`"]
-pub struct MSBF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MSBF_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Reader of field `DATNB`"]
-pub type DATNB_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `DATNB`"]
-pub struct DATNB_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DATNB_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::W<RFMR_SPEC>> for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 8)) | (((value as u32) & 0x0f) << 8);
-        self.w
+    fn from(writer: crate::W<RFMR_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Reader of field `FSLEN`"]
-pub type FSLEN_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `FSLEN`"]
-pub struct FSLEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FSLEN_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 16)) | (((value as u32) & 0x0f) << 16);
-        self.w
-    }
-}
+#[doc = "Field `DATLEN` reader - Data Length"]
+pub type DATLEN_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `DATLEN` writer - Data Length"]
+pub type DATLEN_W<'a, const O: u8> = crate::FieldWriter<'a, u32, RFMR_SPEC, u8, u8, 5, O>;
+#[doc = "Field `LOOP` reader - Loop Mode"]
+pub type LOOP_R = crate::BitReader<bool>;
+#[doc = "Field `LOOP` writer - Loop Mode"]
+pub type LOOP_W<'a, const O: u8> = crate::BitWriter<'a, u32, RFMR_SPEC, bool, O>;
+#[doc = "Field `MSBF` reader - Most Significant Bit First"]
+pub type MSBF_R = crate::BitReader<bool>;
+#[doc = "Field `MSBF` writer - Most Significant Bit First"]
+pub type MSBF_W<'a, const O: u8> = crate::BitWriter<'a, u32, RFMR_SPEC, bool, O>;
+#[doc = "Field `DATNB` reader - Data Number per Frame"]
+pub type DATNB_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `DATNB` writer - Data Number per Frame"]
+pub type DATNB_W<'a, const O: u8> = crate::FieldWriter<'a, u32, RFMR_SPEC, u8, u8, 4, O>;
+#[doc = "Field `FSLEN` reader - Receive Frame Sync Length"]
+pub type FSLEN_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `FSLEN` writer - Receive Frame Sync Length"]
+pub type FSLEN_W<'a, const O: u8> = crate::FieldWriter<'a, u32, RFMR_SPEC, u8, u8, 4, O>;
+#[doc = "Field `FSOS` reader - Receive Frame Sync Output Selection"]
+pub type FSOS_R = crate::FieldReader<u8, FSOS_A>;
 #[doc = "Receive Frame Sync Output Selection\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum FSOS_A {
     #[doc = "0: None, RF pin is an input"]
@@ -123,21 +79,18 @@ impl From<FSOS_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `FSOS`"]
-pub type FSOS_R = crate::R<u8, FSOS_A>;
 impl FSOS_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, FSOS_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<FSOS_A> {
         match self.bits {
-            0 => Val(FSOS_A::NONE),
-            1 => Val(FSOS_A::NEGATIVE),
-            2 => Val(FSOS_A::POSITIVE),
-            3 => Val(FSOS_A::LOW),
-            4 => Val(FSOS_A::HIGH),
-            5 => Val(FSOS_A::TOGGLING),
-            i => Res(i),
+            0 => Some(FSOS_A::NONE),
+            1 => Some(FSOS_A::NEGATIVE),
+            2 => Some(FSOS_A::POSITIVE),
+            3 => Some(FSOS_A::LOW),
+            4 => Some(FSOS_A::HIGH),
+            5 => Some(FSOS_A::TOGGLING),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `NONE`"]
@@ -171,16 +124,9 @@ impl FSOS_R {
         *self == FSOS_A::TOGGLING
     }
 }
-#[doc = "Write proxy for field `FSOS`"]
-pub struct FSOS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FSOS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FSOS_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `FSOS` writer - Receive Frame Sync Output Selection"]
+pub type FSOS_W<'a, const O: u8> = crate::FieldWriter<'a, u32, RFMR_SPEC, u8, FSOS_A, 3, O>;
+impl<'a, const O: u8> FSOS_W<'a, O> {
     #[doc = "None, RF pin is an input"]
     #[inline(always)]
     pub fn none(self) -> &'a mut W {
@@ -211,15 +157,11 @@ impl<'a> FSOS_W<'a> {
     pub fn toggling(self) -> &'a mut W {
         self.variant(FSOS_A::TOGGLING)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 20)) | (((value as u32) & 0x07) << 20);
-        self.w
-    }
 }
+#[doc = "Field `FSEDGE` reader - Frame Sync Edge Detection"]
+pub type FSEDGE_R = crate::BitReader<FSEDGE_A>;
 #[doc = "Frame Sync Edge Detection\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum FSEDGE_A {
     #[doc = "0: Positive Edge Detection"]
     POSITIVE = 0,
@@ -232,10 +174,8 @@ impl From<FSEDGE_A> for bool {
         variant as u8 != 0
     }
 }
-#[doc = "Reader of field `FSEDGE`"]
-pub type FSEDGE_R = crate::R<bool, FSEDGE_A>;
 impl FSEDGE_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> FSEDGE_A {
         match self.bits {
@@ -254,18 +194,9 @@ impl FSEDGE_R {
         *self == FSEDGE_A::NEGATIVE
     }
 }
-#[doc = "Write proxy for field `FSEDGE`"]
-pub struct FSEDGE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FSEDGE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FSEDGE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
-    }
+#[doc = "Field `FSEDGE` writer - Frame Sync Edge Detection"]
+pub type FSEDGE_W<'a, const O: u8> = crate::BitWriter<'a, u32, RFMR_SPEC, FSEDGE_A, O>;
+impl<'a, const O: u8> FSEDGE_W<'a, O> {
     #[doc = "Positive Edge Detection"]
     #[inline(always)]
     pub fn positive(self) -> &'a mut W {
@@ -276,37 +207,11 @@ impl<'a> FSEDGE_W<'a> {
     pub fn negative(self) -> &'a mut W {
         self.variant(FSEDGE_A::NEGATIVE)
     }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 24)) | (((value as u32) & 0x01) << 24);
-        self.w
-    }
 }
-#[doc = "Reader of field `FSLEN_EXT`"]
-pub type FSLEN_EXT_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `FSLEN_EXT`"]
-pub struct FSLEN_EXT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FSLEN_EXT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 28)) | (((value as u32) & 0x0f) << 28);
-        self.w
-    }
-}
+#[doc = "Field `FSLEN_EXT` reader - FSLEN Field Extension"]
+pub type FSLEN_EXT_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `FSLEN_EXT` writer - FSLEN Field Extension"]
+pub type FSLEN_EXT_W<'a, const O: u8> = crate::FieldWriter<'a, u32, RFMR_SPEC, u8, u8, 4, O>;
 impl R {
     #[doc = "Bits 0:4 - Data Length"]
     #[inline(always)]
@@ -316,12 +221,12 @@ impl R {
     #[doc = "Bit 5 - Loop Mode"]
     #[inline(always)]
     pub fn loop_(&self) -> LOOP_R {
-        LOOP_R::new(((self.bits >> 5) & 0x01) != 0)
+        LOOP_R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 7 - Most Significant Bit First"]
     #[inline(always)]
     pub fn msbf(&self) -> MSBF_R {
-        MSBF_R::new(((self.bits >> 7) & 0x01) != 0)
+        MSBF_R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bits 8:11 - Data Number per Frame"]
     #[inline(always)]
@@ -336,12 +241,12 @@ impl R {
     #[doc = "Bits 20:22 - Receive Frame Sync Output Selection"]
     #[inline(always)]
     pub fn fsos(&self) -> FSOS_R {
-        FSOS_R::new(((self.bits >> 20) & 0x07) as u8)
+        FSOS_R::new(((self.bits >> 20) & 7) as u8)
     }
     #[doc = "Bit 24 - Frame Sync Edge Detection"]
     #[inline(always)]
     pub fn fsedge(&self) -> FSEDGE_R {
-        FSEDGE_R::new(((self.bits >> 24) & 0x01) != 0)
+        FSEDGE_R::new(((self.bits >> 24) & 1) != 0)
     }
     #[doc = "Bits 28:31 - FSLEN Field Extension"]
     #[inline(always)]
@@ -352,42 +257,75 @@ impl R {
 impl W {
     #[doc = "Bits 0:4 - Data Length"]
     #[inline(always)]
-    pub fn datlen(&mut self) -> DATLEN_W {
-        DATLEN_W { w: self }
+    #[must_use]
+    pub fn datlen(&mut self) -> DATLEN_W<0> {
+        DATLEN_W::new(self)
     }
     #[doc = "Bit 5 - Loop Mode"]
     #[inline(always)]
-    pub fn loop_(&mut self) -> LOOP_W {
-        LOOP_W { w: self }
+    #[must_use]
+    pub fn loop_(&mut self) -> LOOP_W<5> {
+        LOOP_W::new(self)
     }
     #[doc = "Bit 7 - Most Significant Bit First"]
     #[inline(always)]
-    pub fn msbf(&mut self) -> MSBF_W {
-        MSBF_W { w: self }
+    #[must_use]
+    pub fn msbf(&mut self) -> MSBF_W<7> {
+        MSBF_W::new(self)
     }
     #[doc = "Bits 8:11 - Data Number per Frame"]
     #[inline(always)]
-    pub fn datnb(&mut self) -> DATNB_W {
-        DATNB_W { w: self }
+    #[must_use]
+    pub fn datnb(&mut self) -> DATNB_W<8> {
+        DATNB_W::new(self)
     }
     #[doc = "Bits 16:19 - Receive Frame Sync Length"]
     #[inline(always)]
-    pub fn fslen(&mut self) -> FSLEN_W {
-        FSLEN_W { w: self }
+    #[must_use]
+    pub fn fslen(&mut self) -> FSLEN_W<16> {
+        FSLEN_W::new(self)
     }
     #[doc = "Bits 20:22 - Receive Frame Sync Output Selection"]
     #[inline(always)]
-    pub fn fsos(&mut self) -> FSOS_W {
-        FSOS_W { w: self }
+    #[must_use]
+    pub fn fsos(&mut self) -> FSOS_W<20> {
+        FSOS_W::new(self)
     }
     #[doc = "Bit 24 - Frame Sync Edge Detection"]
     #[inline(always)]
-    pub fn fsedge(&mut self) -> FSEDGE_W {
-        FSEDGE_W { w: self }
+    #[must_use]
+    pub fn fsedge(&mut self) -> FSEDGE_W<24> {
+        FSEDGE_W::new(self)
     }
     #[doc = "Bits 28:31 - FSLEN Field Extension"]
     #[inline(always)]
-    pub fn fslen_ext(&mut self) -> FSLEN_EXT_W {
-        FSLEN_EXT_W { w: self }
+    #[must_use]
+    pub fn fslen_ext(&mut self) -> FSLEN_EXT_W<28> {
+        FSLEN_EXT_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Receive Frame Mode Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [rfmr](index.html) module"]
+pub struct RFMR_SPEC;
+impl crate::RegisterSpec for RFMR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [rfmr::R](R) reader structure"]
+impl crate::Readable for RFMR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [rfmr::W](W) writer structure"]
+impl crate::Writable for RFMR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets RFMR to value 0"]
+impl crate::Resettable for RFMR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

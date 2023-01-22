@@ -1,17 +1,43 @@
-#[doc = "Reader of register CMR6"]
-pub type R = crate::R<u32, super::CMR6>;
-#[doc = "Writer for register CMR6"]
-pub type W = crate::W<u32, super::CMR6>;
-#[doc = "Register CMR6 `reset()`'s with value 0"]
-impl crate::ResetValue for super::CMR6 {
-    type Type = u32;
+#[doc = "Register `CMR6` reader"]
+pub struct R(crate::R<CMR6_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CMR6_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl From<crate::R<CMR6_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<CMR6_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CMR6` writer"]
+pub struct W(crate::W<CMR6_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CMR6_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<CMR6_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<CMR6_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CPRE` reader - Channel Pre-scaler"]
+pub type CPRE_R = crate::FieldReader<u8, CPRE_A>;
 #[doc = "Channel Pre-scaler\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum CPRE_A {
     #[doc = "0: Master clock"]
@@ -47,28 +73,25 @@ impl From<CPRE_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `CPRE`"]
-pub type CPRE_R = crate::R<u8, CPRE_A>;
 impl CPRE_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, CPRE_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<CPRE_A> {
         match self.bits {
-            0 => Val(CPRE_A::MCK),
-            1 => Val(CPRE_A::MCK_DIV_2),
-            2 => Val(CPRE_A::MCK_DIV_4),
-            3 => Val(CPRE_A::MCK_DIV_8),
-            4 => Val(CPRE_A::MCK_DIV_16),
-            5 => Val(CPRE_A::MCK_DIV_32),
-            6 => Val(CPRE_A::MCK_DIV_64),
-            7 => Val(CPRE_A::MCK_DIV_128),
-            8 => Val(CPRE_A::MCK_DIV_256),
-            9 => Val(CPRE_A::MCK_DIV_512),
-            10 => Val(CPRE_A::MCK_DIV_1024),
-            11 => Val(CPRE_A::CLKA),
-            12 => Val(CPRE_A::CLKB),
-            i => Res(i),
+            0 => Some(CPRE_A::MCK),
+            1 => Some(CPRE_A::MCK_DIV_2),
+            2 => Some(CPRE_A::MCK_DIV_4),
+            3 => Some(CPRE_A::MCK_DIV_8),
+            4 => Some(CPRE_A::MCK_DIV_16),
+            5 => Some(CPRE_A::MCK_DIV_32),
+            6 => Some(CPRE_A::MCK_DIV_64),
+            7 => Some(CPRE_A::MCK_DIV_128),
+            8 => Some(CPRE_A::MCK_DIV_256),
+            9 => Some(CPRE_A::MCK_DIV_512),
+            10 => Some(CPRE_A::MCK_DIV_1024),
+            11 => Some(CPRE_A::CLKA),
+            12 => Some(CPRE_A::CLKB),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `MCK`"]
@@ -137,16 +160,9 @@ impl CPRE_R {
         *self == CPRE_A::CLKB
     }
 }
-#[doc = "Write proxy for field `CPRE`"]
-pub struct CPRE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CPRE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CPRE_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `CPRE` writer - Channel Pre-scaler"]
+pub type CPRE_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CMR6_SPEC, u8, CPRE_A, 4, O>;
+impl<'a, const O: u8> CPRE_W<'a, O> {
     #[doc = "Master clock"]
     #[inline(always)]
     pub fn mck(self) -> &'a mut W {
@@ -212,157 +228,31 @@ impl<'a> CPRE_W<'a> {
     pub fn clkb(self) -> &'a mut W {
         self.variant(CPRE_A::CLKB)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
-        self.w
-    }
 }
-#[doc = "Reader of field `CALG`"]
-pub type CALG_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CALG`"]
-pub struct CALG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CALG_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | (((value as u32) & 0x01) << 8);
-        self.w
-    }
-}
-#[doc = "Reader of field `CPOL`"]
-pub type CPOL_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CPOL`"]
-pub struct CPOL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CPOL_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | (((value as u32) & 0x01) << 9);
-        self.w
-    }
-}
-#[doc = "Reader of field `CES`"]
-pub type CES_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CES`"]
-pub struct CES_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CES_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | (((value as u32) & 0x01) << 10);
-        self.w
-    }
-}
-#[doc = "Reader of field `DTE`"]
-pub type DTE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DTE`"]
-pub struct DTE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DTE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 16)) | (((value as u32) & 0x01) << 16);
-        self.w
-    }
-}
-#[doc = "Reader of field `DTHI`"]
-pub type DTHI_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DTHI`"]
-pub struct DTHI_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DTHI_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 17)) | (((value as u32) & 0x01) << 17);
-        self.w
-    }
-}
-#[doc = "Reader of field `DTLI`"]
-pub type DTLI_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DTLI`"]
-pub struct DTLI_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DTLI_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 18)) | (((value as u32) & 0x01) << 18);
-        self.w
-    }
-}
+#[doc = "Field `CALG` reader - Channel Alignment"]
+pub type CALG_R = crate::BitReader<bool>;
+#[doc = "Field `CALG` writer - Channel Alignment"]
+pub type CALG_W<'a, const O: u8> = crate::BitWriter<'a, u32, CMR6_SPEC, bool, O>;
+#[doc = "Field `CPOL` reader - Channel Polarity"]
+pub type CPOL_R = crate::BitReader<bool>;
+#[doc = "Field `CPOL` writer - Channel Polarity"]
+pub type CPOL_W<'a, const O: u8> = crate::BitWriter<'a, u32, CMR6_SPEC, bool, O>;
+#[doc = "Field `CES` reader - Counter Event Selection"]
+pub type CES_R = crate::BitReader<bool>;
+#[doc = "Field `CES` writer - Counter Event Selection"]
+pub type CES_W<'a, const O: u8> = crate::BitWriter<'a, u32, CMR6_SPEC, bool, O>;
+#[doc = "Field `DTE` reader - Dead-Time Generator Enable"]
+pub type DTE_R = crate::BitReader<bool>;
+#[doc = "Field `DTE` writer - Dead-Time Generator Enable"]
+pub type DTE_W<'a, const O: u8> = crate::BitWriter<'a, u32, CMR6_SPEC, bool, O>;
+#[doc = "Field `DTHI` reader - Dead-Time PWMHx Output Inverted"]
+pub type DTHI_R = crate::BitReader<bool>;
+#[doc = "Field `DTHI` writer - Dead-Time PWMHx Output Inverted"]
+pub type DTHI_W<'a, const O: u8> = crate::BitWriter<'a, u32, CMR6_SPEC, bool, O>;
+#[doc = "Field `DTLI` reader - Dead-Time PWMLx Output Inverted"]
+pub type DTLI_R = crate::BitReader<bool>;
+#[doc = "Field `DTLI` writer - Dead-Time PWMLx Output Inverted"]
+pub type DTLI_W<'a, const O: u8> = crate::BitWriter<'a, u32, CMR6_SPEC, bool, O>;
 impl R {
     #[doc = "Bits 0:3 - Channel Pre-scaler"]
     #[inline(always)]
@@ -372,68 +262,100 @@ impl R {
     #[doc = "Bit 8 - Channel Alignment"]
     #[inline(always)]
     pub fn calg(&self) -> CALG_R {
-        CALG_R::new(((self.bits >> 8) & 0x01) != 0)
+        CALG_R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Channel Polarity"]
     #[inline(always)]
     pub fn cpol(&self) -> CPOL_R {
-        CPOL_R::new(((self.bits >> 9) & 0x01) != 0)
+        CPOL_R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Counter Event Selection"]
     #[inline(always)]
     pub fn ces(&self) -> CES_R {
-        CES_R::new(((self.bits >> 10) & 0x01) != 0)
+        CES_R::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 16 - Dead-Time Generator Enable"]
     #[inline(always)]
     pub fn dte(&self) -> DTE_R {
-        DTE_R::new(((self.bits >> 16) & 0x01) != 0)
+        DTE_R::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bit 17 - Dead-Time PWMHx Output Inverted"]
     #[inline(always)]
     pub fn dthi(&self) -> DTHI_R {
-        DTHI_R::new(((self.bits >> 17) & 0x01) != 0)
+        DTHI_R::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 18 - Dead-Time PWMLx Output Inverted"]
     #[inline(always)]
     pub fn dtli(&self) -> DTLI_R {
-        DTLI_R::new(((self.bits >> 18) & 0x01) != 0)
+        DTLI_R::new(((self.bits >> 18) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Channel Pre-scaler"]
     #[inline(always)]
-    pub fn cpre(&mut self) -> CPRE_W {
-        CPRE_W { w: self }
+    #[must_use]
+    pub fn cpre(&mut self) -> CPRE_W<0> {
+        CPRE_W::new(self)
     }
     #[doc = "Bit 8 - Channel Alignment"]
     #[inline(always)]
-    pub fn calg(&mut self) -> CALG_W {
-        CALG_W { w: self }
+    #[must_use]
+    pub fn calg(&mut self) -> CALG_W<8> {
+        CALG_W::new(self)
     }
     #[doc = "Bit 9 - Channel Polarity"]
     #[inline(always)]
-    pub fn cpol(&mut self) -> CPOL_W {
-        CPOL_W { w: self }
+    #[must_use]
+    pub fn cpol(&mut self) -> CPOL_W<9> {
+        CPOL_W::new(self)
     }
     #[doc = "Bit 10 - Counter Event Selection"]
     #[inline(always)]
-    pub fn ces(&mut self) -> CES_W {
-        CES_W { w: self }
+    #[must_use]
+    pub fn ces(&mut self) -> CES_W<10> {
+        CES_W::new(self)
     }
     #[doc = "Bit 16 - Dead-Time Generator Enable"]
     #[inline(always)]
-    pub fn dte(&mut self) -> DTE_W {
-        DTE_W { w: self }
+    #[must_use]
+    pub fn dte(&mut self) -> DTE_W<16> {
+        DTE_W::new(self)
     }
     #[doc = "Bit 17 - Dead-Time PWMHx Output Inverted"]
     #[inline(always)]
-    pub fn dthi(&mut self) -> DTHI_W {
-        DTHI_W { w: self }
+    #[must_use]
+    pub fn dthi(&mut self) -> DTHI_W<17> {
+        DTHI_W::new(self)
     }
     #[doc = "Bit 18 - Dead-Time PWMLx Output Inverted"]
     #[inline(always)]
-    pub fn dtli(&mut self) -> DTLI_W {
-        DTLI_W { w: self }
+    #[must_use]
+    pub fn dtli(&mut self) -> DTLI_W<18> {
+        DTLI_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PWM Channel Mode Register (ch_num = 6)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cmr6](index.html) module"]
+pub struct CMR6_SPEC;
+impl crate::RegisterSpec for CMR6_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cmr6::R](R) reader structure"]
+impl crate::Readable for CMR6_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cmr6::W](W) writer structure"]
+impl crate::Writable for CMR6_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets CMR6 to value 0"]
+impl crate::Resettable for CMR6_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

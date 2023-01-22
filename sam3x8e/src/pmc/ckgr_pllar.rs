@@ -1,81 +1,55 @@
-#[doc = "Reader of register CKGR_PLLAR"]
-pub type R = crate::R<u32, super::CKGR_PLLAR>;
-#[doc = "Writer for register CKGR_PLLAR"]
-pub type W = crate::W<u32, super::CKGR_PLLAR>;
-#[doc = "Register CKGR_PLLAR `reset()`'s with value 0x3f00"]
-impl crate::ResetValue for super::CKGR_PLLAR {
-    type Type = u32;
+#[doc = "Register `CKGR_PLLAR` reader"]
+pub struct R(crate::R<CKGR_PLLAR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CKGR_PLLAR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x3f00
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `DIVA`"]
-pub type DIVA_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `DIVA`"]
-pub struct DIVA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DIVA_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<CKGR_PLLAR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | ((value as u32) & 0xff);
-        self.w
+    fn from(reader: crate::R<CKGR_PLLAR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `PLLACOUNT`"]
-pub type PLLACOUNT_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `PLLACOUNT`"]
-pub struct PLLACOUNT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PLLACOUNT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Register `CKGR_PLLAR` writer"]
+pub struct W(crate::W<CKGR_PLLAR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CKGR_PLLAR_SPEC>;
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x3f << 8)) | (((value as u32) & 0x3f) << 8);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `MULA`"]
-pub type MULA_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `MULA`"]
-pub struct MULA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MULA_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07ff << 16)) | (((value as u32) & 0x07ff) << 16);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Reader of field `ONE`"]
-pub type ONE_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `ONE`"]
-pub struct ONE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ONE_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<CKGR_PLLAR_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 29)) | (((value as u32) & 0x01) << 29);
-        self.w
+    fn from(writer: crate::W<CKGR_PLLAR_SPEC>) -> Self {
+        W(writer)
     }
 }
+#[doc = "Field `DIVA` reader - Divider"]
+pub type DIVA_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `DIVA` writer - Divider"]
+pub type DIVA_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CKGR_PLLAR_SPEC, u8, u8, 8, O>;
+#[doc = "Field `PLLACOUNT` reader - PLLA Counter"]
+pub type PLLACOUNT_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `PLLACOUNT` writer - PLLA Counter"]
+pub type PLLACOUNT_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CKGR_PLLAR_SPEC, u8, u8, 6, O>;
+#[doc = "Field `MULA` reader - PLLA Multiplier"]
+pub type MULA_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `MULA` writer - PLLA Multiplier"]
+pub type MULA_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CKGR_PLLAR_SPEC, u16, u16, 11, O>;
+#[doc = "Field `ONE` reader - Must Be Set to 1"]
+pub type ONE_R = crate::BitReader<bool>;
+#[doc = "Field `ONE` writer - Must Be Set to 1"]
+pub type ONE_W<'a, const O: u8> = crate::BitWriter<'a, u32, CKGR_PLLAR_SPEC, bool, O>;
 impl R {
     #[doc = "Bits 0:7 - Divider"]
     #[inline(always)]
@@ -95,28 +69,57 @@ impl R {
     #[doc = "Bit 29 - Must Be Set to 1"]
     #[inline(always)]
     pub fn one(&self) -> ONE_R {
-        ONE_R::new(((self.bits >> 29) & 0x01) != 0)
+        ONE_R::new(((self.bits >> 29) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:7 - Divider"]
     #[inline(always)]
-    pub fn diva(&mut self) -> DIVA_W {
-        DIVA_W { w: self }
+    #[must_use]
+    pub fn diva(&mut self) -> DIVA_W<0> {
+        DIVA_W::new(self)
     }
     #[doc = "Bits 8:13 - PLLA Counter"]
     #[inline(always)]
-    pub fn pllacount(&mut self) -> PLLACOUNT_W {
-        PLLACOUNT_W { w: self }
+    #[must_use]
+    pub fn pllacount(&mut self) -> PLLACOUNT_W<8> {
+        PLLACOUNT_W::new(self)
     }
     #[doc = "Bits 16:26 - PLLA Multiplier"]
     #[inline(always)]
-    pub fn mula(&mut self) -> MULA_W {
-        MULA_W { w: self }
+    #[must_use]
+    pub fn mula(&mut self) -> MULA_W<16> {
+        MULA_W::new(self)
     }
     #[doc = "Bit 29 - Must Be Set to 1"]
     #[inline(always)]
-    pub fn one(&mut self) -> ONE_W {
-        ONE_W { w: self }
+    #[must_use]
+    pub fn one(&mut self) -> ONE_W<29> {
+        ONE_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PLLA Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ckgr_pllar](index.html) module"]
+pub struct CKGR_PLLAR_SPEC;
+impl crate::RegisterSpec for CKGR_PLLAR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ckgr_pllar::R](R) reader structure"]
+impl crate::Readable for CKGR_PLLAR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ckgr_pllar::W](W) writer structure"]
+impl crate::Writable for CKGR_PLLAR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets CKGR_PLLAR to value 0x3f00"]
+impl crate::Resettable for CKGR_PLLAR_SPEC {
+    const RESET_VALUE: Self::Ux = 0x3f00;
 }

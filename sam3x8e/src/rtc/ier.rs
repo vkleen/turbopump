@@ -1,139 +1,80 @@
-#[doc = "Writer for register IER"]
-pub type W = crate::W<u32, super::IER>;
-#[doc = "Write proxy for field `ACKEN`"]
-pub struct ACKEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ACKEN_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `IER` writer"]
+pub struct W(crate::W<IER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IER_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Write proxy for field `ALREN`"]
-pub struct ALREN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ALREN_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Write proxy for field `SECEN`"]
-pub struct SECEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SECEN_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<IER_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
-        self.w
+    fn from(writer: crate::W<IER_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Write proxy for field `TIMEN`"]
-pub struct TIMEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TIMEN_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
-        self.w
-    }
-}
-#[doc = "Write proxy for field `CALEN`"]
-pub struct CALEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CALEN_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
-    }
-}
+#[doc = "Field `ACKEN` writer - Acknowledge Update Interrupt Enable"]
+pub type ACKEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, IER_SPEC, bool, O>;
+#[doc = "Field `ALREN` writer - Alarm Interrupt Enable"]
+pub type ALREN_W<'a, const O: u8> = crate::BitWriter<'a, u32, IER_SPEC, bool, O>;
+#[doc = "Field `SECEN` writer - Second Event Interrupt Enable"]
+pub type SECEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, IER_SPEC, bool, O>;
+#[doc = "Field `TIMEN` writer - Time Event Interrupt Enable"]
+pub type TIMEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, IER_SPEC, bool, O>;
+#[doc = "Field `CALEN` writer - Calendar Event Interrupt Enable"]
+pub type CALEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, IER_SPEC, bool, O>;
 impl W {
     #[doc = "Bit 0 - Acknowledge Update Interrupt Enable"]
     #[inline(always)]
-    pub fn acken(&mut self) -> ACKEN_W {
-        ACKEN_W { w: self }
+    #[must_use]
+    pub fn acken(&mut self) -> ACKEN_W<0> {
+        ACKEN_W::new(self)
     }
     #[doc = "Bit 1 - Alarm Interrupt Enable"]
     #[inline(always)]
-    pub fn alren(&mut self) -> ALREN_W {
-        ALREN_W { w: self }
+    #[must_use]
+    pub fn alren(&mut self) -> ALREN_W<1> {
+        ALREN_W::new(self)
     }
     #[doc = "Bit 2 - Second Event Interrupt Enable"]
     #[inline(always)]
-    pub fn secen(&mut self) -> SECEN_W {
-        SECEN_W { w: self }
+    #[must_use]
+    pub fn secen(&mut self) -> SECEN_W<2> {
+        SECEN_W::new(self)
     }
     #[doc = "Bit 3 - Time Event Interrupt Enable"]
     #[inline(always)]
-    pub fn timen(&mut self) -> TIMEN_W {
-        TIMEN_W { w: self }
+    #[must_use]
+    pub fn timen(&mut self) -> TIMEN_W<3> {
+        TIMEN_W::new(self)
     }
     #[doc = "Bit 4 - Calendar Event Interrupt Enable"]
     #[inline(always)]
-    pub fn calen(&mut self) -> CALEN_W {
-        CALEN_W { w: self }
+    #[must_use]
+    pub fn calen(&mut self) -> CALEN_W<4> {
+        CALEN_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Enable Register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ier](index.html) module"]
+pub struct IER_SPEC;
+impl crate::RegisterSpec for IER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ier::W](W) writer structure"]
+impl crate::Writable for IER_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

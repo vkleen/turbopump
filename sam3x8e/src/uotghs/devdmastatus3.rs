@@ -1,174 +1,89 @@
-#[doc = "Reader of register DEVDMASTATUS3"]
-pub type R = crate::R<u32, super::DEVDMASTATUS3>;
-#[doc = "Writer for register DEVDMASTATUS3"]
-pub type W = crate::W<u32, super::DEVDMASTATUS3>;
-#[doc = "Register DEVDMASTATUS3 `reset()`'s with value 0"]
-impl crate::ResetValue for super::DEVDMASTATUS3 {
-    type Type = u32;
+#[doc = "Register `DEVDMASTATUS3` reader"]
+pub struct R(crate::R<DEVDMASTATUS3_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DEVDMASTATUS3_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CHANN_ENB`"]
-pub type CHANN_ENB_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CHANN_ENB`"]
-pub struct CHANN_ENB_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CHANN_ENB_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::R<DEVDMASTATUS3_SPEC>> for R {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn from(reader: crate::R<DEVDMASTATUS3_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `CHANN_ACT`"]
-pub type CHANN_ACT_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CHANN_ACT`"]
-pub struct CHANN_ACT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CHANN_ACT_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `DEVDMASTATUS3` writer"]
+pub struct W(crate::W<DEVDMASTATUS3_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DEVDMASTATUS3_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `END_TR_ST`"]
-pub type END_TR_ST_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `END_TR_ST`"]
-pub struct END_TR_ST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> END_TR_ST_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Reader of field `END_BF_ST`"]
-pub type END_BF_ST_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `END_BF_ST`"]
-pub struct END_BF_ST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> END_BF_ST_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<DEVDMASTATUS3_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
-        self.w
+    fn from(writer: crate::W<DEVDMASTATUS3_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Reader of field `DESC_LDST`"]
-pub type DESC_LDST_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DESC_LDST`"]
-pub struct DESC_LDST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DESC_LDST_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
-        self.w
-    }
-}
-#[doc = "Reader of field `BUFF_COUNT`"]
-pub type BUFF_COUNT_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `BUFF_COUNT`"]
-pub struct BUFF_COUNT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> BUFF_COUNT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xffff << 16)) | (((value as u32) & 0xffff) << 16);
-        self.w
-    }
-}
+#[doc = "Field `CHANN_ENB` reader - Channel Enable Status"]
+pub type CHANN_ENB_R = crate::BitReader<bool>;
+#[doc = "Field `CHANN_ENB` writer - Channel Enable Status"]
+pub type CHANN_ENB_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMASTATUS3_SPEC, bool, O>;
+#[doc = "Field `CHANN_ACT` reader - Channel Active Status"]
+pub type CHANN_ACT_R = crate::BitReader<bool>;
+#[doc = "Field `CHANN_ACT` writer - Channel Active Status"]
+pub type CHANN_ACT_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMASTATUS3_SPEC, bool, O>;
+#[doc = "Field `END_TR_ST` reader - End of Channel Transfer Status"]
+pub type END_TR_ST_R = crate::BitReader<bool>;
+#[doc = "Field `END_TR_ST` writer - End of Channel Transfer Status"]
+pub type END_TR_ST_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMASTATUS3_SPEC, bool, O>;
+#[doc = "Field `END_BF_ST` reader - End of Channel Buffer Status"]
+pub type END_BF_ST_R = crate::BitReader<bool>;
+#[doc = "Field `END_BF_ST` writer - End of Channel Buffer Status"]
+pub type END_BF_ST_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMASTATUS3_SPEC, bool, O>;
+#[doc = "Field `DESC_LDST` reader - Descriptor Loaded Status"]
+pub type DESC_LDST_R = crate::BitReader<bool>;
+#[doc = "Field `DESC_LDST` writer - Descriptor Loaded Status"]
+pub type DESC_LDST_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMASTATUS3_SPEC, bool, O>;
+#[doc = "Field `BUFF_COUNT` reader - Buffer Byte Count"]
+pub type BUFF_COUNT_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `BUFF_COUNT` writer - Buffer Byte Count"]
+pub type BUFF_COUNT_W<'a, const O: u8> =
+    crate::FieldWriter<'a, u32, DEVDMASTATUS3_SPEC, u16, u16, 16, O>;
 impl R {
     #[doc = "Bit 0 - Channel Enable Status"]
     #[inline(always)]
     pub fn chann_enb(&self) -> CHANN_ENB_R {
-        CHANN_ENB_R::new((self.bits & 0x01) != 0)
+        CHANN_ENB_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Channel Active Status"]
     #[inline(always)]
     pub fn chann_act(&self) -> CHANN_ACT_R {
-        CHANN_ACT_R::new(((self.bits >> 1) & 0x01) != 0)
+        CHANN_ACT_R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 4 - End of Channel Transfer Status"]
     #[inline(always)]
     pub fn end_tr_st(&self) -> END_TR_ST_R {
-        END_TR_ST_R::new(((self.bits >> 4) & 0x01) != 0)
+        END_TR_ST_R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - End of Channel Buffer Status"]
     #[inline(always)]
     pub fn end_bf_st(&self) -> END_BF_ST_R {
-        END_BF_ST_R::new(((self.bits >> 5) & 0x01) != 0)
+        END_BF_ST_R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Descriptor Loaded Status"]
     #[inline(always)]
     pub fn desc_ldst(&self) -> DESC_LDST_R {
-        DESC_LDST_R::new(((self.bits >> 6) & 0x01) != 0)
+        DESC_LDST_R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bits 16:31 - Buffer Byte Count"]
     #[inline(always)]
@@ -179,32 +94,63 @@ impl R {
 impl W {
     #[doc = "Bit 0 - Channel Enable Status"]
     #[inline(always)]
-    pub fn chann_enb(&mut self) -> CHANN_ENB_W {
-        CHANN_ENB_W { w: self }
+    #[must_use]
+    pub fn chann_enb(&mut self) -> CHANN_ENB_W<0> {
+        CHANN_ENB_W::new(self)
     }
     #[doc = "Bit 1 - Channel Active Status"]
     #[inline(always)]
-    pub fn chann_act(&mut self) -> CHANN_ACT_W {
-        CHANN_ACT_W { w: self }
+    #[must_use]
+    pub fn chann_act(&mut self) -> CHANN_ACT_W<1> {
+        CHANN_ACT_W::new(self)
     }
     #[doc = "Bit 4 - End of Channel Transfer Status"]
     #[inline(always)]
-    pub fn end_tr_st(&mut self) -> END_TR_ST_W {
-        END_TR_ST_W { w: self }
+    #[must_use]
+    pub fn end_tr_st(&mut self) -> END_TR_ST_W<4> {
+        END_TR_ST_W::new(self)
     }
     #[doc = "Bit 5 - End of Channel Buffer Status"]
     #[inline(always)]
-    pub fn end_bf_st(&mut self) -> END_BF_ST_W {
-        END_BF_ST_W { w: self }
+    #[must_use]
+    pub fn end_bf_st(&mut self) -> END_BF_ST_W<5> {
+        END_BF_ST_W::new(self)
     }
     #[doc = "Bit 6 - Descriptor Loaded Status"]
     #[inline(always)]
-    pub fn desc_ldst(&mut self) -> DESC_LDST_W {
-        DESC_LDST_W { w: self }
+    #[must_use]
+    pub fn desc_ldst(&mut self) -> DESC_LDST_W<6> {
+        DESC_LDST_W::new(self)
     }
     #[doc = "Bits 16:31 - Buffer Byte Count"]
     #[inline(always)]
-    pub fn buff_count(&mut self) -> BUFF_COUNT_W {
-        BUFF_COUNT_W { w: self }
+    #[must_use]
+    pub fn buff_count(&mut self) -> BUFF_COUNT_W<16> {
+        BUFF_COUNT_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Device DMA Channel Status Register (n = 3)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [devdmastatus3](index.html) module"]
+pub struct DEVDMASTATUS3_SPEC;
+impl crate::RegisterSpec for DEVDMASTATUS3_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [devdmastatus3::R](R) reader structure"]
+impl crate::Readable for DEVDMASTATUS3_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [devdmastatus3::W](W) writer structure"]
+impl crate::Writable for DEVDMASTATUS3_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets DEVDMASTATUS3 to value 0"]
+impl crate::Resettable for DEVDMASTATUS3_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

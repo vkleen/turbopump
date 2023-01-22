@@ -1,29 +1,43 @@
-#[doc = "Reader of register TTGR"]
-pub type R = crate::R<u32, super::TTGR>;
-#[doc = "Writer for register TTGR"]
-pub type W = crate::W<u32, super::TTGR>;
-#[doc = "Register TTGR `reset()`'s with value 0"]
-impl crate::ResetValue for super::TTGR {
-    type Type = u32;
+#[doc = "Register `TTGR` reader"]
+pub struct R(crate::R<TTGR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<TTGR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `TG`"]
-pub type TG_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `TG`"]
-pub struct TG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TG_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<TTGR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | ((value as u32) & 0xff);
-        self.w
+    fn from(reader: crate::R<TTGR_SPEC>) -> Self {
+        R(reader)
     }
 }
+#[doc = "Register `TTGR` writer"]
+pub struct W(crate::W<TTGR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TTGR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<TTGR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<TTGR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `TG` reader - Timeguard Value"]
+pub type TG_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `TG` writer - Timeguard Value"]
+pub type TG_W<'a, const O: u8> = crate::FieldWriter<'a, u32, TTGR_SPEC, u8, u8, 8, O>;
 impl R {
     #[doc = "Bits 0:7 - Timeguard Value"]
     #[inline(always)]
@@ -34,7 +48,33 @@ impl R {
 impl W {
     #[doc = "Bits 0:7 - Timeguard Value"]
     #[inline(always)]
-    pub fn tg(&mut self) -> TG_W {
-        TG_W { w: self }
+    #[must_use]
+    pub fn tg(&mut self) -> TG_W<0> {
+        TG_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Transmitter Timeguard Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ttgr](index.html) module"]
+pub struct TTGR_SPEC;
+impl crate::RegisterSpec for TTGR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ttgr::R](R) reader structure"]
+impl crate::Readable for TTGR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ttgr::W](W) writer structure"]
+impl crate::Writable for TTGR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets TTGR to value 0"]
+impl crate::Resettable for TTGR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

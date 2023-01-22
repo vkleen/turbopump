@@ -1,9 +1,24 @@
-#[doc = "Reader of register CIDR"]
-pub type R = crate::R<u32, super::CIDR>;
-#[doc = "Reader of field `VERSION`"]
-pub type VERSION_R = crate::R<u8, u8>;
+#[doc = "Register `CIDR` reader"]
+pub struct R(crate::R<CIDR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CIDR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl From<crate::R<CIDR_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<CIDR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Field `VERSION` reader - Version of the Device"]
+pub type VERSION_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `EPROC` reader - Embedded Processor"]
+pub type EPROC_R = crate::FieldReader<u8, EPROC_A>;
 #[doc = "Embedded Processor"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum EPROC_A {
     #[doc = "1: ARM946ES"]
@@ -27,22 +42,19 @@ impl From<EPROC_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `EPROC`"]
-pub type EPROC_R = crate::R<u8, EPROC_A>;
 impl EPROC_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, EPROC_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<EPROC_A> {
         match self.bits {
-            1 => Val(EPROC_A::ARM946ES),
-            2 => Val(EPROC_A::ARM7TDMI),
-            3 => Val(EPROC_A::CM3),
-            4 => Val(EPROC_A::ARM920T),
-            5 => Val(EPROC_A::ARM926EJS),
-            6 => Val(EPROC_A::CA5),
-            7 => Val(EPROC_A::CM4),
-            i => Res(i),
+            1 => Some(EPROC_A::ARM946ES),
+            2 => Some(EPROC_A::ARM7TDMI),
+            3 => Some(EPROC_A::CM3),
+            4 => Some(EPROC_A::ARM920T),
+            5 => Some(EPROC_A::ARM926EJS),
+            6 => Some(EPROC_A::CA5),
+            7 => Some(EPROC_A::CM4),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `ARM946ES`"]
@@ -81,8 +93,10 @@ impl EPROC_R {
         *self == EPROC_A::CM4
     }
 }
+#[doc = "Field `NVPSIZ` reader - Nonvolatile Program Memory Size"]
+pub type NVPSIZ_R = crate::FieldReader<u8, NVPSIZ_A>;
 #[doc = "Nonvolatile Program Memory Size"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum NVPSIZ_A {
     #[doc = "0: None"]
@@ -112,25 +126,22 @@ impl From<NVPSIZ_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `NVPSIZ`"]
-pub type NVPSIZ_R = crate::R<u8, NVPSIZ_A>;
 impl NVPSIZ_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, NVPSIZ_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<NVPSIZ_A> {
         match self.bits {
-            0 => Val(NVPSIZ_A::NONE),
-            1 => Val(NVPSIZ_A::_8K),
-            2 => Val(NVPSIZ_A::_16K),
-            3 => Val(NVPSIZ_A::_32K),
-            5 => Val(NVPSIZ_A::_64K),
-            7 => Val(NVPSIZ_A::_128K),
-            9 => Val(NVPSIZ_A::_256K),
-            10 => Val(NVPSIZ_A::_512K),
-            12 => Val(NVPSIZ_A::_1024K),
-            14 => Val(NVPSIZ_A::_2048K),
-            i => Res(i),
+            0 => Some(NVPSIZ_A::NONE),
+            1 => Some(NVPSIZ_A::_8K),
+            2 => Some(NVPSIZ_A::_16K),
+            3 => Some(NVPSIZ_A::_32K),
+            5 => Some(NVPSIZ_A::_64K),
+            7 => Some(NVPSIZ_A::_128K),
+            9 => Some(NVPSIZ_A::_256K),
+            10 => Some(NVPSIZ_A::_512K),
+            12 => Some(NVPSIZ_A::_1024K),
+            14 => Some(NVPSIZ_A::_2048K),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `NONE`"]
@@ -184,8 +195,10 @@ impl NVPSIZ_R {
         *self == NVPSIZ_A::_2048K
     }
 }
+#[doc = "Field `NVPSIZ2` reader - Second Nonvolatile Program Memory Size"]
+pub type NVPSIZ2_R = crate::FieldReader<u8, NVPSIZ2_A>;
 #[doc = "Second Nonvolatile Program Memory Size"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum NVPSIZ2_A {
     #[doc = "0: None"]
@@ -215,25 +228,22 @@ impl From<NVPSIZ2_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `NVPSIZ2`"]
-pub type NVPSIZ2_R = crate::R<u8, NVPSIZ2_A>;
 impl NVPSIZ2_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, NVPSIZ2_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<NVPSIZ2_A> {
         match self.bits {
-            0 => Val(NVPSIZ2_A::NONE),
-            1 => Val(NVPSIZ2_A::_8K),
-            2 => Val(NVPSIZ2_A::_16K),
-            3 => Val(NVPSIZ2_A::_32K),
-            5 => Val(NVPSIZ2_A::_64K),
-            7 => Val(NVPSIZ2_A::_128K),
-            9 => Val(NVPSIZ2_A::_256K),
-            10 => Val(NVPSIZ2_A::_512K),
-            12 => Val(NVPSIZ2_A::_1024K),
-            14 => Val(NVPSIZ2_A::_2048K),
-            i => Res(i),
+            0 => Some(NVPSIZ2_A::NONE),
+            1 => Some(NVPSIZ2_A::_8K),
+            2 => Some(NVPSIZ2_A::_16K),
+            3 => Some(NVPSIZ2_A::_32K),
+            5 => Some(NVPSIZ2_A::_64K),
+            7 => Some(NVPSIZ2_A::_128K),
+            9 => Some(NVPSIZ2_A::_256K),
+            10 => Some(NVPSIZ2_A::_512K),
+            12 => Some(NVPSIZ2_A::_1024K),
+            14 => Some(NVPSIZ2_A::_2048K),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `NONE`"]
@@ -287,8 +297,10 @@ impl NVPSIZ2_R {
         *self == NVPSIZ2_A::_2048K
     }
 }
+#[doc = "Field `SRAMSIZ` reader - Internal SRAM Size"]
+pub type SRAMSIZ_R = crate::FieldReader<u8, SRAMSIZ_A>;
 #[doc = "Internal SRAM Size"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum SRAMSIZ_A {
     #[doc = "0: 48 Kbytes"]
@@ -330,10 +342,8 @@ impl From<SRAMSIZ_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `SRAMSIZ`"]
-pub type SRAMSIZ_R = crate::R<u8, SRAMSIZ_A>;
 impl SRAMSIZ_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SRAMSIZ_A {
         match self.bits {
@@ -437,18 +447,20 @@ impl SRAMSIZ_R {
         *self == SRAMSIZ_A::_512K
     }
 }
+#[doc = "Field `ARCH` reader - Architecture Identifier"]
+pub type ARCH_R = crate::FieldReader<u8, ARCH_A>;
 #[doc = "Architecture Identifier"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum ARCH_A {
     #[doc = "131: SAM3AxC (100-pin version)"]
-    SAM3AXC = 131,
+    SAM3AX_C = 131,
     #[doc = "132: SAM3XxC (100-pin version)"]
-    SAM3XXC = 132,
+    SAM3XX_C = 132,
     #[doc = "133: SAM3XxE (144-pin version)"]
-    SAM3XXE = 133,
+    SAM3XX_E = 133,
     #[doc = "134: SAM3XxG (208/217-pin version)"]
-    SAM3XXG = 134,
+    SAM3XX_G = 134,
 }
 impl From<ARCH_A> for u8 {
     #[inline(always)]
@@ -456,44 +468,43 @@ impl From<ARCH_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `ARCH`"]
-pub type ARCH_R = crate::R<u8, ARCH_A>;
 impl ARCH_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, ARCH_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<ARCH_A> {
         match self.bits {
-            131 => Val(ARCH_A::SAM3AXC),
-            132 => Val(ARCH_A::SAM3XXC),
-            133 => Val(ARCH_A::SAM3XXE),
-            134 => Val(ARCH_A::SAM3XXG),
-            i => Res(i),
+            131 => Some(ARCH_A::SAM3AX_C),
+            132 => Some(ARCH_A::SAM3XX_C),
+            133 => Some(ARCH_A::SAM3XX_E),
+            134 => Some(ARCH_A::SAM3XX_G),
+            _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `SAM3AXC`"]
+    #[doc = "Checks if the value of the field is `SAM3AX_C`"]
     #[inline(always)]
     pub fn is_sam3ax_c(&self) -> bool {
-        *self == ARCH_A::SAM3AXC
+        *self == ARCH_A::SAM3AX_C
     }
-    #[doc = "Checks if the value of the field is `SAM3XXC`"]
+    #[doc = "Checks if the value of the field is `SAM3XX_C`"]
     #[inline(always)]
     pub fn is_sam3xx_c(&self) -> bool {
-        *self == ARCH_A::SAM3XXC
+        *self == ARCH_A::SAM3XX_C
     }
-    #[doc = "Checks if the value of the field is `SAM3XXE`"]
+    #[doc = "Checks if the value of the field is `SAM3XX_E`"]
     #[inline(always)]
     pub fn is_sam3xx_e(&self) -> bool {
-        *self == ARCH_A::SAM3XXE
+        *self == ARCH_A::SAM3XX_E
     }
-    #[doc = "Checks if the value of the field is `SAM3XXG`"]
+    #[doc = "Checks if the value of the field is `SAM3XX_G`"]
     #[inline(always)]
     pub fn is_sam3xx_g(&self) -> bool {
-        *self == ARCH_A::SAM3XXG
+        *self == ARCH_A::SAM3XX_G
     }
 }
+#[doc = "Field `NVPTYP` reader - Nonvolatile Program Memory Type"]
+pub type NVPTYP_R = crate::FieldReader<u8, NVPTYP_A>;
 #[doc = "Nonvolatile Program Memory Type"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum NVPTYP_A {
     #[doc = "0: ROM"]
@@ -513,20 +524,17 @@ impl From<NVPTYP_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `NVPTYP`"]
-pub type NVPTYP_R = crate::R<u8, NVPTYP_A>;
 impl NVPTYP_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, NVPTYP_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<NVPTYP_A> {
         match self.bits {
-            0 => Val(NVPTYP_A::ROM),
-            1 => Val(NVPTYP_A::ROMLESS),
-            2 => Val(NVPTYP_A::FLASH),
-            3 => Val(NVPTYP_A::ROM_FLASH),
-            4 => Val(NVPTYP_A::SRAM),
-            i => Res(i),
+            0 => Some(NVPTYP_A::ROM),
+            1 => Some(NVPTYP_A::ROMLESS),
+            2 => Some(NVPTYP_A::FLASH),
+            3 => Some(NVPTYP_A::ROM_FLASH),
+            4 => Some(NVPTYP_A::SRAM),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `ROM`"]
@@ -555,8 +563,8 @@ impl NVPTYP_R {
         *self == NVPTYP_A::SRAM
     }
 }
-#[doc = "Reader of field `EXT`"]
-pub type EXT_R = crate::R<bool, bool>;
+#[doc = "Field `EXT` reader - Extension Flag"]
+pub type EXT_R = crate::BitReader<bool>;
 impl R {
     #[doc = "Bits 0:4 - Version of the Device"]
     #[inline(always)]
@@ -566,7 +574,7 @@ impl R {
     #[doc = "Bits 5:7 - Embedded Processor"]
     #[inline(always)]
     pub fn eproc(&self) -> EPROC_R {
-        EPROC_R::new(((self.bits >> 5) & 0x07) as u8)
+        EPROC_R::new(((self.bits >> 5) & 7) as u8)
     }
     #[doc = "Bits 8:11 - Nonvolatile Program Memory Size"]
     #[inline(always)]
@@ -591,11 +599,20 @@ impl R {
     #[doc = "Bits 28:30 - Nonvolatile Program Memory Type"]
     #[inline(always)]
     pub fn nvptyp(&self) -> NVPTYP_R {
-        NVPTYP_R::new(((self.bits >> 28) & 0x07) as u8)
+        NVPTYP_R::new(((self.bits >> 28) & 7) as u8)
     }
     #[doc = "Bit 31 - Extension Flag"]
     #[inline(always)]
     pub fn ext(&self) -> EXT_R {
-        EXT_R::new(((self.bits >> 31) & 0x01) != 0)
+        EXT_R::new(((self.bits >> 31) & 1) != 0)
     }
+}
+#[doc = "Chip ID Register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cidr](index.html) module"]
+pub struct CIDR_SPEC;
+impl crate::RegisterSpec for CIDR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cidr::R](R) reader structure"]
+impl crate::Readable for CIDR_SPEC {
+    type Reader = R;
 }

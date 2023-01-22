@@ -1,57 +1,51 @@
-#[doc = "Reader of register CWGR"]
-pub type R = crate::R<u32, super::CWGR>;
-#[doc = "Writer for register CWGR"]
-pub type W = crate::W<u32, super::CWGR>;
-#[doc = "Register CWGR `reset()`'s with value 0"]
-impl crate::ResetValue for super::CWGR {
-    type Type = u32;
+#[doc = "Register `CWGR` reader"]
+pub struct R(crate::R<CWGR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CWGR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CLDIV`"]
-pub type CLDIV_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CLDIV`"]
-pub struct CLDIV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CLDIV_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<CWGR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | ((value as u32) & 0xff);
-        self.w
+    fn from(reader: crate::R<CWGR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `CHDIV`"]
-pub type CHDIV_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CHDIV`"]
-pub struct CHDIV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CHDIV_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Register `CWGR` writer"]
+pub struct W(crate::W<CWGR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CWGR_SPEC>;
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xff << 8)) | (((value as u32) & 0xff) << 8);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CKDIV`"]
-pub type CKDIV_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CKDIV`"]
-pub struct CKDIV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CKDIV_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 16)) | (((value as u32) & 0x07) << 16);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
+impl From<crate::W<CWGR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<CWGR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CLDIV` reader - Clock Low Divider"]
+pub type CLDIV_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `CLDIV` writer - Clock Low Divider"]
+pub type CLDIV_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CWGR_SPEC, u8, u8, 8, O>;
+#[doc = "Field `CHDIV` reader - Clock High Divider"]
+pub type CHDIV_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `CHDIV` writer - Clock High Divider"]
+pub type CHDIV_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CWGR_SPEC, u8, u8, 8, O>;
+#[doc = "Field `CKDIV` reader - Clock Divider"]
+pub type CKDIV_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `CKDIV` writer - Clock Divider"]
+pub type CKDIV_W<'a, const O: u8> = crate::FieldWriter<'a, u32, CWGR_SPEC, u8, u8, 3, O>;
 impl R {
     #[doc = "Bits 0:7 - Clock Low Divider"]
     #[inline(always)]
@@ -66,23 +60,51 @@ impl R {
     #[doc = "Bits 16:18 - Clock Divider"]
     #[inline(always)]
     pub fn ckdiv(&self) -> CKDIV_R {
-        CKDIV_R::new(((self.bits >> 16) & 0x07) as u8)
+        CKDIV_R::new(((self.bits >> 16) & 7) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:7 - Clock Low Divider"]
     #[inline(always)]
-    pub fn cldiv(&mut self) -> CLDIV_W {
-        CLDIV_W { w: self }
+    #[must_use]
+    pub fn cldiv(&mut self) -> CLDIV_W<0> {
+        CLDIV_W::new(self)
     }
     #[doc = "Bits 8:15 - Clock High Divider"]
     #[inline(always)]
-    pub fn chdiv(&mut self) -> CHDIV_W {
-        CHDIV_W { w: self }
+    #[must_use]
+    pub fn chdiv(&mut self) -> CHDIV_W<8> {
+        CHDIV_W::new(self)
     }
     #[doc = "Bits 16:18 - Clock Divider"]
     #[inline(always)]
-    pub fn ckdiv(&mut self) -> CKDIV_W {
-        CKDIV_W { w: self }
+    #[must_use]
+    pub fn ckdiv(&mut self) -> CKDIV_W<16> {
+        CKDIV_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Clock Waveform Generator Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cwgr](index.html) module"]
+pub struct CWGR_SPEC;
+impl crate::RegisterSpec for CWGR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cwgr::R](R) reader structure"]
+impl crate::Readable for CWGR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cwgr::W](W) writer structure"]
+impl crate::Writable for CWGR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets CWGR to value 0"]
+impl crate::Resettable for CWGR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

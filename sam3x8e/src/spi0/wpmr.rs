@@ -1,41 +1,47 @@
-#[doc = "Reader of register WPMR"]
-pub type R = crate::R<u32, super::WPMR>;
-#[doc = "Writer for register WPMR"]
-pub type W = crate::W<u32, super::WPMR>;
-#[doc = "Register WPMR `reset()`'s with value 0"]
-impl crate::ResetValue for super::WPMR {
-    type Type = u32;
+#[doc = "Register `WPMR` reader"]
+pub struct R(crate::R<WPMR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<WPMR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `WPEN`"]
-pub type WPEN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `WPEN`"]
-pub struct WPEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WPEN_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::R<WPMR_SPEC>> for R {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn from(reader: crate::R<WPMR_SPEC>) -> Self {
+        R(reader)
     }
 }
+#[doc = "Register `WPMR` writer"]
+pub struct W(crate::W<WPMR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<WPMR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<WPMR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<WPMR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `WPEN` reader - Write Protect Enable"]
+pub type WPEN_R = crate::BitReader<bool>;
+#[doc = "Field `WPEN` writer - Write Protect Enable"]
+pub type WPEN_W<'a, const O: u8> = crate::BitWriter<'a, u32, WPMR_SPEC, bool, O>;
+#[doc = "Field `WPKEY` reader - Write Protect Key"]
+pub type WPKEY_R = crate::FieldReader<u32, WPKEY_A>;
 #[doc = "Write Protect Key\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u32)]
 pub enum WPKEY_A {
     #[doc = "5460041: Writing any other value in this field aborts the write operation of the WPEN bit.Always reads as 0."]
@@ -47,16 +53,13 @@ impl From<WPKEY_A> for u32 {
         variant as _
     }
 }
-#[doc = "Reader of field `WPKEY`"]
-pub type WPKEY_R = crate::R<u32, WPKEY_A>;
 impl WPKEY_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u32, WPKEY_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<WPKEY_A> {
         match self.bits {
-            5460041 => Val(WPKEY_A::PASSWD),
-            i => Res(i),
+            5460041 => Some(WPKEY_A::PASSWD),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `PASSWD`"]
@@ -65,49 +68,63 @@ impl WPKEY_R {
         *self == WPKEY_A::PASSWD
     }
 }
-#[doc = "Write proxy for field `WPKEY`"]
-pub struct WPKEY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WPKEY_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: WPKEY_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `WPKEY` writer - Write Protect Key"]
+pub type WPKEY_W<'a, const O: u8> = crate::FieldWriter<'a, u32, WPMR_SPEC, u32, WPKEY_A, 24, O>;
+impl<'a, const O: u8> WPKEY_W<'a, O> {
     #[doc = "Writing any other value in this field aborts the write operation of the WPEN bit.Always reads as 0."]
     #[inline(always)]
     pub fn passwd(self) -> &'a mut W {
         self.variant(WPKEY_A::PASSWD)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x00ff_ffff << 8)) | (((value as u32) & 0x00ff_ffff) << 8);
-        self.w
     }
 }
 impl R {
     #[doc = "Bit 0 - Write Protect Enable"]
     #[inline(always)]
     pub fn wpen(&self) -> WPEN_R {
-        WPEN_R::new((self.bits & 0x01) != 0)
+        WPEN_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bits 8:31 - Write Protect Key"]
     #[inline(always)]
     pub fn wpkey(&self) -> WPKEY_R {
-        WPKEY_R::new(((self.bits >> 8) & 0x00ff_ffff) as u32)
+        WPKEY_R::new((self.bits >> 8) & 0x00ff_ffff)
     }
 }
 impl W {
     #[doc = "Bit 0 - Write Protect Enable"]
     #[inline(always)]
-    pub fn wpen(&mut self) -> WPEN_W {
-        WPEN_W { w: self }
+    #[must_use]
+    pub fn wpen(&mut self) -> WPEN_W<0> {
+        WPEN_W::new(self)
     }
     #[doc = "Bits 8:31 - Write Protect Key"]
     #[inline(always)]
-    pub fn wpkey(&mut self) -> WPKEY_W {
-        WPKEY_W { w: self }
+    #[must_use]
+    pub fn wpkey(&mut self) -> WPKEY_W<8> {
+        WPKEY_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Write Protection Control Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [wpmr](index.html) module"]
+pub struct WPMR_SPEC;
+impl crate::RegisterSpec for WPMR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [wpmr::R](R) reader structure"]
+impl crate::Readable for WPMR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [wpmr::W](W) writer structure"]
+impl crate::Writable for WPMR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets WPMR to value 0"]
+impl crate::Resettable for WPMR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

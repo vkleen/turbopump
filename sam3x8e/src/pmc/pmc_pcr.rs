@@ -1,55 +1,51 @@
-#[doc = "Reader of register PMC_PCR"]
-pub type R = crate::R<u32, super::PMC_PCR>;
-#[doc = "Writer for register PMC_PCR"]
-pub type W = crate::W<u32, super::PMC_PCR>;
-#[doc = "Register PMC_PCR `reset()`'s with value 0"]
-impl crate::ResetValue for super::PMC_PCR {
-    type Type = u32;
+#[doc = "Register `PMC_PCR` reader"]
+pub struct R(crate::R<PMC_PCR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PMC_PCR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `PID`"]
-pub type PID_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `PID`"]
-pub struct PID_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PID_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<PMC_PCR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x3f) | ((value as u32) & 0x3f);
-        self.w
+    fn from(reader: crate::R<PMC_PCR_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `CMD`"]
-pub type CMD_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CMD`"]
-pub struct CMD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CMD_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `PMC_PCR` writer"]
+pub struct W(crate::W<PMC_PCR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PMC_PCR_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 12)) | (((value as u32) & 0x01) << 12);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<PMC_PCR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<PMC_PCR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `PID` reader - Peripheral ID"]
+pub type PID_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `PID` writer - Peripheral ID"]
+pub type PID_W<'a, const O: u8> = crate::FieldWriter<'a, u32, PMC_PCR_SPEC, u8, u8, 6, O>;
+#[doc = "Field `CMD` reader - Command"]
+pub type CMD_R = crate::BitReader<bool>;
+#[doc = "Field `CMD` writer - Command"]
+pub type CMD_W<'a, const O: u8> = crate::BitWriter<'a, u32, PMC_PCR_SPEC, bool, O>;
+#[doc = "Field `DIV` reader - Divisor Value"]
+pub type DIV_R = crate::FieldReader<u8, DIV_A>;
 #[doc = "Divisor Value\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum DIV_A {
     #[doc = "0: Peripheral clock is MCK"]
@@ -65,18 +61,15 @@ impl From<DIV_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `DIV`"]
-pub type DIV_R = crate::R<u8, DIV_A>;
 impl DIV_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> crate::Variant<u8, DIV_A> {
-        use crate::Variant::*;
+    pub fn variant(&self) -> Option<DIV_A> {
         match self.bits {
-            0 => Val(DIV_A::PERIPH_DIV_MCK),
-            1 => Val(DIV_A::PERIPH_DIV2_MCK),
-            2 => Val(DIV_A::PERIPH_DIV4_MCK),
-            i => Res(i),
+            0 => Some(DIV_A::PERIPH_DIV_MCK),
+            1 => Some(DIV_A::PERIPH_DIV2_MCK),
+            2 => Some(DIV_A::PERIPH_DIV4_MCK),
+            _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `PERIPH_DIV_MCK`"]
@@ -95,16 +88,9 @@ impl DIV_R {
         *self == DIV_A::PERIPH_DIV4_MCK
     }
 }
-#[doc = "Write proxy for field `DIV`"]
-pub struct DIV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DIV_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DIV_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+#[doc = "Field `DIV` writer - Divisor Value"]
+pub type DIV_W<'a, const O: u8> = crate::FieldWriter<'a, u32, PMC_PCR_SPEC, u8, DIV_A, 2, O>;
+impl<'a, const O: u8> DIV_W<'a, O> {
     #[doc = "Peripheral clock is MCK"]
     #[inline(always)]
     pub fn periph_div_mck(self) -> &'a mut W {
@@ -120,37 +106,11 @@ impl<'a> DIV_W<'a> {
     pub fn periph_div4_mck(self) -> &'a mut W {
         self.variant(DIV_A::PERIPH_DIV4_MCK)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | (((value as u32) & 0x03) << 16);
-        self.w
-    }
 }
-#[doc = "Reader of field `EN`"]
-pub type EN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `EN`"]
-pub struct EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> EN_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 28)) | (((value as u32) & 0x01) << 28);
-        self.w
-    }
-}
+#[doc = "Field `EN` reader - Enable"]
+pub type EN_R = crate::BitReader<bool>;
+#[doc = "Field `EN` writer - Enable"]
+pub type EN_W<'a, const O: u8> = crate::BitWriter<'a, u32, PMC_PCR_SPEC, bool, O>;
 impl R {
     #[doc = "Bits 0:5 - Peripheral ID"]
     #[inline(always)]
@@ -160,38 +120,67 @@ impl R {
     #[doc = "Bit 12 - Command"]
     #[inline(always)]
     pub fn cmd(&self) -> CMD_R {
-        CMD_R::new(((self.bits >> 12) & 0x01) != 0)
+        CMD_R::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bits 16:17 - Divisor Value"]
     #[inline(always)]
     pub fn div(&self) -> DIV_R {
-        DIV_R::new(((self.bits >> 16) & 0x03) as u8)
+        DIV_R::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bit 28 - Enable"]
     #[inline(always)]
     pub fn en(&self) -> EN_R {
-        EN_R::new(((self.bits >> 28) & 0x01) != 0)
+        EN_R::new(((self.bits >> 28) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:5 - Peripheral ID"]
     #[inline(always)]
-    pub fn pid(&mut self) -> PID_W {
-        PID_W { w: self }
+    #[must_use]
+    pub fn pid(&mut self) -> PID_W<0> {
+        PID_W::new(self)
     }
     #[doc = "Bit 12 - Command"]
     #[inline(always)]
-    pub fn cmd(&mut self) -> CMD_W {
-        CMD_W { w: self }
+    #[must_use]
+    pub fn cmd(&mut self) -> CMD_W<12> {
+        CMD_W::new(self)
     }
     #[doc = "Bits 16:17 - Divisor Value"]
     #[inline(always)]
-    pub fn div(&mut self) -> DIV_W {
-        DIV_W { w: self }
+    #[must_use]
+    pub fn div(&mut self) -> DIV_W<16> {
+        DIV_W::new(self)
     }
     #[doc = "Bit 28 - Enable"]
     #[inline(always)]
-    pub fn en(&mut self) -> EN_W {
-        EN_W { w: self }
+    #[must_use]
+    pub fn en(&mut self) -> EN_W<28> {
+        EN_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Peripheral Control Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pmc_pcr](index.html) module"]
+pub struct PMC_PCR_SPEC;
+impl crate::RegisterSpec for PMC_PCR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [pmc_pcr::R](R) reader structure"]
+impl crate::Readable for PMC_PCR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [pmc_pcr::W](W) writer structure"]
+impl crate::Writable for PMC_PCR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets PMC_PCR to value 0"]
+impl crate::Resettable for PMC_PCR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

@@ -1,31 +1,47 @@
-#[doc = "Reader of register DTOR"]
-pub type R = crate::R<u32, super::DTOR>;
-#[doc = "Writer for register DTOR"]
-pub type W = crate::W<u32, super::DTOR>;
-#[doc = "Register DTOR `reset()`'s with value 0"]
-impl crate::ResetValue for super::DTOR {
-    type Type = u32;
+#[doc = "Register `DTOR` reader"]
+pub struct R(crate::R<DTOR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DTOR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `DTOCYC`"]
-pub type DTOCYC_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `DTOCYC`"]
-pub struct DTOCYC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DTOCYC_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<crate::R<DTOR_SPEC>> for R {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
-        self.w
+    fn from(reader: crate::R<DTOR_SPEC>) -> Self {
+        R(reader)
     }
 }
+#[doc = "Register `DTOR` writer"]
+pub struct W(crate::W<DTOR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DTOR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<DTOR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<DTOR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `DTOCYC` reader - Data Timeout Cycle Number"]
+pub type DTOCYC_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `DTOCYC` writer - Data Timeout Cycle Number"]
+pub type DTOCYC_W<'a, const O: u8> = crate::FieldWriter<'a, u32, DTOR_SPEC, u8, u8, 4, O>;
+#[doc = "Field `DTOMUL` reader - Data Timeout Multiplier"]
+pub type DTOMUL_R = crate::FieldReader<u8, DTOMUL_A>;
 #[doc = "Data Timeout Multiplier\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum DTOMUL_A {
     #[doc = "0: DTOCYC"]
@@ -51,10 +67,8 @@ impl From<DTOMUL_A> for u8 {
         variant as _
     }
 }
-#[doc = "Reader of field `DTOMUL`"]
-pub type DTOMUL_R = crate::R<u8, DTOMUL_A>;
 impl DTOMUL_R {
-    #[doc = r"Get enumerated values variant"]
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DTOMUL_A {
         match self.bits {
@@ -110,18 +124,9 @@ impl DTOMUL_R {
         *self == DTOMUL_A::_1048576
     }
 }
-#[doc = "Write proxy for field `DTOMUL`"]
-pub struct DTOMUL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DTOMUL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DTOMUL_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
-    }
+#[doc = "Field `DTOMUL` writer - Data Timeout Multiplier"]
+pub type DTOMUL_W<'a, const O: u8> = crate::FieldWriterSafe<'a, u32, DTOR_SPEC, u8, DTOMUL_A, 3, O>;
+impl<'a, const O: u8> DTOMUL_W<'a, O> {
     #[doc = "DTOCYC"]
     #[inline(always)]
     pub fn _1(self) -> &'a mut W {
@@ -162,12 +167,6 @@ impl<'a> DTOMUL_W<'a> {
     pub fn _1048576(self) -> &'a mut W {
         self.variant(DTOMUL_A::_1048576)
     }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 4)) | (((value as u32) & 0x07) << 4);
-        self.w
-    }
 }
 impl R {
     #[doc = "Bits 0:3 - Data Timeout Cycle Number"]
@@ -178,18 +177,45 @@ impl R {
     #[doc = "Bits 4:6 - Data Timeout Multiplier"]
     #[inline(always)]
     pub fn dtomul(&self) -> DTOMUL_R {
-        DTOMUL_R::new(((self.bits >> 4) & 0x07) as u8)
+        DTOMUL_R::new(((self.bits >> 4) & 7) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Data Timeout Cycle Number"]
     #[inline(always)]
-    pub fn dtocyc(&mut self) -> DTOCYC_W {
-        DTOCYC_W { w: self }
+    #[must_use]
+    pub fn dtocyc(&mut self) -> DTOCYC_W<0> {
+        DTOCYC_W::new(self)
     }
     #[doc = "Bits 4:6 - Data Timeout Multiplier"]
     #[inline(always)]
-    pub fn dtomul(&mut self) -> DTOMUL_W {
-        DTOMUL_W { w: self }
+    #[must_use]
+    pub fn dtomul(&mut self) -> DTOMUL_W<4> {
+        DTOMUL_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Data Timeout Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [dtor](index.html) module"]
+pub struct DTOR_SPEC;
+impl crate::RegisterSpec for DTOR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [dtor::R](R) reader structure"]
+impl crate::Readable for DTOR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [dtor::W](W) writer structure"]
+impl crate::Writable for DTOR_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets DTOR to value 0"]
+impl crate::Resettable for DTOR_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }

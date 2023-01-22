@@ -1,261 +1,116 @@
-#[doc = "Reader of register DEVDMACONTROL5"]
-pub type R = crate::R<u32, super::DEVDMACONTROL5>;
-#[doc = "Writer for register DEVDMACONTROL5"]
-pub type W = crate::W<u32, super::DEVDMACONTROL5>;
-#[doc = "Register DEVDMACONTROL5 `reset()`'s with value 0"]
-impl crate::ResetValue for super::DEVDMACONTROL5 {
-    type Type = u32;
+#[doc = "Register `DEVDMACONTROL5` reader"]
+pub struct R(crate::R<DEVDMACONTROL5_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DEVDMACONTROL5_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CHANN_ENB`"]
-pub type CHANN_ENB_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `CHANN_ENB`"]
-pub struct CHANN_ENB_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CHANN_ENB_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::R<DEVDMACONTROL5_SPEC>> for R {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
-        self.w
+    fn from(reader: crate::R<DEVDMACONTROL5_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = "Reader of field `LDNXT_DSC`"]
-pub type LDNXT_DSC_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `LDNXT_DSC`"]
-pub struct LDNXT_DSC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LDNXT_DSC_W<'a> {
-    #[doc = r"Sets the field bit"]
+#[doc = "Register `DEVDMACONTROL5` writer"]
+pub struct W(crate::W<DEVDMACONTROL5_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DEVDMACONTROL5_SPEC>;
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
-        self.w
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `END_TR_EN`"]
-pub type END_TR_EN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `END_TR_EN`"]
-pub struct END_TR_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> END_TR_EN_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl core::ops::DerefMut for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
-        self.w
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = "Reader of field `END_B_EN`"]
-pub type END_B_EN_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `END_B_EN`"]
-pub struct END_B_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> END_B_EN_W<'a> {
-    #[doc = r"Sets the field bit"]
+impl From<crate::W<DEVDMACONTROL5_SPEC>> for W {
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
-        self.w
+    fn from(writer: crate::W<DEVDMACONTROL5_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = "Reader of field `END_TR_IT`"]
-pub type END_TR_IT_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `END_TR_IT`"]
-pub struct END_TR_IT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> END_TR_IT_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
-        self.w
-    }
-}
-#[doc = "Reader of field `END_BUFFIT`"]
-pub type END_BUFFIT_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `END_BUFFIT`"]
-pub struct END_BUFFIT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> END_BUFFIT_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
-        self.w
-    }
-}
-#[doc = "Reader of field `DESC_LD_IT`"]
-pub type DESC_LD_IT_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `DESC_LD_IT`"]
-pub struct DESC_LD_IT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DESC_LD_IT_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
-        self.w
-    }
-}
-#[doc = "Reader of field `BURST_LCK`"]
-pub type BURST_LCK_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `BURST_LCK`"]
-pub struct BURST_LCK_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> BURST_LCK_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
-        self.w
-    }
-}
-#[doc = "Reader of field `BUFF_LENGTH`"]
-pub type BUFF_LENGTH_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `BUFF_LENGTH`"]
-pub struct BUFF_LENGTH_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> BUFF_LENGTH_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xffff << 16)) | (((value as u32) & 0xffff) << 16);
-        self.w
-    }
-}
+#[doc = "Field `CHANN_ENB` reader - Channel Enable Command"]
+pub type CHANN_ENB_R = crate::BitReader<bool>;
+#[doc = "Field `CHANN_ENB` writer - Channel Enable Command"]
+pub type CHANN_ENB_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMACONTROL5_SPEC, bool, O>;
+#[doc = "Field `LDNXT_DSC` reader - Load Next Channel Transfer Descriptor Enable Command"]
+pub type LDNXT_DSC_R = crate::BitReader<bool>;
+#[doc = "Field `LDNXT_DSC` writer - Load Next Channel Transfer Descriptor Enable Command"]
+pub type LDNXT_DSC_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMACONTROL5_SPEC, bool, O>;
+#[doc = "Field `END_TR_EN` reader - End of Transfer Enable Control"]
+pub type END_TR_EN_R = crate::BitReader<bool>;
+#[doc = "Field `END_TR_EN` writer - End of Transfer Enable Control"]
+pub type END_TR_EN_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMACONTROL5_SPEC, bool, O>;
+#[doc = "Field `END_B_EN` reader - End of Buffer Enable Control"]
+pub type END_B_EN_R = crate::BitReader<bool>;
+#[doc = "Field `END_B_EN` writer - End of Buffer Enable Control"]
+pub type END_B_EN_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMACONTROL5_SPEC, bool, O>;
+#[doc = "Field `END_TR_IT` reader - End of Transfer Interrupt Enable"]
+pub type END_TR_IT_R = crate::BitReader<bool>;
+#[doc = "Field `END_TR_IT` writer - End of Transfer Interrupt Enable"]
+pub type END_TR_IT_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMACONTROL5_SPEC, bool, O>;
+#[doc = "Field `END_BUFFIT` reader - End of Buffer Interrupt Enable"]
+pub type END_BUFFIT_R = crate::BitReader<bool>;
+#[doc = "Field `END_BUFFIT` writer - End of Buffer Interrupt Enable"]
+pub type END_BUFFIT_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMACONTROL5_SPEC, bool, O>;
+#[doc = "Field `DESC_LD_IT` reader - Descriptor Loaded Interrupt Enable"]
+pub type DESC_LD_IT_R = crate::BitReader<bool>;
+#[doc = "Field `DESC_LD_IT` writer - Descriptor Loaded Interrupt Enable"]
+pub type DESC_LD_IT_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMACONTROL5_SPEC, bool, O>;
+#[doc = "Field `BURST_LCK` reader - Burst Lock Enable"]
+pub type BURST_LCK_R = crate::BitReader<bool>;
+#[doc = "Field `BURST_LCK` writer - Burst Lock Enable"]
+pub type BURST_LCK_W<'a, const O: u8> = crate::BitWriter<'a, u32, DEVDMACONTROL5_SPEC, bool, O>;
+#[doc = "Field `BUFF_LENGTH` reader - Buffer Byte Length (Write-only)"]
+pub type BUFF_LENGTH_R = crate::FieldReader<u16, u16>;
+#[doc = "Field `BUFF_LENGTH` writer - Buffer Byte Length (Write-only)"]
+pub type BUFF_LENGTH_W<'a, const O: u8> =
+    crate::FieldWriter<'a, u32, DEVDMACONTROL5_SPEC, u16, u16, 16, O>;
 impl R {
     #[doc = "Bit 0 - Channel Enable Command"]
     #[inline(always)]
     pub fn chann_enb(&self) -> CHANN_ENB_R {
-        CHANN_ENB_R::new((self.bits & 0x01) != 0)
+        CHANN_ENB_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Load Next Channel Transfer Descriptor Enable Command"]
     #[inline(always)]
     pub fn ldnxt_dsc(&self) -> LDNXT_DSC_R {
-        LDNXT_DSC_R::new(((self.bits >> 1) & 0x01) != 0)
+        LDNXT_DSC_R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - End of Transfer Enable Control"]
     #[inline(always)]
     pub fn end_tr_en(&self) -> END_TR_EN_R {
-        END_TR_EN_R::new(((self.bits >> 2) & 0x01) != 0)
+        END_TR_EN_R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - End of Buffer Enable Control"]
     #[inline(always)]
     pub fn end_b_en(&self) -> END_B_EN_R {
-        END_B_EN_R::new(((self.bits >> 3) & 0x01) != 0)
+        END_B_EN_R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - End of Transfer Interrupt Enable"]
     #[inline(always)]
     pub fn end_tr_it(&self) -> END_TR_IT_R {
-        END_TR_IT_R::new(((self.bits >> 4) & 0x01) != 0)
+        END_TR_IT_R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - End of Buffer Interrupt Enable"]
     #[inline(always)]
     pub fn end_buffit(&self) -> END_BUFFIT_R {
-        END_BUFFIT_R::new(((self.bits >> 5) & 0x01) != 0)
+        END_BUFFIT_R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Descriptor Loaded Interrupt Enable"]
     #[inline(always)]
     pub fn desc_ld_it(&self) -> DESC_LD_IT_R {
-        DESC_LD_IT_R::new(((self.bits >> 6) & 0x01) != 0)
+        DESC_LD_IT_R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Burst Lock Enable"]
     #[inline(always)]
     pub fn burst_lck(&self) -> BURST_LCK_R {
-        BURST_LCK_R::new(((self.bits >> 7) & 0x01) != 0)
+        BURST_LCK_R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bits 16:31 - Buffer Byte Length (Write-only)"]
     #[inline(always)]
@@ -266,47 +121,81 @@ impl R {
 impl W {
     #[doc = "Bit 0 - Channel Enable Command"]
     #[inline(always)]
-    pub fn chann_enb(&mut self) -> CHANN_ENB_W {
-        CHANN_ENB_W { w: self }
+    #[must_use]
+    pub fn chann_enb(&mut self) -> CHANN_ENB_W<0> {
+        CHANN_ENB_W::new(self)
     }
     #[doc = "Bit 1 - Load Next Channel Transfer Descriptor Enable Command"]
     #[inline(always)]
-    pub fn ldnxt_dsc(&mut self) -> LDNXT_DSC_W {
-        LDNXT_DSC_W { w: self }
+    #[must_use]
+    pub fn ldnxt_dsc(&mut self) -> LDNXT_DSC_W<1> {
+        LDNXT_DSC_W::new(self)
     }
     #[doc = "Bit 2 - End of Transfer Enable Control"]
     #[inline(always)]
-    pub fn end_tr_en(&mut self) -> END_TR_EN_W {
-        END_TR_EN_W { w: self }
+    #[must_use]
+    pub fn end_tr_en(&mut self) -> END_TR_EN_W<2> {
+        END_TR_EN_W::new(self)
     }
     #[doc = "Bit 3 - End of Buffer Enable Control"]
     #[inline(always)]
-    pub fn end_b_en(&mut self) -> END_B_EN_W {
-        END_B_EN_W { w: self }
+    #[must_use]
+    pub fn end_b_en(&mut self) -> END_B_EN_W<3> {
+        END_B_EN_W::new(self)
     }
     #[doc = "Bit 4 - End of Transfer Interrupt Enable"]
     #[inline(always)]
-    pub fn end_tr_it(&mut self) -> END_TR_IT_W {
-        END_TR_IT_W { w: self }
+    #[must_use]
+    pub fn end_tr_it(&mut self) -> END_TR_IT_W<4> {
+        END_TR_IT_W::new(self)
     }
     #[doc = "Bit 5 - End of Buffer Interrupt Enable"]
     #[inline(always)]
-    pub fn end_buffit(&mut self) -> END_BUFFIT_W {
-        END_BUFFIT_W { w: self }
+    #[must_use]
+    pub fn end_buffit(&mut self) -> END_BUFFIT_W<5> {
+        END_BUFFIT_W::new(self)
     }
     #[doc = "Bit 6 - Descriptor Loaded Interrupt Enable"]
     #[inline(always)]
-    pub fn desc_ld_it(&mut self) -> DESC_LD_IT_W {
-        DESC_LD_IT_W { w: self }
+    #[must_use]
+    pub fn desc_ld_it(&mut self) -> DESC_LD_IT_W<6> {
+        DESC_LD_IT_W::new(self)
     }
     #[doc = "Bit 7 - Burst Lock Enable"]
     #[inline(always)]
-    pub fn burst_lck(&mut self) -> BURST_LCK_W {
-        BURST_LCK_W { w: self }
+    #[must_use]
+    pub fn burst_lck(&mut self) -> BURST_LCK_W<7> {
+        BURST_LCK_W::new(self)
     }
     #[doc = "Bits 16:31 - Buffer Byte Length (Write-only)"]
     #[inline(always)]
-    pub fn buff_length(&mut self) -> BUFF_LENGTH_W {
-        BUFF_LENGTH_W { w: self }
+    #[must_use]
+    pub fn buff_length(&mut self) -> BUFF_LENGTH_W<16> {
+        BUFF_LENGTH_W::new(self)
     }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Device DMA Channel Control Register (n = 5)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [devdmacontrol5](index.html) module"]
+pub struct DEVDMACONTROL5_SPEC;
+impl crate::RegisterSpec for DEVDMACONTROL5_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [devdmacontrol5::R](R) reader structure"]
+impl crate::Readable for DEVDMACONTROL5_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [devdmacontrol5::W](W) writer structure"]
+impl crate::Writable for DEVDMACONTROL5_SPEC {
+    type Writer = W;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
+}
+#[doc = "`reset()` method sets DEVDMACONTROL5 to value 0"]
+impl crate::Resettable for DEVDMACONTROL5_SPEC {
+    const RESET_VALUE: Self::Ux = 0;
 }
