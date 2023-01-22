@@ -1,13 +1,13 @@
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
 # TODO(2) replace `$CHIP` with your chip's name (see `probe-run --list-chips` output)
-runner = "probe-run --chip Cortex-M3"
+runner = "probe-run --chip ATSAM3X8E --chip-description-path sam3x8e.yaml"
 rustflags = [
   "-C", "linker=flip-link",
   "-C", "link-arg=-Tlink.x",
   "-C", "link-arg=-Tdefmt.x",
   # This is needed if your flash or ram addresses are not aligned to 0x10000 in memory.x
   # See https://github.com/rust-embedded/cortex-m-quickstart/pull/95
-  "-C", "link-arg=--nmagic",
+  # "-C", "link-arg=--nmagic",
 ]
 
 [build]
@@ -16,3 +16,6 @@ target = "thumbv7m-none-eabi"    # Cortex-M0 and Cortex-M0+
 [alias]
 rb = "run --bin"
 rrb = "run --release --bin"
+
+[unstable]
+build-std = ["core"]

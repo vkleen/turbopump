@@ -17,8 +17,7 @@ cortex-m-rt = "0.7"
 defmt = "0.3"
 defmt-rtt = "0.4"
 panic-probe = { version = "0.3", features = ["print-defmt"] }
-# TODO(4) enter your HAL here
-# some-hal = "1.2.3"
+sam3x8e = { path = "sam3x8e" }
 
 [dev-dependencies]
 defmt-test = "0.3"
@@ -61,10 +60,8 @@ lto = 'fat'
 opt-level = 3            # <-
 overflow-checks = false  # <-
 
-# uncomment this to switch from the crates.io version of defmt to its git version
-# check app-template's README for instructions
-# [patch.crates-io]
-# defmt = { git = "https://github.com/knurling-rs/defmt", rev = "use defmt version reported by `probe-run --version`" }
-# defmt-rtt = { git = "https://github.com/knurling-rs/defmt", rev = "use defmt version reported by `probe-run --version`" }
-# defmt-test = { git = "https://github.com/knurling-rs/defmt", rev = "use defmt version reported by `probe-run --version`" }
-# panic-probe = { git = "https://github.com/knurling-rs/defmt", rev = "use defmt version reported by `probe-run --version`" }
+[patch.crates-io]
+defmt = { git = "https://github.com/knurling-rs/defmt", rev = "0cb72e6d362ab040739559da32b68733bce7589f" }
+defmt-rtt = { git = "https://github.com/knurling-rs/defmt", rev = "0cb72e6d362ab040739559da32b68733bce7589f" }
+defmt-test = { git = "https://github.com/knurling-rs/defmt", rev = "0cb72e6d362ab040739559da32b68733bce7589f" }
+panic-probe = { git = "https://github.com/knurling-rs/defmt", rev = "0cb72e6d362ab040739559da32b68733bce7589f" }

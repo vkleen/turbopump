@@ -18,7 +18,26 @@
       (system:
         let
           inherit (nixpkgs) lib;
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            config = {};
+            localSystem = { inherit system; };
+            overlays = [
+              (final: prev: {
+                probe-run = prev.probe-run.overrideAttrs (o: rec {
+                  src = final.fetchFromGitHub {
+                    owner = "knurling-rs";
+                    repo = "probe-run";
+                    rev = "9eea82186ef74c7ff6e280463dcde82f24e15f25";
+                    hash = "sha256-N1THKph+BZOXzsf6mUo/e1rcfIJkKw569TeurSLCn0E=";
+                  };
+                  cargoDeps = o.cargoDeps.overrideAttrs (_: {
+                    inherit src;
+                    outputHash = "sha256-kmdRwAq6EOniGHC7JhB6Iov1E4hbQbxHlOcc6gUDOhY=";
+                  });
+                });
+              })
+            ];
+          };
 
           fenix = inputs.fenix.packages.${system};
           toolchain  = fenix.combine [
@@ -34,7 +53,7 @@
             ];
           };
 
-          nativeBuildInputs = [];
+          nativeBuildInputs = [ pkgs.pkg-config pkgs.openssl pkgs.udev ];
 
           cargoArtifacts = craneLib.buildDepsOnly {
             pname = "turbo-run";
