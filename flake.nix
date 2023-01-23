@@ -19,29 +19,28 @@
         let
           inherit (nixpkgs) lib;
           pkgs = import nixpkgs {
-            config = {};
+            config = { };
             localSystem = { inherit system; };
-            overlays = [
-              (final: prev: {
-                probe-run = prev.probe-run.overrideAttrs (o: rec {
-                  src = final.fetchFromGitHub {
-                    owner = "knurling-rs";
-                    repo = "probe-run";
-                    rev = "9eea82186ef74c7ff6e280463dcde82f24e15f25";
-                    hash = "sha256-N1THKph+BZOXzsf6mUo/e1rcfIJkKw569TeurSLCn0E=";
-                  };
-                  cargoDeps = o.cargoDeps.overrideAttrs (_: {
-                    inherit src;
-                    outputHash = "sha256-kmdRwAq6EOniGHC7JhB6Iov1E4hbQbxHlOcc6gUDOhY=";
-                  });
-                });
-              })
-            ];
+            overlays = [ ];
           };
 
+          probe-run-src = pkgs.lib.sources.sourceByRegex (pkgs.lib.cleanSource ./.) [
+            "probe-run" "probe-rs" "probe-run/.*" "probe-rs/.*"
+          ];
+
+          probe-run = pkgs.probe-run.overrideAttrs (o: rec {
+            src = probe-run-src;
+            sourceRoot = "source/probe-run";
+            cargoDeps = o.cargoDeps.overrideAttrs (_: {
+              inherit src sourceRoot;
+              outputHash = "sha256-VlmdWASPtIVj8ioRNNNkd5x3k7KVbuuzl93BTXVPwnk=";
+            });
+          });
+
           fenix = inputs.fenix.packages.${system};
-          toolchain  = fenix.combine [
-            fenix.latest.cargo fenix.latest.rustc
+          toolchain = fenix.combine [
+            fenix.latest.cargo
+            fenix.latest.rustc
             fenix.targets.thumbv7m-none-eabi.latest.rust-std
           ];
           craneLib = inputs.crane.lib.${system}.overrideToolchain toolchain;
@@ -53,7 +52,7 @@
             ];
           };
 
-          nativeBuildInputs = [ pkgs.pkg-config pkgs.openssl pkgs.udev ];
+          nativeBuildInputs = [ pkgs.pkg-config pkgs.openssl pkgs.udev pkgs.libusb ];
 
           cargoArtifacts = craneLib.buildDepsOnly {
             pname = "turbo-run";
@@ -88,12 +87,14 @@
               nixpkgs-fmt
               inputs.fenix.packages.${system}.rust-analyzer
 
-              cargo-generate probe-run flip-link
+              cargo-generate
+              probe-run
+              flip-link
             ] ++ nativeBuildInputs;
           };
 
           packages = {
-            inherit turbo-run;
+            inherit turbo-run probe-run;
             default = packages.turbo-run;
           };
         });

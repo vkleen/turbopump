@@ -90,29 +90,11 @@
         "type": "github"
       }
     },
-    "probe-rs-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1674431067,
-        "narHash": "sha256-Ari3ovh4qIO9xHVAUUtbpIpFJGu9WWQMTZxzoHjqm/Y=",
-        "ref": "refs/heads/master",
-        "rev": "98beb02d876f71a87fd65808f3a63fac4e229d5e",
-        "revCount": 4605,
-        "type": "git",
-        "url": "file:///home/vkleen/src/github.com/probe-rs/probe-rs"
-      },
-      "original": {
-        "owner": "probe-rs",
-        "repo": "probe-rs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "crane": "crane",
         "fenix": "fenix",
         "nixpkgs": "nixpkgs",
-        "probe-rs-src": "probe-rs-src",
         "utils": "utils"
       }
     },
