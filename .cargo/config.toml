@@ -1,5 +1,5 @@
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
-runner = "probe-run --chip ATSAM3X8E"
+runner = "probe-run --chip ATSAM3X8E --speed 500"
 rustflags = [
   "-C", "linker=flip-link",
   "-C", "link-arg=-Tlink.x",
@@ -9,12 +9,7 @@ rustflags = [
   # "-C", "link-arg=--nmagic",
 ]
 
-[build]
-target = "thumbv7m-none-eabi"    # Cortex-M0 and Cortex-M0+
-
 [alias]
-rb = "run --bin"
-rrb = "run --release --bin"
-
-[unstable]
-build-std = ["core"]
+rb = "run --target thumbv7m-none-eabi -Zbuild-std=core --bin"
+rrb = "run --target thumbv7m-none-eabi -Zbuild-std=core --release --bin"
+xtask = "run --manifest-path ./xtask/Cargo.toml --"

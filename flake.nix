@@ -87,7 +87,6 @@
               nixpkgs-fmt
               inputs.fenix.packages.${system}.rust-analyzer
 
-              cargo-generate
               probe-run
               flip-link
             ] ++ nativeBuildInputs;
