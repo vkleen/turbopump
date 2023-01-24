@@ -80,6 +80,7 @@
                 "rust-src"
                 "rustc"
                 "rustfmt"
+                "llvm-tools-preview"
               ])
               cargo-asm
               cargo-expand
@@ -89,6 +90,9 @@
 
               probe-run
               flip-link
+
+              openocd
+              gdb
             ] ++ nativeBuildInputs;
           };
 

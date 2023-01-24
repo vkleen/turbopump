@@ -12,4 +12,5 @@ rustflags = [
 [alias]
 rb = "run --target thumbv7m-none-eabi -Zbuild-std=core --bin"
 rrb = "run --target thumbv7m-none-eabi -Zbuild-std=core --release --bin"
+bt = "build --target thumbv7m-none-eabi -Zbuild-std=core"
 xtask = "run --manifest-path ./xtask/Cargo.toml --"
